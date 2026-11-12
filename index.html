@@ -1,624 +1,431 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aqeedah Journey</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAIDEUS</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout concept: a growing knowledge tree beside a winding road of ten lesson stations; each station opens Learn, Play, Quiz. */
-:root{
-  --bg:#F1F6FB; --surface:#FFFFFF; --surface2:#E8F0F8; --ink:#16213A; --muted:#55627F; --line:#D5E0EE;
-  --primary:#0B7F86; --primary-ink:#FFFFFF; --primary-soft:#D6EFF0;
-  --sun:#FFC233; --sun-soft:#FFF1C9; --sun-ink:#4A3600;
-  --coral:#E8505B; --coral-soft:#FFE1E3;
-  --leaf:#2E9E6B; --leaf2:#A9DDC2; --leaf-soft:#DAF2E5; --trunk:#8A5A3B; --ground:#CFE3D5;
-  --bar:#FFFFFF; --shadow:0 2px 0 rgba(22,33,58,.07), 0 10px 24px rgba(22,33,58,.07);
-  --font-display:"Baloo 2","Nunito",system-ui,sans-serif; --font-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0E1526; --surface:#172039; --surface2:#1F2A48; --ink:#EAF0FF; --muted:#A3B0CE; --line:#2B3858;
-  --primary:#3CC3C6; --primary-ink:#06222A; --primary-soft:#143A48;
-  --sun:#FFCB4D; --sun-soft:#3C3216; --sun-ink:#FFE9A8;
-  --coral:#FF7C86; --coral-soft:#42222B;
-  --leaf:#4CC48A; --leaf2:#2C6A52; --leaf-soft:#173A31; --trunk:#B07B58; --ground:#1C3A33;
-  --bar:#172039; --shadow:0 2px 0 rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.25); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E1526; --surface:#172039; --surface2:#1F2A48; --ink:#EAF0FF; --muted:#A3B0CE; --line:#2B3858;
-  --primary:#3CC3C6; --primary-ink:#06222A; --primary-soft:#143A48;
-  --sun:#FFCB4D; --sun-soft:#3C3216; --sun-ink:#FFE9A8;
-  --coral:#FF7C86; --coral-soft:#42222B;
-  --leaf:#4CC48A; --leaf2:#2C6A52; --leaf-soft:#173A31; --trunk:#B07B58; --ground:#1C3A33;
-  --bar:#172039; --shadow:0 2px 0 rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.25); color-scheme:dark}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; color: #1a1a1a; background: #ffffff; font-size: 15px; line-height: 1.7; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 2rem; border-bottom: 0.5px solid #e0e0e0; background: #ffffff; }
+.nav-logo img { height: 64px; width: auto; display: block; }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { font-size: 14px; color: #555; text-decoration: none; }
+.nav-links a:hover { color: #4A7D8C; }
 
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bar)}
-h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:.1px}
-p{margin:0 0 .7em}
-button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:8px}
-.wrap{max-width:980px;margin:0 auto}
+/* HERO */
+.hero { position: relative; padding: 4rem 2rem; text-align: center; overflow: hidden; background: #1a3a4a; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 50%, rgba(255,180,50,0.35) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(80,180,200,0.4) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(120,200,120,0.3) 0%, transparent 50%), radial-gradient(ellipse at 30% 10%, rgba(200,100,180,0.25) 0%, transparent 45%), linear-gradient(135deg, #0d2b3e 0%, #1a4a5a 50%, #0f3320 100%); z-index: 0; }
+.hero-floats { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.float { position: absolute; border-radius: 50%; opacity: 0.18; }
+.f1 { width: 120px; height: 120px; background: #FFB432; top: 8%; left: 5%; }
+.f2 { width: 80px; height: 80px; background: #50B4C8; top: 60%; left: 2%; }
+.f3 { width: 60px; height: 60px; background: #78C878; top: 20%; right: 8%; }
+.f4 { width: 100px; height: 100px; background: #E06090; bottom: 10%; right: 4%; }
+.f5 { width: 50px; height: 50px; background: #FFB432; bottom: 15%; left: 20%; }
+.f6 { width: 70px; height: 70px; background: #50B4C8; top: 5%; right: 30%; }
+.hero-icons { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.edu-icon { position: absolute; font-size: 22px; opacity: 0.55; }
+.ei1 { top: 12%; left: 8%; } .ei2 { top: 25%; left: 18%; } .ei3 { bottom: 18%; left: 10%; }
+.ei4 { top: 10%; right: 10%; } .ei5 { top: 35%; right: 6%; } .ei6 { bottom: 12%; right: 18%; }
+.ei7 { bottom: 20%; right: 35%; } .ei8 { top: 8%; left: 40%; }
+.hero-content { position: relative; z-index: 2; }
+.hero-logo { margin: 0 auto 1.5rem; }
+.hero-logo img { height: 130px; width: auto; border-radius: 50%; background: rgba(255,255,255,0.92); padding: 8px; box-shadow: 0 0 0 4px rgba(255,255,255,0.2); }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: #ffffff; max-width: 600px; margin: 0 auto 1rem; line-height: 1.25; text-shadow: 0 1px 12px rgba(0,0,0,0.3); }
+.hero p { color: rgba(255,255,255,0.82); max-width: 560px; margin: 0 auto 2rem; font-size: 16px; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-outline { background: transparent; color: #fff; padding: 12px 28px; border-radius: 6px; font-size: 14px; font-weight: 500; border: 1.5px solid rgba(255,255,255,0.6); cursor: pointer; }
 
-/* top bar */
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bar);border-bottom:2px solid var(--line);
-  margin-left:calc(-1*max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)));
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.topbar .wrap{display:flex;align-items:center;gap:12px;min-height:60px;flex-wrap:wrap;padding:6px 0}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none;background:none;border:0;padding:0}
-.brand svg{flex:none}
-.spacer{flex:1}
-.chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border-radius:999px;padding:6px 12px;font-weight:800;font-size:.92rem;white-space:nowrap}
-.chip svg{width:18px;height:18px}
-.who{position:relative}
-.who summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--primary-ink);border-radius:999px;padding:7px 14px;font-weight:800}
-.who summary::-webkit-details-marker{display:none}
-.who .menu{position:absolute;right:0;top:calc(100% + 8px);background:var(--surface);border:2px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:10px;min-width:220px;display:grid;gap:6px;z-index:25}
-.menu button{background:var(--surface2);border:0;border-radius:10px;padding:10px 12px;text-align:left;font-weight:700}
-.menu button[aria-current="true"]{background:var(--primary-soft);color:var(--ink);outline:2px solid var(--primary)}
-.menu .add{display:flex;gap:6px}
-.menu input{flex:1;min-width:0}
+/* MISSION */
+.mission { padding: 3rem 2rem; background: #ffffff; }
+.mission-label { font-size: 12px; font-weight: 500; color: #4A7D8C; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.mission h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 1rem; }
+.mission-statement { color: #333; font-size: 15px; max-width: 760px; line-height: 1.9; margin-bottom: 1.5rem; border-left: 3px solid #4A7D8C; padding-left: 1.25rem; font-style: italic; }
+.mission-purpose { color: #555; font-size: 14px; max-width: 760px; line-height: 1.8; }
+.mission-purpose strong { color: #2E5B6B; }
 
-/* generic */
-main{padding-top:22px;display:grid;gap:26px}
-.card{background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);min-width:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 20px;border-radius:14px;border:0;background:var(--primary);color:var(--primary-ink);font-weight:800;font-size:1rem;box-shadow:0 4px 0 rgba(0,0,0,.18);text-decoration:none;transition:transform .08s}
-.btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
-.btn.alt{background:var(--surface2);color:var(--ink);box-shadow:0 4px 0 var(--line)}
-.btn.sun{background:var(--sun);color:var(--sun-ink)}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
-input[type=text]{font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);color:var(--ink);min-height:46px;min-width:0}
-.eyebrow{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}
-.muted{color:var(--muted)}
+/* PROGRAMS */
+.programs { padding: 3rem 2rem; background: #f7f7f5; }
+.programs h2 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 0.5rem; text-align: center; }
+.programs-sub { text-align: center; color: #555; margin-bottom: 2rem; font-size: 14px; }
+.programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; }
+.program-card { background: #ffffff; border: 0.5px solid #e0e0e0; border-radius: 12px; overflow: hidden; }
+.program-card img { width: 100%; height: 140px; object-fit: cover; display: block; }
+.program-card-body { padding: 1rem 1.25rem 1.25rem; }
+.program-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; margin-bottom: 0.6rem; }
+.icon-teal { background: #E1F5EE; } .icon-green { background: #EAF3DE; }
+.icon-amber { background: #FAEEDA; } .icon-blue { background: #E6F1FB; } .icon-pink { background: #FDE8F0; }
+.program-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; color: #1a1a1a; }
+.program-card p { font-size: 13px; color: #555; line-height: 1.5; }
 
-/* hero */
-.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:stretch}
-.hero h1{font-size:clamp(1.9rem,5vw,2.7rem);font-weight:800}
-.hero .lead{font-size:1.08rem;margin-top:8px}
-.mission{margin-top:16px;background:var(--sun-soft);border:2px solid var(--sun);border-radius:18px;padding:14px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.mission b{font-family:var(--font-display);font-size:1.1rem}
-.mission .grow{flex:1;min-width:180px}
-.mission .eyebrow{color:var(--sun-ink)}
-.mission .txt{color:var(--sun-ink)}
-.treecard{display:grid;justify-items:center;align-content:center;text-align:center;gap:6px;background:linear-gradient(180deg,var(--primary-soft),var(--surface) 70%)}
-.treecard svg{width:min(100%,260px);height:auto}
-.level{font-family:var(--font-display);font-weight:800;font-size:1.3rem}
-.xpbar{width:min(100%,260px);height:12px;border-radius:99px;background:var(--surface2);overflow:hidden}
-.xpbar i{display:block;height:100%;background:var(--sun);border-radius:99px;transition:width .6s}
+/* CTA */
+.cta { padding: 3rem 2rem; text-align: center; background: #2E5B6B; }
+.cta h2 { font-family: 'Playfair Display', serif; font-size: 28px; color: #E1F5EE; margin-bottom: 0.75rem; }
+.cta p { color: #9FE1CB; margin-bottom: 2rem; font-size: 15px; }
+.cta .btn-light { background: white; color: #2E5B6B; padding: 12px 28px; border-radius: 6px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; }
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.stat{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:2px}
-.stat b{font-family:var(--font-display);font-size:1.9rem;line-height:1}
-.stat span{color:var(--muted);font-weight:700;font-size:.9rem}
-.ring{display:flex;align-items:center;gap:14px}
-.ring svg{width:96px;height:96px;flex:none}
-.ring .rt{font-family:var(--font-display);font-weight:800;font-size:2rem}
+/* SMS OPT-IN SECTION */
+.sms-section { padding: 3rem 2rem; background: #EAF3FB; }
+.sms-section h2 { font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; margin-bottom: 0.4rem; color: #1a1a1a; }
+.sms-sub { text-align: center; color: #555; font-size: 14px; margin-bottom: 2rem; }
+.sms-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; max-width: 860px; margin: 0 auto; align-items: start; }
+@media (max-width: 640px) { .sms-grid { grid-template-columns: 1fr; } }
+.sms-info { display: flex; flex-direction: column; gap: 1rem; }
+.sms-info-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+.sms-info-item span { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.sms-info-item div strong { display: block; font-size: 13px; color: #2E5B6B; margin-bottom: 2px; }
+.sms-info-item div p { font-size: 13px; color: #444; line-height: 1.5; }
+.sms-disclaimer { font-size: 11px; color: #777; margin-top: 1rem; line-height: 1.6; }
+.sms-disclaimer a { color: #4A7D8C; text-decoration: none; }
+.sms-form { background: white; border: 0.5px solid #c5dcef; border-radius: 12px; padding: 1.5rem; }
+.sms-form h3 { font-size: 15px; font-weight: 500; color: #2E5B6B; margin-bottom: 0.4rem; }
+.sms-form p { font-size: 13px; color: #555; margin-bottom: 1.25rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; font-size: 12px; font-weight: 500; color: #4A7D8C; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+.form-group input, .form-group select { width: 100%; padding: 9px 12px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1a1a1a; background: #fafafa; outline: none; transition: border 0.2s; }
+.form-group input:focus, .form-group select:focus { border-color: #4A7D8C; background: white; }
+.checkbox-group { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1rem; }
+.checkbox-group input[type="checkbox"] { margin-top: 3px; width: 16px; height: 16px; accent-color: #2E5B6B; flex-shrink: 0; }
+.checkbox-group label { font-size: 12px; color: #444; line-height: 1.5; }
+.checkbox-group a { color: #4A7D8C; text-decoration: none; }
+.sms-submit { width: 100%; padding: 11px; background: #2E5B6B; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.sms-submit:hover { background: #4A7D8C; }
+.sms-success { display: none; text-align: center; color: #1D9E75; font-size: 14px; padding: 1.25rem; }
 
-/* journey */
-.sec-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.sec-title h2{font-size:1.6rem}
-.road{list-style:none;margin:0;padding:0 0 0 34px;position:relative;display:grid;gap:14px}
-.road::before{content:"";position:absolute;left:15px;top:20px;bottom:20px;border-left:5px dotted var(--line)}
-.station{position:relative}
-.station .dot{position:absolute;left:-34px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--surface);border:4px solid var(--line);display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:.9rem}
-.station.started .dot{border-color:var(--primary);background:var(--primary-soft)}
-.station.done .dot{border-color:var(--leaf);background:var(--leaf);color:#fff}
-.station .card{display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center;padding:16px 18px}
-.station h3{font-size:1.2rem}
-.station .sub{color:var(--muted);font-size:.95rem}
-.pips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.pip{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:3px 10px;font-size:.82rem;font-weight:800;background:var(--surface2);color:var(--muted)}
-.pip.on{background:var(--leaf-soft);color:var(--leaf)}
-.starrow{display:inline-flex;gap:2px}
-.starrow svg{width:22px;height:22px}
-.station .go{display:grid;justify-items:end;gap:8px}
-@media (max-width:620px){.station .card{grid-template-columns:1fr}.station .go{justify-items:start;display:flex;align-items:center;gap:12px;flex-wrap:wrap}}
+/* CONTACT */
+.contact { padding: 3rem 2rem; background: #f7f7f5; }
+.contact h2 { font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; margin-bottom: 0.4rem; }
+.contact-sub { text-align: center; color: #555; font-size: 14px; margin-bottom: 2.5rem; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2rem; max-width: 860px; margin: 0 auto; }
+@media (max-width: 620px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+.contact-item-icon { font-size: 20px; margin-top: 2px; flex-shrink: 0; }
+.contact-item-text { font-size: 14px; color: #333; }
+.contact-item-text strong { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #4A7D8C; margin-bottom: 2px; }
+.contact-item-text a { color: #333; text-decoration: none; }
+.contact-item-text a:hover { color: #4A7D8C; }
+.coming-soon { display: inline-block; font-size: 11px; background: #FFB432; color: #5a3500; padding: 1px 8px; border-radius: 10px; margin-top: 3px; }
+.social-links { display: flex; gap: 0.75rem; margin-top: 0.25rem; }
+.social-btn { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; text-decoration: none; border: 1px solid #e0e0e0; color: #333; background: white; }
+.social-btn:hover { border-color: #4A7D8C; color: #4A7D8C; }
+.contact-form { background: white; border: 0.5px solid #e0e0e0; border-radius: 12px; padding: 1.5rem; }
+.contact-form-group { margin-bottom: 1rem; }
+.contact-form-group label { display: block; font-size: 12px; font-weight: 500; color: #4A7D8C; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+.contact-form-group input, .contact-form-group select, .contact-form-group textarea { width: 100%; padding: 9px 12px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1a1a1a; background: #fafafa; outline: none; transition: border 0.2s; }
+.contact-form-group input:focus, .contact-form-group select:focus, .contact-form-group textarea:focus { border-color: #4A7D8C; background: white; }
+.contact-form-group textarea { resize: vertical; min-height: 100px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.form-submit { width: 100%; padding: 11px; background: #2E5B6B; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+.form-submit:hover { background: #4A7D8C; }
+.form-success { display: none; text-align: center; color: #1D9E75; font-size: 14px; padding: 1rem; }
 
-/* chart + badges */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.bars{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;align-items:end;height:150px;margin-top:10px}
-.bar{display:grid;grid-template-rows:1fr auto;gap:4px;height:100%;text-align:center;font-size:.72rem;font-weight:800;color:var(--muted);min-width:0}
-.bar i{align-self:end;border-radius:8px 8px 3px 3px;background:var(--line);min-height:6px}
-.bar i.g{background:var(--leaf)}.bar i.y{background:var(--sun)}.bar i.r{background:var(--coral)}
-.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
-.badge{text-align:center;display:grid;justify-items:center;gap:4px;padding:10px 6px;border-radius:16px;background:var(--surface2)}
-.badge svg{width:56px;height:56px}
-.badge b{font-size:.92rem;line-height:1.2}
-.badge span{font-size:.78rem;color:var(--muted);line-height:1.25}
-.badge.off{opacity:.55;filter:grayscale(.9)}
-.review{display:grid;gap:8px;margin:8px 0 0;padding:0;list-style:none}
-.review a{display:flex;justify-content:space-between;gap:10px;align-items:center;text-decoration:none;color:var(--ink);background:var(--coral-soft);border-radius:12px;padding:10px 14px;font-weight:700}
-.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);font-weight:700;margin-top:10px}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-1px}
-.two{align-items:start}
-@media (max-width:760px){.hero,.two{grid-template-columns:1fr}}
-@media (max-width:520px){.bt,.hs{display:none}.topbar .wrap{gap:8px}.chip{padding:6px 10px}}
-
-/* lesson view */
-.crumbs{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.lhead h1{font-size:clamp(1.7rem,4.6vw,2.4rem);font-weight:800}
-.lnum{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--primary);color:var(--primary-ink);font-family:var(--font-display);font-weight:800;font-size:1.3rem;flex:none}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.steps button{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:10px 8px;font-weight:800;display:grid;gap:2px;justify-items:center;min-height:56px}
-.steps button small{font-weight:700;color:var(--muted);font-size:.78rem}
-.steps button[aria-selected="true"]{border-color:var(--primary);background:var(--primary-soft)}
-.steps button.ok small{color:var(--leaf)}
-.lcard{min-height:300px;display:grid;align-content:start;gap:12px}
-.lcard h2{font-size:1.5rem}
-.lcard .kicker{font-weight:800;color:var(--primary);text-transform:uppercase;letter-spacing:.08em;font-size:.8rem}
-.lcard ul,.lcard ol{margin:0;padding-left:1.25em;display:grid;gap:8px}
-.lcard li::marker{color:var(--primary);font-weight:800}
-.bigidea{font-size:1.28rem;line-height:1.5;font-weight:600}
-.table-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:420px}
-th,td{border-bottom:2px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-th{font-family:var(--font-display);color:var(--primary)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.dots{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center}
-.dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
-.dots i.on{background:var(--primary)}.dots i.cur{background:var(--sun);transform:scale(1.35)}
-.tryhome{background:var(--sun-soft);border:2px dashed var(--sun);border-radius:16px;padding:14px;color:var(--sun-ink)}
-
-/* games + quiz */
-.gtitle{font-size:1.5rem}
-.prompt{font-size:1.4rem;font-family:var(--font-display);font-weight:700;background:var(--surface2);border-radius:18px;padding:20px;text-align:center}
-.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.choice{background:var(--surface);border:3px solid var(--line);border-radius:16px;padding:14px;font-weight:800;text-align:left;min-height:56px;box-shadow:0 4px 0 var(--line);transition:transform .08s}
-.choice:active{transform:translateY(2px)}
-.choice.right{background:var(--leaf-soft);border-color:var(--leaf)}
-.choice.wrong{background:var(--coral-soft);border-color:var(--coral)}
-.choice[disabled]{cursor:default}
-.placed{display:grid;gap:8px;margin:0;padding:0;list-style:none}
-.placed li{background:var(--leaf-soft);border:2px solid var(--leaf);border-radius:12px;padding:10px 14px;font-weight:700;display:flex;gap:10px;align-items:center}
-.placed li b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--leaf);color:#fff;flex:none}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.match .col{display:grid;gap:10px;align-content:start}
-.match .choice.sel{border-color:var(--primary);background:var(--primary-soft)}
-.match .choice.done{background:var(--leaf-soft);border-color:var(--leaf);box-shadow:none}
-@media (max-width:520px){.match{gap:8px}.match .choice{padding:10px;font-size:.92rem}}
-.msg{min-height:1.6em;font-weight:800}
-.msg.good{color:var(--leaf)}.msg.bad{color:var(--coral)}
-.shake{animation:shake .45s}
-@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
-.qmeta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:800;color:var(--muted)}
-.qbar{height:10px;border-radius:99px;background:var(--surface2);overflow:hidden}
-.qbar i{display:block;height:100%;background:var(--primary);transition:width .4s}
-.result{text-align:center;display:grid;gap:12px;justify-items:center}
-.result .big{font-family:var(--font-display);font-size:3rem;font-weight:800}
-.result .starrow svg{width:46px;height:46px}
-.reveal{background:var(--surface2);border-radius:16px;padding:14px}
-
-/* toasts + confetti */
-.toasts{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:8px;justify-items:center;z-index:40;pointer-events:none;padding:0 max(16px,env(safe-area-inset-left,0px))}
-.toast{background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:800;box-shadow:var(--shadow);animation:pop .3s}
-@keyframes pop{from{transform:translateY(10px) scale(.95);opacity:0}to{transform:none;opacity:1}}
-#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
-.welcome{max-width:520px;margin:6vh auto 0;text-align:center;display:grid;gap:14px;justify-items:center}
-.welcome h1{font-size:2.3rem;font-weight:800}
-.welcome form{display:flex;gap:8px;width:100%;flex-wrap:wrap}
-.welcome input{flex:1;min-width:160px}
-.teacher summary{font-weight:800;cursor:pointer}
-.teacher .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
-.foot{color:var(--muted);font-size:.85rem;text-align:center}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* FOOTER */
+.footer { padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 0.5px solid #e0e0e0; background: #1a3a4a; }
+.footer-logo img { height: 48px; width: auto; display: block; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: #9FE1CB; text-decoration: none; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 12px; color: #9FE1CB; width: 100%; text-align: center; margin-top: 0.5rem; }
 </style>
-<style>body{margin:0}</style>
 </head>
 <body>
-<div class="topbar"><div class="wrap" id="bar"></div></div>
-<div class="wrap"><main id="app"></main></div>
-<div class="toasts" id="toasts" aria-live="polite"></div>
-<canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="gaideus_logo.jpeg" alt="GAIDEUS logo" /></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#programs">Programs</a>
+    <a href="#sms">SMS Alerts</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-floats">
+    <div class="float f1"></div><div class="float f2"></div><div class="float f3"></div>
+    <div class="float f4"></div><div class="float f5"></div><div class="float f6"></div>
+  </div>
+  <div class="hero-icons">
+    <span class="edu-icon ei1">🎓</span><span class="edu-icon ei2">📚</span>
+    <span class="edu-icon ei3">✏️</span><span class="edu-icon ei4">🌱</span>
+    <span class="edu-icon ei5">🤝</span><span class="edu-icon ei6">💡</span>
+    <span class="edu-icon ei7">🏫</span><span class="edu-icon ei8">⭐</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-logo"><img src="gaideus_logo.jpeg" alt="GAIDEUS" /></div>
+    <h1>Empowering Every Mind, Uplifting Every Life</h1>
+    <p>To empower individuals and strengthen families through accessible education, medical support, veteran services, and essential community resources, fostering holistic growth locally and globally.</p>
+    <div class="hero-btns">
+      <button class="btn-outline">Our Mission</button>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission" id="about">
+  <div class="mission-label">Who we are</div>
+  <h2>Our Mission</h2>
+  <p class="mission-statement">To empower individuals and strengthen families through accessible education, medical support, veteran services, and essential community resources, fostering holistic growth locally and globally.</p>
+  <p class="mission-purpose"><strong>Purpose & Unlimited Scope:</strong> GAIDEUS INC is organized exclusively for charitable and educational purposes under Section 501(c)(3) of the Internal Revenue Code. The Corporation is intentionally structured to be adaptive and scalable — built to grow alongside the communities it serves.</p>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <h2>Our Programs</h2>
+  <p class="programs-sub">Five pillars that guide everything we do</p>
+  <div class="programs-grid">
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=280&fit=crop&q=80" alt="Education" loading="lazy" />
+      <div class="program-card-body">
+        <div class="program-icon icon-teal">🎓</div>
+        <h3>Education</h3>
+        <p>Value-based family services and educational resource development to help communities thrive.</p>
+      </div>
+    </div>
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&h=280&fit=cover&q=80" alt="Medical and Health" loading="lazy" />
+      <div class="program-card-body">
+        <div class="program-icon icon-blue">🏥</div>
+        <h3>Medical & Health</h3>
+        <p>Supporting medical requests and wellness accessibility for underserved individuals and families.</p>
+      </div>
+    </div>
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&h=280&fit=cover&q=80" alt="Veteran Support" loading="lazy" />
+      <div class="program-card-body">
+        <div class="program-icon icon-amber">🎖️</div>
+        <h3>Veteran Support</h3>
+        <p>Reintegration programs and essential services for those who have served our country.</p>
+      </div>
+    </div>
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=280&fit=cover&q=80" alt="Humanitarian Relief" loading="lazy" />
+      <div class="program-card-body">
+        <div class="program-icon icon-green">🌱</div>
+        <h3>Humanitarian Relief</h3>
+        <p>Providing food, groceries, and daily necessities to those in need across our community.</p>
+      </div>
+    </div>
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&h=280&fit=cover&q=80" alt="Community Development" loading="lazy" />
+      <div class="program-card-body">
+        <div class="program-icon icon-pink">🏘️</div>
+        <h3>Community Development</h3>
+        <p>Building local infrastructure and social support systems for lasting, sustainable impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to make a difference?</h2>
+  <p>Volunteer, partner with us, or spread the word — every action counts.</p>
+  <button class="btn-light" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+</section>
+
+<!-- SMS OPT-IN -->
+<section class="sms-section" id="sms">
+  <h2>Stay Connected via SMS</h2>
+  <p class="sms-sub">Sign up to receive text notifications when support and services are available for you.</p>
+  <div class="sms-grid">
+
+    <div class="sms-info">
+      <div class="sms-info-item">
+        <span>📱</span>
+        <div>
+          <strong>What you'll receive</strong>
+          <p>Notifications about available support, program updates, food distribution dates, and service delivery alerts — directly to your phone.</p>
+        </div>
+      </div>
+      <div class="sms-info-item">
+        <span>🔔</span>
+        <div>
+          <strong>Message frequency</strong>
+          <p>Up to 4 messages per month. We only message when it matters.</p>
+        </div>
+      </div>
+      <div class="sms-info-item">
+        <span>🚫</span>
+        <div>
+          <strong>Easy to stop</strong>
+          <p>Text <strong>STOP</strong> to <strong>(844) 542-5862</strong> at any time to unsubscribe. Text <strong>HELP</strong> for assistance.</p>
+        </div>
+      </div>
+      <div class="sms-info-item">
+        <span>🔒</span>
+        <div>
+          <strong>Your privacy is protected</strong>
+          <p>We never sell or share your phone number. Read our <a href="gaideus_privacy_policy.html" style="color:#2E5B6B; font-weight:500;">Privacy Policy</a>.</p>
+        </div>
+      </div>
+      <p class="sms-disclaimer">
+        By opting in, you consent to receive recurring automated text messages from GAIDEUS INC at the number provided. Consent is not a condition of receiving services. Message &amp; data rates may apply. Text STOP to cancel, HELP for help. View our <a href="gaideus_privacy_policy.html">Privacy Policy</a>.
+      </p>
+    </div>
+
+    <div class="sms-form">
+      <h3>📲 Sign Up for SMS Alerts</h3>
+      <p>Enter your details below and we'll add you to our notification list.</p>
+      <div id="sms-form-fields">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="sms-name" placeholder="Jane Doe" />
+        </div>
+        <div class="form-group">
+          <label>Mobile Phone Number</label>
+          <input type="tel" id="sms-phone" placeholder="(555) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Program of Interest</label>
+          <select id="sms-program">
+            <option value="">Select a program...</option>
+            <option>Education</option>
+            <option>Medical & Health</option>
+            <option>Veteran Support</option>
+            <option>Humanitarian Relief</option>
+            <option>Community Development</option>
+            <option>All Programs</option>
+          </select>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="sms-consent" />
+          <label for="sms-consent">I agree to receive text message notifications from GAIDEUS INC at the number above. I understand message &amp; data rates may apply and I can text STOP at any time to unsubscribe. View our <a href="gaideus_privacy_policy.html">Privacy Policy</a>.</label>
+        </div>
+        <button class="sms-submit" onclick="submitSMS()">Sign Me Up for Alerts</button>
+      </div>
+      <div class="sms-success" id="sms-success">
+        ✅ <strong>You're signed up!</strong> You'll receive a confirmation text from <strong>(844) 542-5862</strong> shortly. Reply STOP anytime to unsubscribe.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Get in Touch</h2>
+  <p class="contact-sub">We'd love to hear from you — whether you want to volunteer, partner, or just learn more.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-item-icon">📧</span>
+        <div class="contact-item-text">
+          <strong>Email</strong>
+          <a href="mailto:info@gaideus.org">info@gaideus.org</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📞</span>
+        <div class="contact-item-text">
+          <strong>Phone / SMS</strong>
+          <a href="tel:8445425862">(844) 542-5862</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📍</span>
+        <div class="contact-item-text">
+          <strong>Address</strong>
+          Alpharetta, GA
+          <span class="coming-soon">📌 Full address coming soon</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📱</span>
+        <div class="contact-item-text">
+          <strong>Follow Us</strong>
+          <div class="social-links">
+            <a class="social-btn" href="https://instagram.com/gaideus" target="_blank">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              @gaideus
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div id="contact-form-fields">
+        <div class="form-row">
+          <div class="contact-form-group">
+            <label>First Name</label>
+            <input type="text" id="fname" placeholder="Jane" />
+          </div>
+          <div class="contact-form-group">
+            <label>Last Name</label>
+            <input type="text" id="lname" placeholder="Doe" />
+          </div>
+        </div>
+        <div class="contact-form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="jane@example.com" />
+        </div>
+        <div class="contact-form-group">
+          <label>Subject</label>
+          <select id="subject">
+            <option value="">Select a topic...</option>
+            <option>General Inquiry</option>
+            <option>Volunteer</option>
+            <option>Partnership</option>
+            <option>Education Program</option>
+            <option>Medical & Health Program</option>
+            <option>Veteran Support Program</option>
+            <option>Humanitarian Relief</option>
+            <option>Community Development</option>
+            <option>Media / Press</option>
+          </select>
+        </div>
+        <div class="contact-form-group">
+          <label>Message</label>
+          <textarea id="message" placeholder="Tell us how we can help or how you'd like to get involved..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitContact()">Send Message</button>
+      </div>
+      <div class="form-success" id="contact-success">
+        ✅ Thank you for reaching out! We'll get back to you at <strong>info@gaideus.org</strong> within 2–3 business days.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo"><img src="gaideus_logo.jpeg" alt="GAIDEUS logo" /></div>
+  <div class="footer-links">
+    <a href="gaideus_privacy_policy.html">Privacy Policy</a>
+    <a href="gaideus_privacy_policy.html#sms-optin">SMS Opt-In Terms</a>
+    <a href="#contact">Contact</a>
+    <a href="#sms">SMS Alerts</a>
+  </div>
+  <p class="footer-copy">© 2026 GAIDEUS INC. All rights reserved. | 501(c)(3) Nonprofit Organization</p>
+</footer>
 
 <script>
-"use strict";
-/* ---------- content ---------- */
-var LESSONS=[
-{id:1,title:"What is ‘Aqeedah?",short:"Firm beliefs, tied like a knot",
- big:"‘Aqeedah means the things we believe in our hearts, firmly and without doubt. The word comes from “tying a knot”: a belief tied so tight that it never comes loose.",
- remember:["‘Aqeedah = firm beliefs in the heart, like a tight knot.","The six pillars of Iman: Allah, His angels, His books, His messengers, the Last Day, and the Divine Decree (qadar).","‘Aqeedah is what we believe. Fiqh is what we do, like prayer, fasting and zakah.","Manhaj is the whole way we follow the religion: beliefs, manners, worship and dealings."],
- more:[
-  {t:"Why start with meanings?",p:"Before we judge something, we must understand it. One word can mean different things. “Sunnah” can mean the way of the Prophet ﷺ, or a book about belief. So we always ask first: what does this word mean here?"},
-  {t:"The knot",p:"‘Aqeedah comes from a root meaning to tie firmly, like a knot, a promise or a contract. The Qur’an uses this root for keeping promises, for the knots in Surah al-Falaq, and for the marriage contract. A belief held firmly, with no doubt, is like a tight knot."},
-  {t:"What do we study in ‘Aqeedah?",l:["The six pillars of Iman. Without them, a person cannot be a Muslim.","Things connected to Iman: what Iman is, when a person is called a Muslim, how we think about the Companions, and how we behave towards those in charge.","The sources: where every belief must come from (Lesson 4)."]},
-  {t:"‘Aqeedah, fiqh and manhaj",head:["Word","It is about","Example"],rows:[["‘Aqeedah","What we believe","Believing in the angel Jibreel"],["Fiqh","What we do","What to do if you forget and eat in Ramadan"],["Manhaj","The whole way we follow the religion","Being honest when buying and selling"]]},
-  {t:"The seven names of ‘Aqeedah",l:["‘Aqeedah: the firm beliefs","al-Fiqh al-Akbar: “the greater understanding”","as-Sunnah: many early scholars titled their creed books this","Usul ad-Din: “the foundations of the religion”","al-Iman: most of ‘Aqeedah is the pillars of Iman","at-Tawheed: making Allah One in what belongs only to Him","ash-Shari‘ah: usually “the law”, but early scholars also used it for beliefs"]}],
- home:"Tie a real knot in a piece of string and pull it. Say: “My belief should be as firm as this knot.” Then hold up six fingers and name the six pillars.",
- game:{type:"sort",title:"Belief or action?",help:"Is it ‘Aqeedah (something we believe) or fiqh (something we do)?",buckets:["‘Aqeedah (belief)","Fiqh (action)"],items:[["Believing in the angels",0],["Praying five times a day",1],["Believing in the Last Day",0],["Fasting in Ramadan",1],["Believing Allah is One",0],["Giving zakah",1]]},
- quiz:[
-  {q:"What does ‘Aqeedah mean?",o:["What we believe firmly in our hearts","How to pray","A story of the Prophets"],a:0,w:"‘Aqeedah is firm belief in the heart, like a tight knot."},
-  {q:"How many pillars of Iman are there?",o:["Four","Six","Nine"],a:1,w:"Six: Allah, angels, books, messengers, the Last Day and the Divine Decree."},
-  {q:"Is believing in the angels ‘Aqeedah or fiqh?",o:["‘Aqeedah, because it is a belief","Fiqh, because it is an action"],a:0,w:"Beliefs are ‘Aqeedah. Actions are fiqh."},
-  {q:"Challenge: which one is a name of ‘Aqeedah?",o:["at-Tawheed","as-Salah","az-Zakah"],a:0,w:"at-Tawheed is one of the seven names."}]},
+function submitSMS() {
+  const name = document.getElementById('sms-name').value.trim();
+  const phone = document.getElementById('sms-phone').value.trim();
+  const consent = document.getElementById('sms-consent').checked;
+  if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+  if (!consent) { alert('Please check the consent box to sign up for SMS alerts.'); return; }
+  document.getElementById('sms-form-fields').style.display = 'none';
+  document.getElementById('sms-success').style.display = 'block';
+}
 
-{id:2,title:"Why ‘Aqeedah Matters",short:"Six big reasons",
- big:"‘Aqeedah is with us from before we are born until we enter Jannah. There are six reasons it matters most. Say them in order on your fingers.",
- remember:["The six reasons: Purpose, Safety, Accepted deeds, Forgiveness, the Prophet’s ﷺ help, Jannah.","Memory trick: P-S-A-F-H-J. “Please Stay Always Faithful, Hope for Jannah.”","Allah created us to worship Him alone.","Tawheed is the key to Jannah."],
- more:[
-  {t:"Reasons 1 and 2: Purpose and Safety",l:["Purpose: Allah created us to worship Him alone (Adh-Dhariyat 51:56). Ibn ‘Abbas explained that “worship” here means Tawheed. This answer comes from Allah Himself.","Safety: those who believe and do not mix their Iman with wrongdoing (shirk or wrong belief) have safety and are guided (Al-An‘am 6:82)."]},
-  {t:"Reasons 3 and 4: Accepted deeds and Forgiveness",l:["Accepted deeds: Allah says He will turn the deeds of those without Tawheed into scattered dust (Al-Furqan 25:23).","Forgiveness: in a hadith recorded by at-Tirmidhi, Allah says that if someone comes with sins nearly as big as the earth, but without joining anything with Him, He will meet him with forgiveness as large."]},
-  {t:"Reasons 5 and 6: The Prophet’s ﷺ help and Jannah",l:["Abu Hurayrah asked who would be happiest to receive the Prophet’s ﷺ intercession on the Day of Judgement. He answered: the one who says La ilaha illa Allah sincerely from his heart.","Whoever’s last words are La ilaha illa Allah enters Jannah. The 70,000 who enter without being judged are those who perfect Tawheed and rely on Allah."]},
-  {t:"Tawheed is everywhere in the Qur’an",l:["The first command is to worship your Lord, and the next verse gives the first prohibition: do not set up rivals with Allah (Al-Baqarah 2:21–22).","Surah al-Fatihah is about Allah’s lordship and mercy, and that only He is worshipped.","Ayat al-Kursi, the greatest verse, is all about Allah.","The Prophet ﷺ spent his first ten years in Makkah calling only to Tawheed."]}],
- home:"Draw a big key. Write one of the six reasons on each tooth of the key.",
- game:{type:"order",title:"Put the six reasons in order",help:"Tap the reasons in the order we learned them.",items:["Purpose","Safety","Accepted deeds","Forgiveness","The Prophet’s ﷺ help","Jannah"]},
- quiz:[
-  {q:"Why did Allah create us?",o:["To worship Him alone","To collect things","To be famous"],a:0,w:"We were created to worship Allah alone."},
-  {q:"What is the key to Jannah?",o:["Tawheed","A big house","Being the strongest"],a:0,w:"Tawheed is the key to Jannah."},
-  {q:"Which reason says that without Tawheed our good deeds are not accepted?",o:["Accepted deeds","Purpose","Safety"],a:0,w:"That is the third reason: accepted deeds."},
-  {q:"Challenge: who is the most deserving of the Prophet’s ﷺ intercession?",o:["The one who says La ilaha illa Allah sincerely from the heart","The one with the most money","The one who talks the most"],a:0,w:"The one who says it sincerely from the heart."}]},
-
-{id:3,title:"Why Do We Learn ‘Aqeedah?",short:"Four goals and a sound heart",
- big:"We learn ‘Aqeedah to change our hearts and actions, not only to collect facts. The more we know Allah, the more we love Him, fear Him and obey Him.",
- remember:["Goal 1: know Allah, our Lord, Creator, Provider and Guide.","Goal 2: worship Allah the right way.","Goal 3: hold correct beliefs on everything else.","Goal 4: make Tawheed real in our lives and come closer to Allah."],
- more:[
-  {t:"The four goals, explained",l:["To know Allah. Knowledge is as honourable as what it is about, so the best knowledge is knowledge of the Highest.","To worship Him correctly. An action can look right and still not be accepted.","To hold correct beliefs about everything else. This keeps us safe from sins and from beliefs that cancel our deeds.","To make Tawheed real. Learning should bring us closer to Allah and change us."]},
-  {t:"How knowing Allah changes us",l:["If you know Allah hears, you guard your words.","If you know He sees, you avoid what angers Him.","If you know He forgives, you ask His forgiveness.","If you know you will stand before Him, you get ready."]},
-  {t:"A common mistake",p:"Some new students use what they learn only to argue with people. Explaining what is wrong is part of the religion, but it is not the whole of it. The Salaf first built Tawheed inside themselves. In their stories we find a lot about night prayer, crying for Allah, and asking forgiveness."},
-  {t:"Sayings of the Salaf",l:["Whoever knows Allah by His names and attributes will love Him.","The more a person knows Allah, the more he fears Him and the more he wants to worship.","Whoever fears Allah is a scholar, and whoever disobeys Him is ignorant."]},
-  {t:"A sound heart",p:"On the Day when wealth and children will not help, only the one who comes to Allah with a sound heart will benefit (Ash-Shu‘ara 26:88–89). A sound heart has no envy or hatred, and above all no shirk. Correct ‘Aqeedah is the best way to a sound heart."}],
- home:"Play “Allah Hears.” A grown-up whispers one kind word and one unkind word. Say which one pleases Allah, and why.",
- game:{type:"match",title:"Knowing Allah changes what I do",help:"Tap a sentence on the left, then what it makes us do on the right.",pairs:[["Allah hears everything","I guard my words"],["Allah sees me","I avoid what makes Him angry"],["Allah forgives","I ask for His forgiveness"],["I will stand before Allah","I get ready"]]},
- quiz:[
-  {q:"Why do we learn ‘Aqeedah?",o:["To know Allah and come closer to Him","To win arguments","To get a prize"],a:0,w:"We learn it to know Allah, worship Him rightly and come closer to Him."},
-  {q:"If you know that Allah hears everything, what should you do with your words?",o:["Guard them and keep them good","Say whatever I like","Whisper bad things"],a:0,w:"Allah hears us, so we guard our words."},
-  {q:"Is it enough to only collect facts about Allah?",o:["No, it should change my heart and actions","Yes, facts are enough"],a:0,w:"Knowing Allah should make us love and obey Him more."},
-  {q:"Challenge: “Only those of His servants who have knowledge ___ Allah.”",o:["fear","forget","ignore"],a:0,w:"Fatir 35:28: the more we know Allah, the more we fear Him."}]},
-
-{id:4,title:"Where Do We Get Our Beliefs?",short:"Three sources and the Sahabah",
- big:"We take our beliefs only from proof, called dalil. There are three sources: the Qur’an, the authentic Sunnah, and the understanding of the Salaf (the Sahabah and the best generations after them).",
- remember:["Source 1: the Qur’an.","Source 2: the authentic Sunnah of the Prophet ﷺ.","Source 3: the understanding of the Salaf.","Not sources: dreams, feelings, guesses, or what the crowd says."],
- more:[
-  {t:"Why proof matters",p:"Islam is built on proof. Proof keeps the religion pure and keeps Muslims united. We do not follow our parents, teachers or tribe blindly. We respect scholars and ask them when we do not know (An-Nahl 16:43), but they are not perfect, so we check what they say against the Qur’an and Sunnah."},
-  {t:"The Sunnah in detail",l:["“Authentic” means only sound narrations. Weak or made-up ones are not accepted.","The Sunnah is a kind of revelation. The Prophet ﷺ does not speak from his own desire (An-Najm 53:3–4).","Without the Prophet’s ﷺ explanation we cannot understand the Qur’an. The Qur’an says to pray, and the Sunnah shows us how.","Imam Ahmad counted 33 places in the Qur’an that tell us to obey the Prophet ﷺ."]},
-  {t:"How the Sahabah obeyed",l:["When the Prophet ﷺ threw away his gold ring, they threw theirs.","When they were told in prayer that the qiblah had changed, they turned at once.","When alcohol became forbidden, Abu Talhah had his jars smashed.","Ibn Mas‘ud sat down at the door of the mosque as soon as he heard the Prophet ﷺ say “sit down.”"]},
-  {t:"Agreement and the Salaf",l:["When the qualified major scholars all agree, it is binding. The Prophet ﷺ said: my ummah will not agree on misguidance.","The Salaf are three generations: the Companions, their students, and the students of those. The Prophet ﷺ said the best people are his generation, then those after them, then those after them.","“I follow the Qur’an and Sunnah” is not enough. We must ask: whose understanding? Would we understand it better than Abu Bakr, ‘Umar or ‘Ali?","Allah is pleased with the first Muhajirun and Ansar and those who follow them well (At-Tawbah 9:100).","The Sahabah did not differ about the foundations, only on a few small points. They stayed brothers."]}],
- home:"Draw a stool with three legs: Qur’an, Sunnah, Salaf. Ask: what would happen if one leg were missing?",
- game:{type:"sort",title:"Source or not a source?",help:"Is it a source of ‘Aqeedah, or not?",buckets:["A source of ‘Aqeedah","Not a source"],items:[["The Qur’an",0],["A dream",1],["The authentic Sunnah",0],["A feeling or a guess",1],["The Salaf’s understanding",0],["“Everyone does it”",1]]},
- quiz:[
-  {q:"Which list shows the three sources of ‘Aqeedah?",o:["Qur’an, Sunnah, understanding of the Salaf","Qur’an, dreams, feelings","Sunnah, tribe, the majority"],a:0,w:"The three sources are the Qur’an, the Sunnah and the Salaf’s understanding."},
-  {q:"Is a dream a source of ‘Aqeedah?",o:["No","Yes"],a:0,w:"Dreams, feelings and guesses are not proofs."},
-  {q:"Why do we follow the understanding of the Sahabah?",o:["They learned from the Prophet ﷺ himself","They were rich","Because it is old"],a:0,w:"They learned directly from the Prophet ﷺ and understood best."},
-  {q:"Challenge: what did the Sahabah do when the Prophet ﷺ threw away his gold ring?",o:["Threw away theirs","Kept theirs","Hid theirs"],a:0,w:"They obeyed at once."}]},
-
-{id:5,title:"Who Are Ahl as-Sunnah?",short:"Names and meanings",
- big:"Ahl as-Sunnah are the people who follow the Qur’an and the Sunnah the way the Sahabah understood them. It is not a secret club. It is simply following what the Prophet ﷺ and his Companions were on.",
- remember:["Ahl as-Sunnah means “the people of the Sunnah.”","Easy names: Ahl as-Sunnah wal-Jama‘ah, Ahl al-Hadith, Ahl al-Athar.","The Prophet ﷺ said the saved group are those on what he and his Companions are on.","“Most people do it” is not a proof."],
- more:[
-  {t:"What the word means",p:"Ahl means “people of”, the special people known for something. So Ahl as-Sunnah means the people known for following the Sunnah. Early scholars described them as those who stay firm on the belief that came from the righteous Salaf, from the Prophet ﷺ and his Companions."},
-  {t:"The names and why they fit",head:["Name","Meaning","Why it fits"],rows:[["Ahl as-Sunnah wal-Jama‘ah","People of the Sunnah and the united group","They cling to the Sunnah, which unites Muslims"],["Ahl al-Hadith","People of the hadith","They hold to the Prophet’s ﷺ words and actions"],["Ahl al-Athar","People of the narrations","They follow what is narrated from the Prophet ﷺ and the Companions"],["at-Ta’ifah al-Mansurah","The victorious group","From the hadith that a group of the ummah will always remain on the truth"],["al-Firqah an-Najiyah","The saved group","From the hadith about the 73 groups"],["as-Salaf","The predecessors","The Prophet ﷺ told Fatimah what a good salaf he would be for her"]]},
-  {t:"The hadith about the groups",p:"The Prophet ﷺ said the ummah would split into 73 groups, and the saved one is those on what he and his Companions are on. He said “my ummah”, so the others are still Muslims. “In the Fire” does not always mean forever."},
-  {t:"“But most people say so!”",p:"The Qur’an tells us that most people on earth would lead us away from Allah’s path, and only a few of His servants are grateful. Some prophets came with very few followers, and some with none. So numbers are not a proof."},
-  {t:"It is not only a name",p:"What matters is the truth in our hearts and actions. Our worship, manners and dealings should match those of the Salaf."}],
- home:"Make three name cards: Ahl as-Sunnah wal-Jama‘ah, Ahl al-Hadith, Ahl al-Athar. Shuffle them, then say what each one means.",
- game:{type:"match",title:"Match the name to its meaning",help:"Tap a name on the left, then its meaning on the right.",pairs:[["Ahl al-Hadith","People of the hadith"],["Ahl al-Athar","People of the narrations"],["at-Ta’ifah al-Mansurah","The victorious group"],["al-Firqah an-Najiyah","The saved group"]]},
- quiz:[
-  {q:"Who are Ahl as-Sunnah?",o:["Those who follow the Qur’an and Sunnah as the Companions understood them","Those who follow their own ideas","A secret club"],a:0,w:"They follow the Qur’an and Sunnah with the Salaf’s understanding."},
-  {q:"What does Ahl al-Hadith mean?",o:["People of the hadith","People of the book","People of the house"],a:0,w:"Ahl al-Hadith means “people of the hadith.”"},
-  {q:"If many people do something, does that prove it is right?",o:["No, the proof is the Qur’an and Sunnah","Yes, always"],a:0,w:"Numbers are not a proof."},
-  {q:"Challenge: what does Ahl al-Athar mean?",o:["People of the narrations","People of the mosque","People of the market"],a:0,w:"Athar means narrations."}]},
-
-{id:6,title:"How Ahl as-Sunnah Follow the Religion",short:"Eight signs of their way",
- big:"Ahl as-Sunnah follow the religion in a clear, steady way. The Ustadh gives eight signs. Count them on your eight fingers.",
- remember:["1. Only the Sunnah: they name themselves after the Sunnah, not a person.","2. They hold tightly to the Qur’an and Sunnah.","3. They follow the Sahabah.","4. They gather all the proofs before deciding.","5. They agree on the foundations.","6. They use the mind to understand, never to overrule the texts.","7. They join knowledge with good manners.","8. They warn about innovation (bid‘ah)."],
- more:[
-  {t:"Signs 1 to 4",l:["Only the Sunnah: Imam Malik said they have no name but the Sunnah. Some groups took their name from a man.","Hold tightly: ‘Umar ibn ‘Abd al-‘Aziz said nobody may give an opinion against Allah’s Book and the Sunnah. We say: “We hear and we obey.”","Follow the Sahabah: stop where they stopped, say what they said. What was enough for them is enough for us.","Gather all proofs: they collect every verse and hadith on a topic first. Some groups pick only the texts that suit them."]},
-  {t:"Signs 5 to 8",l:["Agree on the foundations: like one heart and one tongue, with only small differences on small matters.","Balanced use of proof: the mind helps us understand the texts, never overrules them. Ibn Taymiyyah wrote that sound reason never truly contradicts an authentic text.","Knowledge with manners: ‘Aqeedah should change us. Imams like Ahmad wrote about zuhd (not letting the world fill our hearts).","Warn about innovation: the Prophet ﷺ said whoever adds to this matter of ours what is not part of it, it is rejected."]},
-  {t:"Being careful and kind",p:"The Salaf were very careful about innovation. Al-Hasan al-Basri said not to sit with people of desires. Ibn Sirin would not let two men recite a verse to him, fearing it might plant a doubt. Arguing is for qualified people who are wise and want to guide, not to win. With ordinary people, speak kindly and give them the truth."},
-  {t:"Is Ahl as-Sunnah a fiqh school?",p:"No. Fiqh is separate. There are scholars of the Sunnah in every school. Their way is the way of the Prophet ﷺ and the Sahabah, from before the schools existed."}],
- home:"Put eight cards on the floor, one for each sign. Someone reads a sentence and you run to the matching card.",
- game:{type:"sort",title:"Do they, or don’t they?",help:"Is this something Ahl as-Sunnah do, or something they do not do?",buckets:["Ahl as-Sunnah do this","They do not do this"],items:[["Follow the Qur’an and Sunnah",0],["Name themselves after one man",1],["Gather all the proofs first",0],["Use their mind to overrule the texts",1],["Join knowledge with good manners",0],["Add new things to the religion",1]]},
- quiz:[
-  {q:"How many signs of Ahl as-Sunnah’s way did we learn?",o:["Eight","Four","Twelve"],a:0,w:"Eight signs."},
-  {q:"What is an innovation (bid‘ah)?",o:["Adding something to the religion that is not from it","A kind of prayer","A name of Allah"],a:0,w:"It means adding to the religion what is not part of it."},
-  {q:"Should we use our mind to change what the Qur’an and Sunnah say?",o:["No, we use it to understand them","Yes, if it seems better"],a:0,w:"The mind helps us understand but never overrules the texts."},
-  {q:"Challenge: why do Ahl as-Sunnah not name themselves after a person?",o:["They follow only the Sunnah","They forgot the names","They do not like names"],a:0,w:"They are known only by the Sunnah."}]},
-
-{id:7,title:"The Books of ‘Aqeedah",short:"Why books were written",
- big:"In the time of the Sahabah there were no ‘Aqeedah books, because the Muslims learned straight from the Prophet ﷺ and were united. Later, when people began to disagree, scholars wrote books to keep the right belief safe.",
- remember:["Books were written later, to protect the correct belief.","Beginners start with short, clear texts: al-Usul ath-Thalathah and al-Qawa‘id al-Arba‘.","Usul as-Sunnah is by Imam Ahmad.","Ask your teacher before choosing a new book."],
- more:[
-  {t:"Why no books at first?",p:"In the Sahabah’s time nobody needed them. They learned directly from the Prophet ﷺ and no big groups of wrong belief had appeared. As knowledge weakened and wrong groups appeared, scholars of Ahl as-Sunnah began to write, first on single topics, then on all of ‘Aqeedah."},
-  {t:"Books to know (teachers: check titles in the workbook)",head:["Book","Author"],rows:[["Usul as-Sunnah","Imam Ahmad"],["al-‘Aqidah al-Wasitiyyah","Ibn Taymiyyah"],["al-‘Aqidah at-Tahawiyyah","at-Tahawi"],["al-Usul ath-Thalathah and al-Qawa‘id al-Arba‘","Shaykh Muhammad ibn ‘Abd al-Wahhab"],["Kashf ash-Shubuhat","Shaykh Muhammad ibn ‘Abd al-Wahhab"],["Nawaqid al-Islam","Shaykh Muhammad ibn ‘Abd al-Wahhab"],["Kitab at-Tawheed (67 chapters)","Shaykh Muhammad ibn ‘Abd al-Wahhab"]]},
-  {t:"A good order for beginners",p:"Start with the two short beginner texts. Then Kashf ash-Shubuhat and Nawaqid al-Islam. Then Kitab at-Tawheed. Scholars may suggest a different order, so ask your teacher. The Ustadh asks students to memorise at least the names of these books."}],
- home:"Make a bookshelf from paper books. Put the short beginner books on the bottom shelf and bigger books above.",
- game:{type:"match",title:"Which scholar wrote it?",help:"Tap a book on the left, then its author on the right.",pairs:[["Usul as-Sunnah","Imam Ahmad"],["al-‘Aqidah al-Wasitiyyah","Ibn Taymiyyah"],["al-‘Aqidah at-Tahawiyyah","at-Tahawi"],["Kitab at-Tawheed","Shaykh Muhammad ibn ‘Abd al-Wahhab"]]},
- quiz:[
-  {q:"Why were there no ‘Aqeedah books in the time of the Sahabah?",o:["They learned straight from the Prophet ﷺ and were united","Books were forbidden","They were too busy to learn"],a:0,w:"They learned from the Prophet ﷺ himself and were united."},
-  {q:"Why did scholars write books later?",o:["To protect the correct belief when people began to differ","To become famous","For decoration"],a:0,w:"Books were written to keep the right belief safe."},
-  {q:"Which is a beginner book in this course?",o:["al-Usul ath-Thalathah","A big dictionary","A cookbook"],a:0,w:"al-Usul ath-Thalathah is a short beginner text."},
-  {q:"Challenge: who wrote Usul as-Sunnah?",o:["Imam Ahmad","at-Tahawi","Ibn Taymiyyah"],a:0,w:"Imam Ahmad."}]},
-
-{id:8,title:"Who Wrote the Book?",short:"Shaykh Muhammad ibn ‘Abd al-Wahhab",
- big:"The author of Thalathah al-Usool is Shaykh Muhammad ibn ‘Abd al-Wahhab. He lived at a time when many people had forgotten Tawheed, and he spent his life teaching it with the Qur’an and Sunnah.",
- remember:["Born in 1115 AH in al-‘Uyaynah, Najd. Died in 1206 AH, aged 91.","He memorised the Qur’an young and led prayer at 12.","He travelled for knowledge to Makkah, Madinah and Basra.","Four things he stressed: Tawheed, following the Sunnah, unity, moderation.","His writing is easy, full of proofs, well organised, and he wants good for the reader."],
- more:[
-  {t:"His family and childhood",p:"He came from a family of scholars. His grandfather Sulayman was the chief scholar of Najd, and his father was a scholar and judge. He memorised the Qur’an before ten. When he was 12 his father chose him to lead the prayer. People knew him for forgiving, kindness, loyalty and humility."},
-  {t:"His travels and teachers",p:"He studied at home first, then went to Makkah (Hajj at 12), Madinah (months of study) and Basra, about 20,000 km in all. His teachers in Madinah taught him to love Tawheed, to follow the Sunnah and not to follow people blindly. A lesson for us: learn at home first, then from teachers in different places."},
-  {t:"His call",p:"After his father died he called openly to Tawheed. He joined forces with the ruler of Dir‘iyyah, Muhammad ibn Sa‘ud. The Ustadh points out that a call needs a team. Everybody can help in their own way, like making videos, translating, welcoming guests or giving money."},
-  {t:"Four traits of his writing",l:["Easy and clear, even for those with little Arabic.","Rulings with proof: almost every line is a verse or a hadith.","Well organised: he gives the number first, like “the nullifiers are ten”, which makes things easy to remember.","He wants good for you: his books begin with a du‘a for the reader."]},
-  {t:"His worship and his death",p:"He sought knowledge for Allah’s sake, prayed and read the Qur’an much of the night, and taught and wrote by day. He died in 1206 AH, aged 91, and many people attended his funeral."}],
- home:"Draw a timeline with three marks: born (1115), study and travel, died (1206). Colour in the long, busy middle.",
- game:{type:"order",title:"His life, in order",help:"Tap the events in the order they happened.",items:["Born in al-‘Uyaynah (1115 AH)","Memorises the Qur’an","Leads the prayer at age 12","Travels to Makkah, Madinah and Basra","Calls people to Tawheed","Dies at age 91 (1206 AH)"]},
- quiz:[
-  {q:"Who wrote Thalathah al-Usool?",o:["Shaykh Muhammad ibn ‘Abd al-Wahhab","Imam Ahmad","at-Tahawi"],a:0,w:"Shaykh Muhammad ibn ‘Abd al-Wahhab."},
-  {q:"Which cities did he travel to for knowledge?",o:["Makkah, Madinah and Basra","Cairo, Istanbul and Baghdad","Paris, London and Rome"],a:0,w:"Makkah, Madinah and Basra."},
-  {q:"What was the main thing he called people to?",o:["Tawheed","Trading","Building"],a:0,w:"He called people to Tawheed."},
-  {q:"Challenge: which is NOT something he stressed?",o:["Winning arguments","Unity","Moderation"],a:0,w:"He stressed Tawheed, the Sunnah, unity and moderation."}]},
-
-{id:9,title:"About the Book",short:"The three questions of the grave",
- big:"The book is called al-Usul ath-Thalathah wa Adillatuha, “The Three Fundamental Principles and Their Evidences.” Scholars advise it as the first ‘Aqeedah text because it teaches what every Muslim must know.",
- remember:["The three principles are three questions: Who is your Lord? What is your religion? Who is your Prophet?","Answer correctly and the grave is a garden of Paradise. Fail and it is a pit of the Fire.","The book has five parts.","To benefit: understand it, act on it, teach it, call to it, and be patient."],
- more:[
-  {t:"Why this book first?",l:["Many scholars advise it as the first ‘Aqeedah text.","It is a foundation: how a servant knows his Lord, the religion and its levels, the Prophet ﷺ, belief in the resurrection, and rejecting taghut.","Even ordinary people used to memorise it. One great scholar taught it more than a hundred times. A teacher gives students what they need."]},
-  {t:"The map of the book",p:"The Ustadh compares the five parts to the map at the entrance of a shopping centre: when you know the layout, it is easy to find your way. Part 1 is the four things we must learn, from Surah al-‘Asr. Part 4 is the three fundamental principles, the main part. Part 5 is the ending, with the Last Day and predestination. (Teachers: check parts 2 and 3 in the workbook.)"},
-  {t:"The three questions of the grave",l:["Who is your Lord? What is your religion? Who is your Prophet?","This reminds us of death. The Prophet ﷺ told us to remember often the destroyer of pleasures, which is death.","The Companion ‘Uthman used to weep at a grave. The Prophet ﷺ said the grave is the first stop of the Hereafter. If a person passes it, what follows is easier."]},
-  {t:"Which explanation should I read?",p:"The Ustadh says “best” depends on what we want, so he does not name one. The rule is to stick to your teacher’s explanation first. After you master it, add others later, after asking your teacher."}],
- home:"Play “The Three Questions.” One person asks the three questions, one by one, and everybody answers together.",
- game:{type:"match",title:"Map of the book",help:"Tap a part on the left, then what it is about.",pairs:[["Part 1","The four things we must learn (Surah al-‘Asr)"],["Part 4","The three fundamental principles"],["Part 5","The ending (the Last Day and predestination)"],["The three principles","The three questions of the grave"]]},
- quiz:[
-  {q:"What is the full name of the book?",o:["al-Usul ath-Thalathah wa Adillatuha","al-Qawa‘id al-Arba‘","Kitab at-Tawheed"],a:0,w:"The Three Fundamental Principles and Their Evidences."},
-  {q:"What are the three questions of the grave?",o:["Who is your Lord, what is your religion, who is your Prophet","What is your name, age and city","Where do you live, work and eat"],a:0,w:"Lord, religion, Prophet."},
-  {q:"How many parts does the book have?",o:["Five","Three","Ten"],a:0,w:"The book has five parts."},
-  {q:"Challenge: what will we find in the grave if we answer correctly?",o:["A garden from the gardens of Paradise","A pit of the Fire","An empty room"],a:0,w:"A garden from the gardens of Paradise."}]},
-
-{id:10,title:"Revision: Lessons 1 to 9",short:"Ten cards to remember",
- big:"This lesson ties everything together. Read the ten cards, then see how many you remember. Say them aloud once a day.",
- remember:["1. ‘Aqeedah = firm beliefs in the heart. There are six pillars of Iman.","2. ‘Aqeedah is belief; fiqh is action. There are seven names for ‘Aqeedah.","3. Six reasons it matters: purpose, safety, accepted deeds, forgiveness, the Prophet’s ﷺ help, Jannah.","4. Four goals: know Allah, worship Him rightly, correct beliefs, come closer to Him.","5. Three sources: Qur’an, Sunnah, understanding of the Salaf.","6. Ahl as-Sunnah follow the Qur’an and Sunnah as the Sahabah understood them. They have six names.","7. Eight signs of their way, including good manners and warning against innovation.","8. Books were written later to protect correct belief.","9. The author is Shaykh Muhammad ibn ‘Abd al-Wahhab (1115–1206 AH).","10. The book has five parts and asks three questions. Study with your teacher, and act on what you learn."],
- more:[
-  {t:"The proofs we should know",l:["For following the Sunnah: “Obey Allah and obey the Messenger”; Allah sent the Dhikr to the Prophet ﷺ to explain it; whoever obeys him enters Paradise.","For following the Salaf’s understanding: An-Nisa 4:115; At-Tawbah 9:100; Luqman 31:15; the hadith of the groups; and “the best generation is mine.”"]},
-  {t:"Did the Companions differ in ‘Aqeedah?",p:"Not about the foundations. At most they differed on a very few small points. We must stay united and kind."},
-  {t:"“We are the majority.”",p:"Numbers are not a proof. Many ordinary Muslims do not actually hold what their groups claim. And the groups of wrong belief did not even exist in the time of the Salaf."},
-  {t:"Numbers to know",l:["Names of ‘Aqeedah: 7. Pillars of Iman: 6. Reasons it matters: 6.","Goals: 4. Sources: 3. Names of Ahl as-Sunnah: 6. Signs of their way: 8.","The book: 5 parts, 3 principles."]}],
- home:"Stand in a circle and pass a ball. Whoever catches it says the next card without looking.",
- game:{type:"match",title:"Numbers to remember",help:"Tap what we counted on the left, then the number on the right.",pairs:[["Goals of learning ‘Aqeedah","4"],["Sources of ‘Aqeedah","3"],["Names of ‘Aqeedah","7"],["Signs of Ahl as-Sunnah’s way","8"]]},
- quiz:[
-  {q:"Which is NOT a source of ‘Aqeedah?",o:["Dreams","The Qur’an","The Sunnah"],a:0,w:"Dreams are not a source."},
-  {q:"Which one is NOT one of the six pillars of Iman?",o:["Believing in luck","Believing in the angels","Believing in the Divine Decree"],a:0,w:"The pillars are Allah, angels, books, messengers, the Last Day and the Divine Decree."},
-  {q:"Who wrote al-Usul ath-Thalathah?",o:["Shaykh Muhammad ibn ‘Abd al-Wahhab","Imam Ahmad","Ibn Taymiyyah"],a:0,w:"Shaykh Muhammad ibn ‘Abd al-Wahhab."},
-  {q:"Challenge: how many names of Ahl as-Sunnah did we learn?",o:["Six","Three","Nine"],a:0,w:"Six names."}]}
-];
-
-var FINAL=[
- ["‘Aqeedah means what we believe firmly in our hearts.","tf",0],["There are five pillars of Iman.","tf",1],["Praying five times a day is part of fiqh.","tf",0],["Allah created us to worship Him alone.","tf",0],["A dream can be a source of ‘Aqeedah.","tf",1],
- ["The Sahabah learned directly from the Prophet ﷺ.","tf",0],["Ahl as-Sunnah name themselves after one man.","tf",1],["The author of the book was born in 1115 AH.","tf",0],["If most people do something, it must be right.","tf",1],["The three questions of the grave are about our Lord, our religion and our Prophet.","tf",0],
- ["How many names for ‘Aqeedah did we learn?",["3","5","7","10"],2],["Which is the key to Jannah?",["Money","Tawheed","A big house","Being famous"],1],["Which one is NOT a source of ‘Aqeedah?",["The Qur’an","The Sunnah","Dreams","The understanding of the Salaf"],2],["Which name means “people of the hadith”?",["Ahl al-Kitab","Ahl al-Hadith","Ahl al-Bayt","Ahl ad-Dar"],1],["How many signs of Ahl as-Sunnah’s way did we learn?",["4","6","8","10"],2],
- ["Who wrote Usul as-Sunnah?",["Imam Ahmad","at-Tahawi","Ibn Taymiyyah","Imam Malik"],0],["Where was Shaykh Muhammad ibn ‘Abd al-Wahhab born?",["Makkah","Madinah","al-‘Uyaynah in Najd","Basra"],2],["How many parts does Thalathah al-Usool have?",["3","5","7","9"],1],["When the Prophet ﷺ threw away his gold ring, what did the Sahabah do?",["Kept theirs","Threw theirs away","Hid theirs","Sold theirs"],1],["What does a person find in the grave if he answers the three questions correctly?",["A garden of Paradise","A pit of the Fire","Nothing","A dark room"],0]
-].map(function(r){return r[1]==="tf"?{q:r[0],o:["True","False"],a:r[2],w:r[2]===0?"That is true.":"That is false.",keep:true}:{q:r[0],o:r[1],a:r[2],w:"The answer is: "+r[1][r[2]]+".",keep:true}});
-
-var LEVELS=[["Seed",0],["Sprout",40],["Sapling",140],["Young Tree",260],["Strong Tree",400],["Garden Keeper",540]];
-var BADGES=[
- {id:"first",n:"First Step",d:"Finish your first lesson cards",c:"#2E9E6B",t:function(p){return LESSONS.some(function(l){return ls(p,l.id).learned})}},
- {id:"whiz",n:"Quiz Whiz",d:"Get every answer right in a quiz",c:"#0B7F86",t:function(p){return LESSONS.some(function(l){return ls(p,l.id).best===l.quiz.length})}},
- {id:"games",n:"Game Master",d:"Finish 5 games",c:"#8A63D2",t:function(p){return LESSONS.filter(function(l){return ls(p,l.id).game}).length>=5}},
- {id:"streak",n:"3-Day Streak",d:"Learn on 3 days in a row",c:"#E8505B",t:function(p){return streak(p)>=3}},
- {id:"half",n:"Halfway There",d:"Master 5 lessons",c:"#E59A00",t:function(p){return mastered(p)>=5}},
- {id:"all",n:"Journey Complete",d:"Master all 10 lessons",c:"#2E9E6B",t:function(p){return mastered(p)>=10}},
- {id:"champ",n:"Champion",d:"Score 18 or more in the Champions’ Challenge",c:"#FFB400",t:function(p){return (p.final&&p.final.best||0)>=18}}
-];
-
-/* ---------- state ---------- */
-var KEY="aqeedah-journey-v1",mem=null;
-function load(){try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);if(o&&o.profiles)return o}}catch(e){}return mem||{cur:null,profiles:{}}}
-var S=load();
-function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-function P(){return S.cur?S.profiles[S.cur]:null}
-function newProfile(){return{lessons:{},final:{best:0,tries:0},days:[],badges:[]}}
-function ls(p,id){if(!p.lessons[id])p.lessons[id]={learned:false,game:false,best:null,tries:0};return p.lessons[id]}
-function stars(l,s){if(s.best==null)return 0;var f=s.best/l.quiz.length;return f>=1?3:f>=.75?2:f>=.5?1:0}
-function mastered(p){return LESSONS.filter(function(l){var s=ls(p,l.id);return s.learned&&stars(l,s)>=2}).length}
-function lessonPct(p,l){var s=ls(p,l.id);return((s.learned?1:0)+(s.game?1:0)+stars(l,s)/3)/3}
-function overall(p){return LESSONS.reduce(function(a,l){return a+lessonPct(p,l)},0)/LESSONS.length}
-function totalStars(p){return LESSONS.reduce(function(a,l){return a+stars(l,ls(p,l.id))},0)}
-function xp(p){var x=0;LESSONS.forEach(function(l){var s=ls(p,l.id);x+=(s.learned?10:0)+(s.game?15:0)+(s.best||0)*5+(s.best===l.quiz.length?10:0)});var f=p.final.best||0;x+=f*3+(f>=18?10:0);return x}
-function level(x){var i=0;LEVELS.forEach(function(L,k){if(x>=L[1])i=k});var cur=LEVELS[i],nx=LEVELS[i+1];return{name:cur[0],idx:i,next:nx?nx[0]:null,pct:nx?(x-cur[1])/(nx[1]-cur[1]):1,toNext:nx?nx[1]-x:0}}
-function dayKey(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
-function streak(p){var set={};p.days.forEach(function(d){set[d]=1});var d=new Date(),n=0;if(!set[dayKey(d)])d.setDate(d.getDate()-1);while(set[dayKey(d)]){n++;d.setDate(d.getDate()-1)}return n}
-function touch(p){var k=dayKey(new Date());if(p.days.indexOf(k)<0)p.days.push(k)}
-function checkBadges(p){BADGES.forEach(function(b){if(p.badges.indexOf(b.id)<0&&b.t(p)){p.badges.push(b.id);toast("New badge: "+b.n);bigConfetti()}})}
-function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-
-/* ---------- icons ---------- */
-function star(on){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="'+(on?'var(--sun)':'var(--line)')+'" stroke="'+(on?'#D99A00':'var(--line)')+'" stroke-width="1.2" stroke-linejoin="round"/></svg>'}
-function starRow(n){return '<span class="starrow" role="img" aria-label="'+n+' of 3 stars">'+star(n>0)+star(n>1)+star(n>2)+'</span>'}
-function medal(c){return '<svg viewBox="0 0 56 56" aria-hidden="true"><path d="M18 3h8l6 14h-8z" fill="'+c+'" opacity=".7"/><path d="M38 3h-8l-6 14h8z" fill="'+c+'"/><circle cx="28" cy="35" r="17" fill="'+c+'"/><circle cx="28" cy="35" r="12.5" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/><path d="M28 27l2.6 5.3 5.8.8-4.2 4.1 1 5.8L28 40.2l-5.2 2.8 1-5.8-4.2-4.1 5.8-.8z" fill="#fff"/></svg>'}
-function logo(){return '<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="var(--primary)"/><path d="M17 27V15" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M17 17c-6 0-8-4-8-8 5 0 8 2 8 8zM17 15c0-5 3-8 8-8 0 5-3 8-8 8z" fill="var(--sun)"/></svg>'}
-function flame(){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z" fill="var(--coral)"/></svg>'}
-function tree(p){
-  var pos=[[120,70,26],[88,86,24],[152,86,24],[66,112,22],[174,112,22],[100,112,24],[140,112,24],[80,140,20],[160,140,20],[120,134,22]];
-  var out='<svg viewBox="0 0 240 260" role="img" aria-label="Your knowledge tree: '+mastered(p)+' of 10 lessons mastered"><ellipse cx="120" cy="240" rx="96" ry="12" fill="var(--ground)"/><polygon points="106,240 134,240 127,150 113,150" fill="var(--trunk)"/>';
-  pos.forEach(function(q,i){var l=LESSONS[i],s=ls(p,l.id),m=s.learned&&stars(l,s)>=2,started=s.learned||s.game||s.best!=null;
-    out+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="'+q[2]+'" fill="'+(m?'var(--leaf)':started?'var(--leaf2)':'var(--surface)')+'" stroke="'+(m?'var(--leaf)':started?'var(--leaf)':'var(--line)')+'" stroke-width="3" '+(started?'':'stroke-dasharray="5 5"')+'/>';
-    out+='<text x="'+q[0]+'" y="'+(q[1]+5)+'" text-anchor="middle" font-family="Baloo 2,sans-serif" font-weight="800" font-size="14" fill="'+(m?'#fff':'var(--muted)')+'">'+(i+1)+'</text>';
-    if(m)out+='<circle cx="'+(q[0]+q[2]*.62)+'" cy="'+(q[1]-q[2]*.62)+'" r="5" fill="var(--sun)" stroke="#D99A00" stroke-width="1.5"/>'});
-  return out+'</svg>'}
-function ringSvg(pct){var C=2*Math.PI*40,d=C*pct;return '<svg viewBox="0 0 100 100" role="img" aria-label="'+Math.round(pct*100)+' percent of the journey complete"><circle cx="50" cy="50" r="40" fill="none" stroke="var(--surface2)" stroke-width="12"/><circle cx="50" cy="50" r="40" fill="none" stroke="var(--primary)" stroke-width="12" stroke-linecap="round" stroke-dasharray="'+d.toFixed(1)+' '+C.toFixed(1)+'" transform="rotate(-90 50 50)"/></svg>'}
-
-/* ---------- feedback ---------- */
-function toast(t){var el=document.createElement("div");el.className="toast";el.textContent=t;document.getElementById("toasts").appendChild(el);setTimeout(function(){el.remove()},3600)}
-var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-function confetti(n){if(reduce)return;var c=document.getElementById("confetti"),x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;var cols=["#FFC233","#0B7F86","#E8505B","#2E9E6B","#8A63D2"],ps=[];for(var i=0;i<n;i++)ps.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.3,vx:(Math.random()-.5)*3,vy:2+Math.random()*4,s:5+Math.random()*7,r:Math.random()*6,c:cols[i%5]});var t0=performance.now();(function f(t){var e=t-t0;x.clearRect(0,0,c.width,c.height);ps.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.r+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);x.restore()});if(e<2200)requestAnimationFrame(f);else x.clearRect(0,0,c.width,c.height)})(t0)}
-function bigConfetti(){confetti(120)}
-var LINES=["Small steps every day grow a big tree.","The Prophet ﷺ taught that the deeds Allah loves most are the regular ones, even if they are small.","Every card you read is a leaf on your tree.","Mistakes are how we learn. Try again!","You are building knowledge that lasts. Keep going!","One lesson a day is a great goal."];
-function cheerLine(p){return LINES[Math.floor(Date.now()/864e5)%LINES.length]}
-
-/* ---------- routing ---------- */
-var V={step:"learn",card:0,game:null,quiz:null};
-function route(){var h=location.hash.replace("#","");var m=h.match(/^lesson-(\d+)$/);if(m&&LESSONS[+m[1]-1])return{k:"lesson",n:+m[1]};if(h==="final")return{k:"final"};return{k:"home"}}
-function go(h){if(location.hash==="#"+h){V={step:"learn",card:0,game:null,quiz:null};render()}else location.hash=h}
-var PEND=null;
-addEventListener("hashchange",function(){V={step:PEND||"learn",card:0,game:null,quiz:null};PEND=null;render();scrollTo(0,0)});
-
-/* ---------- views ---------- */
-function topbar(){
-  var p=P();if(!p)return '<span class="brand">'+logo()+' Aqeedah Journey</span>';
-  var x=xp(p),lv=level(x),names=Object.keys(S.profiles);
-  return '<button class="brand" data-act="home" aria-label="Go to the home page">'+logo()+'<span class="bt">Aqeedah Journey</span></button><span class="spacer"></span>'+
-   '<span class="chip" title="Experience points"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="var(--sun)"/></svg>'+x+' XP</span>'+
-   '<span class="chip" title="Days in a row">'+flame()+streak(p)+'<span class="hs">&nbsp;day streak</span></span>'+
-   '<details class="who"><summary>'+esc(S.cur)+'</summary><div class="menu"><div class="eyebrow">Who is learning?</div>'+names.map(function(n){return '<button data-act="switch" data-name="'+esc(n)+'" aria-current="'+(n===S.cur)+'">'+esc(n)+'</button>'}).join("")+
-   '<form class="add" data-form="add"><input type="text" id="addname" maxlength="20" placeholder="Add a child" aria-label="New child name"><button class="btn" type="submit" style="min-height:44px;padding:6px 14px">Add</button></form></div></details>'}
-
-function welcome(){return '<section class="card welcome"><div style="width:84px">'+tree({lessons:{}})+'</div><h1>Assalamu alaykum!</h1><p class="lead">Welcome to your ‘Aqeedah journey. Learn ten lessons, play games, take quizzes, and watch your knowledge tree grow.</p><form data-form="start"><input type="text" id="startname" maxlength="20" placeholder="Type your first name" aria-label="Your first name" required><button class="btn sun" type="submit">Start</button></form><p class="muted" style="font-size:.9rem">Your progress is saved on this device.</p></section>'}
-
-function mission(p){
-  for(var i=0;i<LESSONS.length;i++){var l=LESSONS[i],s=ls(p,l.id);
-    if(!s.learned)return{t:"Read Lesson "+l.id,sub:l.title,h:"lesson-"+l.id,step:"learn"};
-    if(!s.game)return{t:"Play the game in Lesson "+l.id,sub:l.game.title,h:"lesson-"+l.id,step:"play"};
-    if(stars(l,s)<2)return{t:"Take the quiz for Lesson "+l.id,sub:"Get 2 stars to master it",h:"lesson-"+l.id,step:"quiz"}}
-  if((p.final.best||0)<18)return{t:"Try the Champions’ Challenge",sub:"20 questions from all ten lessons",h:"final"};
-  return{t:"You finished the journey!",sub:"Replay any lesson to keep it fresh",h:"lesson-1",step:"learn"}}
-
-function home(){
-  var p=P();if(!p)return welcome();
-  var x=xp(p),lv=level(x),m=mission(p),pct=overall(p),done=mastered(p),today=p.days.indexOf(dayKey(new Date()))>=0;
-  var attempted=LESSONS.filter(function(l){return ls(p,l.id).best!=null}),avg=attempted.length?Math.round(attempted.reduce(function(a,l){return a+ls(p,l.id).best/l.quiz.length},0)/attempted.length*100):0;
-  var h='<section class="hero"><div class="card"><div class="eyebrow">Assalamu alaykum</div><h1>'+esc(S.cur)+', let’s learn!</h1><p class="lead">'+esc(cheerLine(p))+'</p>'+
-   '<div class="mission"><div class="grow"><div class="eyebrow">Your next step</div><b>'+esc(m.t)+'</b><div class="txt">'+esc(m.sub)+'</div></div><button class="btn sun" data-act="mission" data-h="'+m.h+'" data-step="'+(m.step||"")+'">Go</button></div>'+
-   '<p class="muted" style="margin-top:14px;font-weight:700">Today’s goal: finish one step. '+(today?'<span style="color:var(--leaf)">Done, MashaAllah!</span>':'Not yet, you can do it.')+'</p></div>'+
-   '<div class="card treecard"><div class="eyebrow">My knowledge tree</div>'+tree(p)+'<div class="level">'+esc(lv.name)+'</div><div class="xpbar" role="progressbar" aria-valuenow="'+Math.round(lv.pct*100)+'" aria-valuemin="0" aria-valuemax="100" aria-label="Progress to next level"><i style="width:'+Math.round(lv.pct*100)+'%"></i></div><div class="muted" style="font-weight:700;font-size:.9rem">'+(lv.next?lv.toNext+' XP to become a '+esc(lv.next):'You grew the whole garden!')+'</div></div></section>';
-  h+='<section aria-label="My progress"><div class="sec-title"><h2>How much have I learned?</h2></div><div class="stats">'+
-   '<div class="stat card" style="padding:14px"><div class="ring">'+ringSvg(pct)+'<div><div class="rt">'+Math.round(pct*100)+'%</div><span class="muted" style="font-weight:700;font-size:.9rem">of the journey</span></div></div></div>'+
-   '<div class="stat"><b>'+done+' / 10</b><span>lessons mastered</span></div>'+
-   '<div class="stat"><b>'+totalStars(p)+' / 30</b><span>stars earned</span></div>'+
-   '<div class="stat"><b>'+(attempted.length?avg+'%':'–')+'</b><span>average quiz score</span></div></div></section>';
-  h+='<section><div class="sec-title"><h2>The road</h2><span class="muted">Learn, play, then quiz. Get 2 stars to master a lesson.</span></div><ol class="road">'+LESSONS.map(function(l){
-    var s=ls(p,l.id),st=stars(l,s),mas=s.learned&&st>=2,started=s.learned||s.game||s.best!=null;
-    return '<li class="station '+(mas?'done':started?'started':'')+'"><span class="dot" aria-hidden="true">'+(mas?'✓':l.id)+'</span><div class="card"><div><h3>Lesson '+l.id+': '+esc(l.title)+'</h3><div class="sub">'+esc(l.short)+'</div><div class="pips"><span class="pip '+(s.learned?'on':'')+'">'+(s.learned?'✓ ':'')+'Learn</span><span class="pip '+(s.game?'on':'')+'">'+(s.game?'✓ ':'')+'Play</span><span class="pip '+(s.best!=null?'on':'')+'">'+(s.best!=null?'✓ ':'')+'Quiz'+(s.best!=null?' '+s.best+'/'+l.quiz.length:'')+'</span></div></div><div class="go">'+starRow(st)+'<a class="btn '+(mas?'alt':'')+'" href="#lesson-'+l.id+'">'+(mas?'Review':started?'Continue':'Start')+'</a></div></div></li>'}).join("")+
-   '<li class="station '+((p.final.best||0)>=18?'done':'')+'"><span class="dot" aria-hidden="true">★</span><div class="card"><div><h3>The Champions’ Challenge</h3><div class="sub">20 questions from all ten lessons. Best score: '+(p.final.best||0)+' / 20</div></div><div class="go"><a class="btn sun" href="#final">'+(p.final.tries?'Try again':'Take the challenge')+'</a></div></div></li></ol></section>';
-  var review=LESSONS.filter(function(l){var s=ls(p,l.id);return s.best!=null&&stars(l,s)<2});
-  h+='<section class="two"><div class="card"><h2 style="font-size:1.3rem">Score for each lesson</h2><div class="bars" role="img" aria-label="Best quiz score for each lesson">'+LESSONS.map(function(l){var s=ls(p,l.id),f=s.best==null?0:s.best/l.quiz.length;return '<div class="bar"><i class="'+(s.best==null?'':f>=.75?'g':f>=.5?'y':'r')+'" style="height:'+(s.best==null?6:Math.max(8,Math.round(f*100)))+'%"></i><span>'+l.id+'</span></div>'}).join("")+'</div><div class="legend"><span><i style="background:var(--leaf)"></i>Great (75%+)</span><span><i style="background:var(--sun)"></i>Good (50%+)</span><span><i style="background:var(--coral)"></i>Practise</span></div>'+
-   (review.length?'<h3 style="font-size:1.05rem;margin-top:16px">Let’s practise these again</h3><ul class="review">'+review.map(function(l){return '<li><a href="#lesson-'+l.id+'"><span>Lesson '+l.id+': '+esc(l.title)+'</span><span>Try again</span></a></li>'}).join("")+'</ul>':'')+'</div>'+
-   '<div class="card"><h2 style="font-size:1.3rem;margin-bottom:12px">My badges</h2><div class="badges">'+BADGES.map(function(b){var on=p.badges.indexOf(b.id)>=0;return '<div class="badge '+(on?'':'off')+'">'+medal(b.c)+'<b>'+esc(b.n)+'</b><span>'+esc(b.d)+'</span></div>'}).join("")+'</div></div></section>';
-  h+='<details class="card teacher"><summary>For parents and teachers</summary><p class="muted" style="margin-top:10px">See how '+esc(S.cur)+' is doing, share it, or start fresh.</p><div class="row"><button class="btn alt" data-act="copy">Copy progress summary</button><span id="copied" class="muted" role="status"></span></div><div class="row" id="resetrow"><button class="btn alt" data-act="resetask">Reset '+esc(S.cur)+'’s progress</button></div></details>';
-  h+='<p class="foot">Based on the course Thalathah Al-Usool | Aqeedah, Lessons 1 to 10. A few book titles are marked for teachers to check against the workbook.</p>';
-  return h}
-
-/* lesson */
-function cardsFor(l){var c=[{k:"big"},{k:"rem"}];l.more.forEach(function(m){c.push({k:"more",m:m})});c.push({k:"home"});return c}
-function lessonView(n){
-  var l=LESSONS[n-1],p=P(),s=ls(p,l.id),st=stars(l,s);
-  var h='<div class="crumbs"><a class="btn alt" href="#home" style="min-height:42px;padding:6px 14px">‹ Back to the road</a></div>'+
-   '<header class="lhead card" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><span class="lnum">'+l.id+'</span><div style="flex:1;min-width:200px"><div class="eyebrow">Lesson '+l.id+' of 10</div><h1>'+esc(l.title)+'</h1></div>'+starRow(st)+'</header>'+
-   '<div class="steps" role="tablist" aria-label="Lesson steps">'+
-   '<button role="tab" data-act="step" data-step="learn" aria-selected="'+(V.step==="learn")+'" class="'+(s.learned?'ok':'')+'">1. Learn<small>'+(s.learned?'Done':'Read the cards')+'</small></button>'+
-   '<button role="tab" data-act="step" data-step="play" aria-selected="'+(V.step==="play")+'" class="'+(s.game?'ok':'')+'">2. Play<small>'+(s.game?'Done':'A quick game')+'</small></button>'+
-   '<button role="tab" data-act="step" data-step="quiz" aria-selected="'+(V.step==="quiz")+'" class="'+(s.best!=null?'ok':'')+'">3. Quiz<small>'+(s.best!=null?'Best '+s.best+'/'+l.quiz.length:'Test yourself')+'</small></button></div>';
-  if(V.step==="learn")h+=learnView(l,s);else if(V.step==="play")h+=playView(l,s);else h+=quizView(l);
-  return h}
-
-function learnView(l,s){
-  var cs=cardsFor(l),i=Math.min(V.card,cs.length-1),c=cs[i],b="";
-  if(c.k==="big")b='<div class="kicker">The big idea</div><p class="bigidea">'+esc(l.big)+'</p>';
-  else if(c.k==="rem")b='<div class="kicker">Remember</div><h2>Say these out loud</h2><ul>'+l.remember.map(function(r){return '<li>'+esc(r)+'</li>'}).join("")+'</ul>';
-  else if(c.k==="home")b='<div class="kicker">Try it</div><h2>Do it at home</h2><div class="tryhome">'+esc(l.home)+'</div><p class="muted">When you are ready, play the game.</p>';
-  else{var m=c.m;b='<div class="kicker">Learn more</div><h2>'+esc(m.t)+'</h2>'+(m.p?'<p>'+esc(m.p)+'</p>':'')+(m.l?'<ul>'+m.l.map(function(r){return '<li>'+esc(r)+'</li>'}).join("")+'</ul>':'')+(m.rows?'<div class="table-wrap"><table><thead><tr>'+m.head.map(function(x){return '<th>'+esc(x)+'</th>'}).join("")+'</tr></thead><tbody>'+m.rows.map(function(r){return '<tr>'+r.map(function(x){return '<td>'+esc(x)+'</td>'}).join("")+'</tr>'}).join("")+'</tbody></table></div>':'')}
-  var last=i===cs.length-1;
-  return '<section class="card lcard" aria-live="polite">'+b+'</section><div class="nav"><button class="btn alt" data-act="prev" '+(i===0?'disabled':'')+'>‹ Back</button><div class="dots" aria-label="Card '+(i+1)+' of '+cs.length+'">'+cs.map(function(_,k){return '<i class="'+(k===i?'cur':k<i?'on':'')+'"></i>'}).join("")+'</div>'+(last?'<button class="btn sun" data-act="finishlearn">I learned it! Play ›</button>':'<button class="btn" data-act="next">Next ›</button>')+'</div>'}
-
-/* games */
-function makeGame(g){var o={type:g.type,err:null,done:false,msg:""};
-  if(g.type==="sort"){o.items=shuffle(g.items);o.i=0}
-  if(g.type==="order"){o.pool=shuffle(g.items.map(function(_,k){return k}));o.picked=[]}
-  if(g.type==="match"){o.right=shuffle(g.pairs.map(function(_,k){return k}));o.sel=null;o.ok=[]}
-  return o}
-function playView(l,s){
-  var g=l.game;if(!V.game)V.game=makeGame(g);var G=V.game;
-  var h='<section class="card" style="display:grid;gap:14px"><h2 class="gtitle">'+esc(g.title)+'</h2><p class="muted" style="margin:0">'+esc(g.help)+'</p>';
-  if(G.done){
-    h+='<div class="result"><div class="starrow">'+star(1)+star(1)+star(1)+'</div><h2>Well done, '+esc(S.cur)+'!</h2><p>'+(s.game?'You finished the game.':'You finished the game and earned 15 XP.')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="again">Play again</button><button class="btn sun" data-act="step" data-step="quiz">Go to the quiz ›</button></div></div></section>';return h}
-  if(g.type==="sort"){
-    var it=G.items[G.i];
-    h+='<div class="qmeta"><span>Item '+(G.i+1)+' of '+G.items.length+'</span></div><div class="qbar"><i style="width:'+(G.i/G.items.length*100)+'%"></i></div><div class="prompt '+(G.err?'shake':'')+'">'+esc(it[0])+'</div><div class="choices">'+g.buckets.map(function(b,k){return '<button class="choice" data-act="sort" data-k="'+k+'">'+esc(b)+'</button>'}).join("")+'</div>'}
-  if(g.type==="order"){
-    h+='<ol class="placed">'+G.picked.map(function(k,n){return '<li><b>'+(n+1)+'</b>'+esc(g.items[k])+'</li>'}).join("")+'</ol><div class="choices">'+G.pool.filter(function(k){return G.picked.indexOf(k)<0}).map(function(k){return '<button class="choice '+(G.err===k?'shake wrong':'')+'" data-act="order" data-k="'+k+'">'+esc(g.items[k])+'</button>'}).join("")+'</div>'}
-  if(g.type==="match"){
-    h+='<div class="match"><div class="col">'+g.pairs.map(function(p,k){var d=G.ok.indexOf(k)>=0;return '<button class="choice '+(d?'done':G.sel===k?'sel':'')+'" data-act="mleft" data-k="'+k+'" '+(d?'disabled':'')+'>'+esc(p[0])+'</button>'}).join("")+'</div><div class="col">'+G.right.map(function(k){var d=G.ok.indexOf(k)>=0;return '<button class="choice '+(d?'done':'')+' '+(G.err===k?'shake wrong':'')+'" data-act="mright" data-k="'+k+'" '+(d?'disabled':'')+'>'+esc(g.pairs[k][1])+'</button>'}).join("")+'</div></div>'}
-  h+='<div class="msg '+(G.mtype||'')+'" role="status">'+esc(G.msg)+'</div><div><button class="btn alt" data-act="again">Start over</button></div></section>';
-  return h}
-function gameDone(l){var G=V.game,p=P(),s=ls(p,l.id);G.done=true;if(!s.game){s.game=true;touch(p);toast("+15 XP for the game!");confetti(60);checkBadges(p);save()}render()}
-
-/* quiz */
-function prep(arr){return arr.map(function(q){var idx=q.o.map(function(_,k){return k}),order=q.keep?idx:shuffle(idx);return{q:q.q,o:order.map(function(k){return q.o[k]}),a:order.indexOf(q.a),w:q.w}})}
-function runQuiz(qs){return{qs:prep(qs),i:0,score:0,chosen:null,done:false}}
-function quizBody(Q,kind){
-  if(Q.done)return null;
-  var q=Q.qs[Q.i],h='<div class="qmeta"><span>Question '+(Q.i+1)+' of '+Q.qs.length+'</span><span>Score '+Q.score+'</span></div><div class="qbar"><i style="width:'+(Q.i/Q.qs.length*100)+'%"></i></div><div class="prompt" style="text-align:left;font-size:1.3rem">'+esc(q.q)+'</div><div class="choices" role="group" aria-label="Answers">'+
-   q.o.map(function(o,k){var cls="";if(Q.chosen!=null){if(k===q.a)cls="right";else if(k===Q.chosen)cls="wrong"}return '<button class="choice '+cls+'" data-act="'+kind+'" data-k="'+k+'" '+(Q.chosen!=null?'disabled':'')+'>'+esc(o)+'</button>'}).join("")+'</div>';
-  if(Q.chosen!=null){var ok=Q.chosen===q.a;h+='<div class="msg '+(ok?'good':'bad')+'" role="status">'+(ok?'Correct! ':'Not quite. ')+esc(q.w)+'</div><div><button class="btn" data-act="'+kind+'next">'+(Q.i===Q.qs.length-1?'See my result':'Next question ›')+'</button></div>'}
-  return h}
-function resultMsg(f){var n=esc(S.cur);return f>=1?"MashaAllah, "+n+"! A perfect score!":f>=.75?"Great work, "+n+"! One more try for three stars?":f>=.5?"Good start, "+n+"! Read the cards again and try once more.":"Don’t give up, "+n+". Every try teaches you something. Let’s read the cards again."}
-function quizView(l){
-  if(!V.quiz)V.quiz=runQuiz(l.quiz);var Q=V.quiz,p=P(),s=ls(p,l.id);
-  if(!Q.done)return '<section class="card" style="display:grid;gap:14px">'+quizBody(Q,"ans")+'</section>';
-  var f=Q.score/l.quiz.length,st=f>=1?3:f>=.75?2:f>=.5?1:0,nx=LESSONS[l.id];
-  return '<section class="card result"><div class="big">'+Q.score+' / '+l.quiz.length+'</div>'+starRow(st)+'<p style="font-size:1.2rem;font-weight:700">'+resultMsg(f)+'</p><p class="muted">Your best: '+s.best+' / '+l.quiz.length+(Q.gain?' · '+Q.gain:'')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="retry">Try again</button><button class="btn alt" data-act="step" data-step="learn">Read the cards again</button>'+(nx&&st>=2?'<a class="btn sun" href="#lesson-'+nx.id+'">Next: Lesson '+nx.id+' ›</a>':'<a class="btn sun" href="#home">Back to the road</a>')+'</div></section>'}
-function finishLessonQuiz(l){var Q=V.quiz,p=P(),s=ls(p,l.id),before=xp(p);Q.done=true;s.tries++;if(s.best==null||Q.score>s.best)s.best=Q.score;touch(p);var gain=xp(p)-before;Q.gain=gain>0?'+'+gain+' XP':'';var f=Q.score/l.quiz.length;if(f>=1)bigConfetti();else if(f>=.75)confetti(70);if(gain>0)toast("+"+gain+" XP");checkBadges(p);save();render()}
-
-/* final */
-function finalView(){
-  var p=P();if(!V.quiz)V.quiz=runQuiz(shuffle(FINAL));var Q=V.quiz;
-  var h='<div class="crumbs"><a class="btn alt" href="#home" style="min-height:42px;padding:6px 14px">‹ Back to the road</a></div><header class="card"><div class="eyebrow">All ten lessons</div><h1 style="font-size:clamp(1.7rem,4.6vw,2.4rem)">The Champions’ Challenge</h1><p class="muted" style="margin:6px 0 0">20 mixed questions. Your best score so far: '+(p.final.best||0)+' / 20. Score 18 or more to become a Champion.</p></header>';
-  if(!Q.done)return h+'<section class="card" style="display:grid;gap:14px">'+quizBody(Q,"fans")+'</section>';
-  var f=Q.score/20;
-  return h+'<section class="card result"><div class="big">'+Q.score+' / 20</div><p style="font-size:1.2rem;font-weight:700">'+(Q.score>=18?"MashaAllah, "+esc(S.cur)+"! You are a Champion!":Q.score>=14?"Excellent work, "+esc(S.cur)+"! A little more practice and you will be a Champion.":Q.score>=10?"Good effort, "+esc(S.cur)+"! Review the lessons below and try again.":"Keep going, "+esc(S.cur)+". Go back to the lessons and try again soon.")+'</p><p class="muted">Your best: '+p.final.best+' / 20</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="fretry">Try again</button><a class="btn sun" href="#home">Back to the road</a></div></section>'}
-function finishFinal(){var Q=V.quiz,p=P();Q.done=true;p.final.tries++;if(Q.score>p.final.best)p.final.best=Q.score;touch(p);if(Q.score>=18)bigConfetti();else if(Q.score>=14)confetti(70);checkBadges(p);save();render()}
-
-/* ---------- render ---------- */
-function render(){
-  document.getElementById("bar").innerHTML=topbar();
-  var app=document.getElementById("app"),r=route(),p=P();
-  if(!p){app.innerHTML=welcome();return}
-  app.innerHTML=r.k==="lesson"?lessonView(r.n):r.k==="final"?finalView():home()}
-
-/* ---------- events ---------- */
-document.addEventListener("submit",function(e){var f=e.target.getAttribute("data-form");if(!f)return;e.preventDefault();
-  var inp=e.target.querySelector("input"),name=inp.value.replace(/\s+/g," ").trim().slice(0,20);if(!name)return;
-  if(!S.profiles[name])S.profiles[name]=newProfile();S.cur=name;save();V={step:"learn",card:0,game:null,quiz:null};if(f==="add"){var d=document.querySelector(".who");if(d)d.open=false}
-  if(location.hash&&location.hash!=="#home")location.hash="home";render();toast("Welcome, "+name+"!")});
-document.addEventListener("click",function(e){
-  var b=e.target.closest("[data-act]");if(!b){var w=document.querySelector(".who[open]");if(w&&!e.target.closest(".who"))w.open=false;return}
-  var a=b.dataset.act,r=route(),p=P(),l=r.k==="lesson"?LESSONS[r.n-1]:null,k=b.dataset.k!=null?+b.dataset.k:null;
-  if(a==="home"){go("home");return}
-  if(a==="switch"){S.cur=b.dataset.name;save();V={step:"learn",card:0,game:null,quiz:null};var d=document.querySelector(".who");if(d)d.open=false;render();return}
-  if(a==="mission"){var h=b.dataset.h;PEND=b.dataset.step||"learn";if(location.hash==="#"+h){V={step:PEND,card:0,game:null,quiz:null};PEND=null;render()}else{location.hash=h}return}
-  if(a==="step"){V.step=b.dataset.step;if(V.step!=="play")V.game=null;if(V.step!=="quiz")V.quiz=null;render();return}
-  if(a==="prev"){V.card=Math.max(0,V.card-1);render();return}
-  if(a==="next"){V.card++;render();return}
-  if(a==="finishlearn"){var s=ls(p,l.id);if(!s.learned){s.learned=true;touch(p);toast("+10 XP for learning!");confetti(50);checkBadges(p);save()}V.step="play";V.game=null;render();return}
-  if(a==="again"){V.game=null;render();return}
-  /* games */
-  if(a==="sort"){var G=V.game,it=G.items[G.i];if(it[1]===k){G.err=null;G.mtype="good";G.msg="Yes!";G.i++;if(G.i>=G.items.length){gameDone(l);return}}else{G.err=1;G.mtype="bad";G.msg="Not quite. Think again!";}render();if(G.err)setTimeout(function(){G.err=null},600);return}
-  if(a==="order"){var G=V.game;if(l.game.items[k]!==undefined&&k===G.picked.length){G.picked.push(k);G.err=null;G.mtype="good";G.msg="Yes!";if(G.picked.length===l.game.items.length){gameDone(l);return}}else{G.err=k;G.mtype="bad";G.msg="That one comes later. Try another!"}render();if(G.err!=null)setTimeout(function(){G.err=null},600);return}
-  if(a==="mleft"){var G=V.game;G.sel=k;G.msg="Now tap the match on the right.";G.mtype="";render();return}
-  if(a==="mright"){var G=V.game;if(G.sel==null){G.msg="Tap a card on the left first.";G.mtype="bad";render();return}
-    if(G.sel===k){G.ok.push(k);G.sel=null;G.err=null;G.mtype="good";G.msg="A match!";if(G.ok.length===l.game.pairs.length){gameDone(l);return}}else{G.err=k;G.mtype="bad";G.msg="Not a match. Try again!"}render();if(G.err!=null)setTimeout(function(){G.err=null},600);return}
-  /* lesson quiz */
-  if(a==="ans"){var Q=V.quiz;if(Q.chosen!=null)return;Q.chosen=k;if(k===Q.qs[Q.i].a)Q.score++;render();return}
-  if(a==="ansnext"){var Q=V.quiz;if(Q.i>=Q.qs.length-1){finishLessonQuiz(l)}else{Q.i++;Q.chosen=null;render()}return}
-  if(a==="retry"){V.quiz=null;render();return}
-  /* final */
-  if(a==="fans"){var Q=V.quiz;if(Q.chosen!=null)return;Q.chosen=k;if(k===Q.qs[Q.i].a)Q.score++;render();return}
-  if(a==="fansnext"){var Q=V.quiz;if(Q.i>=Q.qs.length-1){finishFinal()}else{Q.i++;Q.chosen=null;render()}return}
-  if(a==="fretry"){V.quiz=null;render();return}
-  /* teacher tools */
-  if(a==="copy"){var t=summary(p);var done=function(m){var c=document.getElementById("copied");if(c)c.textContent=m};
-    try{navigator.clipboard.writeText(t).then(function(){done("Copied!")},function(){showText(t);done("Select the text below to copy it.")})}catch(x){showText(t);done("Select the text below to copy it.")}return}
-  if(a==="resetask"){document.getElementById("resetrow").innerHTML='<span style="font-weight:700">Start '+esc(S.cur)+' over from the beginning?</span><button class="btn" style="background:var(--coral);color:#fff" data-act="resetyes">Yes, reset</button><button class="btn alt" data-act="resetno">Cancel</button>';return}
-  if(a==="resetno"){render();return}
-  if(a==="resetyes"){S.profiles[S.cur]=newProfile();save();render();toast("Progress reset");return}
-});
-function showText(t){var row=document.querySelector(".teacher .row");if(!row)return;var ta=document.createElement("textarea");ta.value=t;ta.readOnly=true;ta.rows=9;ta.style.cssText="width:100%;font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px;background:var(--bg);color:var(--ink)";row.parentNode.appendChild(ta);ta.focus();ta.select()}
-function summary(p){var lines=["Progress for "+S.cur,"Journey: "+Math.round(overall(p)*100)+"% · Lessons mastered: "+mastered(p)+"/10 · Stars: "+totalStars(p)+"/30 · XP: "+xp(p)+" · Streak: "+streak(p)+" days"];
-  LESSONS.forEach(function(l){var s=ls(p,l.id);lines.push("Lesson "+l.id+": "+(s.learned?"learned":"not read")+", "+(s.game?"game done":"game not done")+", quiz "+(s.best==null?"not taken":s.best+"/"+l.quiz.length+" ("+stars(l,s)+" stars)"))});
-  lines.push("Champions’ Challenge: best "+(p.final.best||0)+"/20");return lines.join("\n")}
-
-render();
+function submitContact() {
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!fname || !email || !message) { alert('Please fill in your name, email, and message before submitting.'); return; }
+  document.getElementById('contact-form-fields').style.display = 'none';
+  document.getElementById('contact-success').style.display = 'block';
+}
 </script>
+
 </body>
 </html>
