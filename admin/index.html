@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>GAIDEUS Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F6FB; --surface:#FFFFFF; --surface2:#E8F0F8; --ink:#16213A; --muted:#55627F; --line:#D5E0EE;
+  --primary:#0B7F86; --primary-ink:#FFFFFF; --primary-soft:#D6EFF0; --sun:#FFC233; --sun-soft:#FFF1C9;
+  --coral:#E8505B; --coral-soft:#FFE1E3; --leaf:#2E9E6B; --leaf-soft:#DAF2E5;
+  --shadow:0 2px 0 rgba(22,33,58,.07),0 10px 24px rgba(22,33,58,.07);
+  --font-display:"Baloo 2","Nunito",system-ui,sans-serif; --font-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0E1526; --surface:#172039; --surface2:#1F2A48; --ink:#EAF0FF; --muted:#A3B0CE; --line:#2B3858;
+  --primary:#3CC3C6; --primary-ink:#06222A; --primary-soft:#143A48; --sun:#FFCB4D; --sun-soft:#3C3216;
+  --coral:#FF7C86; --coral-soft:#42222B; --leaf:#4CC48A; --leaf-soft:#173A31;
+  --shadow:0 2px 0 rgba(0,0,0,.3),0 10px 24px rgba(0,0,0,.25);color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.5;
+  padding:0 max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left))}
+h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1100px;margin:0 auto}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.muted{color:var(--muted)}
+.btn{background:var(--primary);color:var(--primary-ink);border:0;border-radius:14px;padding:10px 16px;font-weight:800;min-height:44px;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.btn.alt{background:var(--surface2);color:var(--ink);box-shadow:0 4px 0 var(--line)}
+.btn.danger{background:var(--coral);color:#fff}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+input{border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);min-height:46px;width:100%}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0}
+.top h1{font-size:1.5rem;font-weight:800;flex:1}
+.badge{display:inline-block;background:var(--primary-soft);color:var(--ink);border-radius:999px;padding:2px 10px;font-weight:800;font-size:.8rem}
+/* login */
+.login{max-width:400px;margin:12vh auto 0;display:grid;gap:14px}
+.login label{display:grid;gap:4px;font-weight:800;font-size:.92rem}
+.err{min-height:1.4em;color:var(--coral);font-weight:800}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 18px}
+.stat{padding:14px}
+.stat b{display:block;font-family:var(--font-display);font-size:1.9rem;line-height:1.1}
+.stat span{color:var(--muted);font-weight:700;font-size:.9rem}
+/* table */
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.tools input{max-width:320px;flex:1;min-width:180px}
+.tw{overflow-x:auto;margin:0 -4px}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th,td{padding:10px 8px;text-align:left;border-bottom:2px solid var(--line);vertical-align:middle;white-space:nowrap}
+th{font-family:var(--font-display);color:var(--primary);font-size:.95rem;user-select:none}
+th button{background:none;border:0;padding:0;font:inherit;color:inherit;font-weight:800}
+th button[data-dir]::after{content:" ▲";font-size:.7em}
+th button[data-dir="desc"]::after{content:" ▼"}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--surface2)}
+tbody tr:focus-visible{outline-offset:-3px}
+.who b{display:block}.who small{color:var(--muted)}
+.bar{display:inline-block;vertical-align:middle;width:84px;height:10px;border-radius:99px;background:var(--surface2);overflow:hidden;margin-right:8px}
+.bar i{display:block;height:100%;background:var(--primary)}
+.empty{padding:28px;text-align:center;color:var(--muted);font-weight:700}
+/* detail */
+.back{margin:6px 0 14px}
+.dhead{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;justify-content:space-between}
+.dhead h2{font-size:2rem;font-weight:800}
+.facts{display:flex;gap:6px 18px;flex-wrap:wrap;color:var(--muted);font-weight:700;margin-top:6px;word-break:break-all}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.yes{color:var(--leaf);font-weight:800}.no{color:var(--muted)}
+.pips{display:flex;flex-wrap:wrap;gap:8px}
+.pip{background:var(--sun-soft);border-radius:999px;padding:3px 12px;font-weight:800;font-size:.9rem}
+h3.sec{font-size:1.3rem;margin:22px 0 10px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:800;z-index:9}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+"use strict";
+var app=document.getElementById("app"),USERS=[],SORT={k:"created_at",dir:"desc"},QUERY="";
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function api(method,path,body){
+  return fetch("/api/"+path,{method:method,credentials:"same-origin",headers:{"content-type":"application/json"},body:body?JSON.stringify(body):undefined})
+   .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(r.status===401&&path!=="login"){showLogin("");throw new Error("401")}if(!r.ok)throw new Error(j.error||"Something went wrong.");return j})})}
+function toast(t){var el=document.createElement("div");el.className="toast";el.textContent=t;document.body.appendChild(el);setTimeout(function(){el.remove()},3000)}
+
+/* time helpers (the server stores seconds) */
+function ago(sec){if(!sec)return "never";var d=Math.floor(Date.now()/1000)-sec;if(d<90)return "just now";if(d<3600)return Math.round(d/60)+" min ago";if(d<86400)return Math.round(d/3600)+" hours ago";var n=Math.round(d/86400);return n===1?"yesterday":n+" days ago"}
+function fmt(sec){return sec?new Date(sec*1000).toLocaleString([],{dateStyle:"medium",timeStyle:"short"}):"never"}
+
+/* ---------- login ---------- */
+function showLogin(msg){
+  app.innerHTML='<form class="card login" id="lf"><h1>GAIDEUS Admin</h1><p class="muted" style="margin:0">Sign in to see how every learner is doing.</p>'+
+   '<label>Email<input id="em" type="email" autocomplete="username" required></label>'+
+   '<label>Password<input id="pw" type="password" autocomplete="current-password" required></label>'+
+   '<div class="err" id="err" role="alert">'+esc(msg)+'</div><button class="btn" id="go" type="submit">Sign in</button></form>';
+  document.getElementById("lf").addEventListener("submit",function(e){e.preventDefault();
+    var err=document.getElementById("err"),go=document.getElementById("go");go.disabled=true;err.textContent="";
+    api("POST","login",{email:document.getElementById("em").value,password:document.getElementById("pw").value}).then(function(j){
+      if(!j.user||j.user.role!=="admin"){return api("POST","logout?as=admin",{}).then(function(){throw new Error("That account is not an admin.")})}
+      loadList()}).catch(function(x){go.disabled=false;err.textContent=x.message})});
+  var em=document.getElementById("em");if(em)em.focus()}
+
+/* ---------- list ---------- */
+function loadList(){
+  return api("GET","admin/users").then(function(j){USERS=j.users;renderList()}).catch(function(x){if(x.message!=="401"){app.innerHTML='<div class="card login"><p class="err">'+esc(x.message)+'</p></div>'}})}
+
+function topBar(){return '<div class="top"><h1>GAIDEUS Admin</h1><span class="badge">'+USERS.length+' learner'+(USERS.length===1?'':'s')+'</span><button class="btn alt" id="csv">Download CSV</button><button class="btn alt" id="out">Log out</button></div>'}
+function stats(){
+  var week=Date.now()/1000-7*86400,active=USERS.filter(function(u){return u.last_active&&u.last_active>week}).length,
+      avg=USERS.length?Math.round(USERS.reduce(function(a,u){return a+u.pct},0)/USERS.length):0,
+      done=USERS.filter(function(u){return u.mastered>=10}).length,
+      fresh=USERS.filter(function(u){return u.created_at>week}).length;
+  function t(n,l){return '<div class="card stat"><b>'+n+'</b><span>'+l+'</span></div>'}
+  return '<div class="stats">'+t(USERS.length,"learners")+t(active,"active in the last 7 days")+t(fresh,"joined in the last 7 days")+t(avg+"%","average journey")+t(done,"finished all 10 lessons")+'</div>'}
+var COLS=[["name","Learner"],["age","Age"],["pct","Journey"],["mastered","Mastered"],["stars","Stars"],["xp","XP"],["streak","Streak"],["last_active","Last active"],["created_at","Joined"]];
+function sorted(){
+  var q=QUERY.trim().toLowerCase(),k=SORT.k,m=SORT.dir==="asc"?1:-1;
+  var rows=USERS.filter(function(u){return !q||(u.name+" "+u.email).toLowerCase().indexOf(q)>=0});
+  rows.sort(function(a,b){var x=a[k],y=b[k];if(k==="name"){return m*String(x).localeCompare(String(y))}return m*((x||0)-(y||0))});
+  return rows}
+function rowsHtml(){
+  var rows=sorted();if(!rows.length)return '<tr><td colspan="9" class="empty">'+(USERS.length?'No one matches that search.':'No one has signed up yet.')+'</td></tr>';
+  return rows.map(function(u){return '<tr tabindex="0" data-id="'+u.id+'" aria-label="Open '+esc(u.name)+'"><td class="who"><b>'+esc(u.name)+'</b><small>'+esc(u.email)+'</small></td><td>'+u.age+'</td>'+
+   '<td><span class="bar" aria-hidden="true"><i style="width:'+u.pct+'%"></i></span>'+u.pct+'%</td><td>'+u.mastered+' / 10</td><td>'+u.stars+' / 30</td><td>'+u.xp+'</td><td>'+u.streak+' d</td>'+
+   '<td title="'+esc(fmt(u.last_active))+'">'+esc(ago(u.last_active))+'</td><td title="'+esc(fmt(u.created_at))+'">'+esc(ago(u.created_at))+'</td></tr>'}).join("")}
+function renderList(){
+  app.innerHTML=topBar()+stats()+'<div class="card"><div class="tools"><input id="q" type="search" placeholder="Search by name or email" aria-label="Search learners" value="'+esc(QUERY)+'"></div><div class="tw"><table><thead><tr>'+
+   COLS.map(function(c){return '<th scope="col"><button data-sort="'+c[0]+'" '+(SORT.k===c[0]?'data-dir="'+SORT.dir+'"':'')+'>'+c[1]+'</button></th>'}).join("")+'</tr></thead><tbody id="tb">'+rowsHtml()+'</tbody></table></div></div>';
+  document.getElementById("out").onclick=logout;document.getElementById("csv").onclick=exportCsv;
+  document.getElementById("q").oninput=function(e){QUERY=e.target.value;document.getElementById("tb").innerHTML=rowsHtml()};
+  app.querySelectorAll("th button").forEach(function(b){b.onclick=function(){var k=b.dataset.sort;SORT=SORT.k===k?{k:k,dir:SORT.dir==="asc"?"desc":"asc"}:{k:k,dir:k==="name"||k==="age"?"asc":"desc"};renderList()}});
+  var tb=document.getElementById("tb");
+  tb.onclick=function(e){var tr=e.target.closest("tr[data-id]");if(tr)openUser(+tr.dataset.id)};
+  tb.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){var tr=e.target.closest("tr[data-id]");if(tr){e.preventDefault();openUser(+tr.dataset.id)}}}}
+function logout(){api("POST","logout?as=admin",{}).then(function(){showLogin("")}).catch(function(){showLogin("")})}
+
+/* ---------- one learner ---------- */
+function openUser(id){
+  api("GET","admin/users/"+id).then(function(j){renderUser(j.user,j.progress)}).catch(function(x){if(x.message!=="401")toast(x.message)})}
+function yn(v){return v?'<span class="yes">✓ Done</span>':'<span class="no">Not yet</span>'}
+function renderUser(u,p){
+  var s=p&&p.summary,h='<div class="top"><button class="btn alt back" id="bk">‹ All learners</button></div>'+
+   '<div class="card"><div class="dhead"><div><h2>'+esc(u.name)+'</h2><div class="facts"><span>Age '+u.age+'</span><span>'+esc(u.email)+'</span><span>Joined '+esc(fmt(u.created_at))+'</span><span>Last login '+esc(ago(u.last_login))+'</span></div></div>'+
+   '<div class="actions"><button class="btn alt" id="rp">Reset password</button><button class="btn danger" id="del">Delete account</button></div></div></div>';
+  if(!p||!s){return app.innerHTML=h+'<div class="card" style="margin-top:14px"><p class="empty">'+esc(u.name)+' hasn’t started a lesson yet.</p></div>',wireUser(u)}
+  function t(n,l){return '<div class="card stat"><b>'+esc(n)+'</b><span>'+l+'</span></div>'}
+  h+='<div class="stats" style="margin-top:14px">'+t(p.pct+"%","of the journey")+t(p.mastered+" / 10","lessons mastered")+t(p.stars+" / 30","stars earned")+t(p.xp+" XP",esc(s.level||"")+" level")+t(p.streak+" days","learning streak")+'</div>'+
+   '<div class="card"><div class="muted" style="font-weight:700;margin-bottom:8px">Last active '+esc(fmt(p.updated_at))+'</div><div class="tw"><table style="min-width:620px"><thead><tr><th>Lesson</th><th>Read</th><th>Main game</th><th>Bonus games</th><th>Quiz best</th><th>Stars</th></tr></thead><tbody>'+
+   s.lessons.map(function(l){var bonus=(l.quick?'Quick Fire ':'')+(l.memory?'Memory Flip':'');
+     return '<tr style="cursor:default"><td><b>'+l.id+'.</b> '+esc(l.title)+'</td><td>'+yn(l.learned)+'</td><td>'+yn(l.game)+'</td><td>'+(bonus?'<span class="yes">✓ '+esc(bonus.trim())+'</span>':'<span class="no">None</span>')+'</td>'+
+      '<td>'+(l.best==null?'<span class="no">Not taken</span>':l.best+' / '+l.total+' <span class="muted">('+l.tries+' '+(l.tries===1?'try':'tries')+')</span>')+'</td><td>'+'★'.repeat(l.stars)+'<span class="no">'+'☆'.repeat(3-l.stars)+'</span></td></tr>'}).join("")+
+   '</tbody></table></div></div>'+
+   '<h3 class="sec">Champions’ Challenge</h3><div class="card">'+(s.final.tries?'Best score <b>'+s.final.best+' / 20</b> in '+s.final.tries+' '+(s.final.tries===1?'try':'tries')+(s.final.best>=18?' · <span class="yes">Champion!</span>':''):'<span class="no">Not attempted yet.</span>')+'</div>'+
+   '<h3 class="sec">Badges</h3><div class="card">'+(s.badges.length?'<div class="pips">'+s.badges.map(function(b){return '<span class="pip">'+esc(BADGE_NAMES[b]||b)+'</span>'}).join("")+'</div>':'<span class="no">No badges yet.</span>')+'</div>';
+  app.innerHTML=h;wireUser(u)}
+var BADGE_NAMES={first:"First Step",whiz:"Quiz Whiz",games:"Game Master",streak:"3-Day Streak",half:"Halfway There",all:"Journey Complete",bonus:"Bonus Hunter",champ:"Champion"};
+function wireUser(u){
+  document.getElementById("bk").onclick=function(){loadList()};
+  document.getElementById("rp").onclick=function(){
+    var pw=prompt("Type a new temporary password for "+u.name+" (at least 8 characters).\nThey will be signed out everywhere, then can log in with this.");
+    if(pw==null)return;
+    api("POST","admin/users/"+u.id+"/password",{password:pw}).then(function(){toast("Password changed. Tell "+u.name+" the new one.")}).catch(function(x){toast(x.message)})};
+  document.getElementById("del").onclick=function(){
+    if(!confirm("Delete "+u.name+"’s account and all their progress? This cannot be undone."))return;
+    api("DELETE","admin/users/"+u.id).then(function(){toast("Account deleted.");loadList()}).catch(function(x){toast(x.message)})}}
+
+/* ---------- CSV ---------- */
+function cell(v){var s=String(v==null?"":v);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
+function exportCsv(){
+  var head=["Name","Age","Email","Journey %","Lessons mastered","Stars","XP","Streak (days)","Last active","Joined"];
+  var lines=[head.map(cell).join(",")].concat(sorted().map(function(u){return [u.name,u.age,u.email,u.pct,u.mastered,u.stars,u.xp,u.streak,u.last_active?new Date(u.last_active*1000).toISOString():"",new Date(u.created_at*1000).toISOString()].map(cell).join(",")}));
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv"}));a.download="gaideus-learners-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(a);a.click();a.remove()}
+
+/* ---------- start ---------- */
+fetch("/api/me?as=admin",{credentials:"same-origin"}).then(function(r){return r.json()}).then(function(d){
+  if(d.user&&d.user.role==="admin")loadList();else showLogin("")}).catch(function(){showLogin("Can’t reach the server.")});
+</script>
+</body>
+</html>

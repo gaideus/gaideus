@@ -71,7 +71,7 @@ main{padding-top:22px;display:grid;gap:26px}
 .btn.alt{background:var(--surface2);color:var(--ink);box-shadow:0 4px 0 var(--line)}
 .btn.sun{background:var(--sun);color:var(--sun-ink)}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
-input[type=text]{font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);color:var(--ink);min-height:46px;min-width:0}
+input[type=text],input[type=email],input[type=password],input[type=number]{font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);color:var(--ink);min-height:46px;min-width:0}
 .eyebrow{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}
 .muted{color:var(--muted)}
 
@@ -205,6 +205,37 @@ th{font-family:var(--font-display);color:var(--primary)}
 .teacher summary{font-weight:800;cursor:pointer}
 .teacher .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
 .foot{color:var(--muted);font-size:.85rem;text-align:center}
+/* auth */
+.welcome.auth{max-width:460px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--surface2);border-radius:999px;padding:5px;width:100%}
+.tabs button{border:0;background:none;border-radius:999px;padding:9px 10px;font-weight:800;min-height:44px}
+.tabs button[aria-selected="true"]{background:var(--primary);color:var(--primary-ink)}
+.welcome form.authform{display:grid;gap:12px;text-align:left}
+.welcome .authform input{min-width:0;flex:none;width:100%}
+.fld{display:grid;gap:4px;font-weight:800;font-size:.92rem}
+.fld small{color:var(--muted);font-weight:700}
+.agerow{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+.pw{position:relative}
+.pw input{padding-right:76px!important}
+.pw .eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:var(--surface2);border-radius:10px;padding:6px 10px;font-weight:800;font-size:.85rem}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:.92rem}
+.welcome .authform .chk input{width:22px;min-height:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--primary)}
+.autherr{min-height:1.4em;color:var(--coral);font-weight:800;text-align:center}
+.authnote{font-size:.88rem;color:var(--muted);margin:0}
+.authnote a{color:var(--primary);font-weight:800}
+/* extra games */
+.gpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.gpick button{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:10px 8px;font-weight:800;display:grid;gap:2px;justify-items:center;min-height:56px}
+.gpick button small{font-weight:700;color:var(--muted);font-size:.78rem}
+.gpick button[aria-selected="true"]{border-color:var(--primary);background:var(--primary-soft)}
+.hearts{display:inline-flex;gap:4px}.hearts svg{width:26px;height:26px}
+.qa{font-family:var(--font-display);font-weight:700;font-size:1.3rem;background:var(--sun-soft);border:2px solid var(--sun);color:var(--sun-ink);border-radius:18px;padding:16px;text-align:center}
+.choice.tf{text-align:center;font-size:1.1rem}
+.mem{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.mcard{min-height:92px;border-radius:16px;border:3px solid var(--primary);background:var(--primary);color:var(--primary-ink);font-weight:800;font-size:1.6rem;padding:8px;box-shadow:0 4px 0 rgba(0,0,0,.15)}
+.mcard.up{background:var(--surface);color:var(--ink);border-color:var(--line);font-size:.92rem;line-height:1.25}
+.mcard.ok{background:var(--leaf-soft);border-color:var(--leaf)}
+.mcard[disabled]{cursor:default}
 /* Jamal the camel mascot */
 .camel{display:block;width:100%;height:auto;overflow:visible}
 .camel .bob{animation:bob 3.2s ease-in-out infinite}
@@ -407,7 +438,7 @@ var FINAL=[
  ["Who wrote Usul as-Sunnah?",["Imam Ahmad","at-Tahawi","Ibn Taymiyyah","Imam Malik"],0],["Where was Shaykh Muhammad ibn ‘Abd al-Wahhab born?",["Makkah","Madinah","al-‘Uyaynah in Najd","Basra"],2],["How many parts does Thalathah al-Usool have?",["3","5","7","9"],1],["When the Prophet ﷺ threw away his gold ring, what did the Sahabah do?",["Kept theirs","Threw theirs away","Hid theirs","Sold theirs"],1],["What does a person find in the grave if he answers the three questions correctly?",["A garden of Paradise","A pit of the Fire","Nothing","A dark room"],0]
 ].map(function(r){return r[1]==="tf"?{q:r[0],o:["True","False"],a:r[2],w:r[2]===0?"That is true.":"That is false.",keep:true}:{q:r[0],o:r[1],a:r[2],w:"The answer is: "+r[1][r[2]]+".",keep:true}});
 
-var LEVELS=[["Seed",0],["Sprout",40],["Sapling",140],["Young Tree",260],["Strong Tree",400],["Garden Keeper",540]];
+var LEVELS=[["Seed",0],["Sprout",40],["Sapling",160],["Young Tree",300],["Strong Tree",460],["Garden Keeper",620]];
 var BADGES=[
  {id:"first",n:"First Step",d:"Finish your first lesson cards",c:"#2E9E6B",t:function(p){return LESSONS.some(function(l){return ls(p,l.id).learned})}},
  {id:"whiz",n:"Quiz Whiz",d:"Get every answer right in a quiz",c:"#0B7F86",t:function(p){return LESSONS.some(function(l){return ls(p,l.id).best===l.quiz.length})}},
@@ -415,23 +446,39 @@ var BADGES=[
  {id:"streak",n:"3-Day Streak",d:"Learn on 3 days in a row",c:"#E8505B",t:function(p){return streak(p)>=3}},
  {id:"half",n:"Halfway There",d:"Master 5 lessons",c:"#E59A00",t:function(p){return mastered(p)>=5}},
  {id:"all",n:"Journey Complete",d:"Master all 10 lessons",c:"#2E9E6B",t:function(p){return mastered(p)>=10}},
+ {id:"bonus",n:"Bonus Hunter",d:"Finish a Quick Fire or Memory Flip",c:"#E8505B",t:function(p){return LESSONS.some(function(l){var s=ls(p,l.id);return s.quick||s.memory})}},
  {id:"champ",n:"Champion",d:"Score 18 or more in the Champions’ Challenge",c:"#FFB400",t:function(p){return (p.final&&p.final.best||0)>=18}}
 ];
 
 /* ---------- state ---------- */
-var KEY="aqeedah-journey-v1",mem=null;
-function load(){try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);if(o&&o.profiles)return o}}catch(e){}return mem||{cur:null,profiles:{}}}
-var S=load();
-function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-function P(){return S.cur?S.profiles[S.cur]:null}
+var S={cur:null,user:null,profile:null};
+var A={mode:"login",err:"",email:"",down:false,busy:false};
+function P(){return S.cur?S.profile:null}
 function newProfile(){return{lessons:{},final:{best:0,tries:0},days:[],badges:[]}}
+function applyUser(u,progress){var p=progress&&typeof progress==="object"&&progress.lessons?progress:newProfile();
+  p.lessons=p.lessons||{};p.final=p.final||{best:0,tries:0};p.days=p.days||[];p.badges=p.badges||[];
+  S.user=u;S.cur=u.name;S.profile=p}
+function loggedOut(msg){S.cur=null;S.user=null;S.profile=null;A.mode="login";A.err=msg||"";V={step:"learn",card:0,game:null,quiz:null};render()}
+
+/* ---------- saving to the server ---------- */
+var syncT=null,syncWarned=false;
+function buildSummary(p){var x=xp(p);return{xp:x,level:level(x).name,mastered:mastered(p),stars:totalStars(p),pct:Math.round(overall(p)*100),streak:streak(p),
+  lessons:LESSONS.map(function(l){var s=ls(p,l.id);return{id:l.id,title:l.title,learned:!!s.learned,game:!!s.game,quick:!!s.quick,memory:!!s.memory,best:s.best,total:l.quiz.length,stars:stars(l,s),tries:s.tries||0}}),
+  final:{best:p.final.best||0,tries:p.final.tries||0},badges:p.badges.slice()}}
+function pushNow(){clearTimeout(syncT);syncT=null;var p=P();if(!p||!S.user)return Promise.resolve();
+  return fetch("/api/progress",{method:"PUT",credentials:"same-origin",keepalive:true,headers:{"content-type":"application/json"},body:JSON.stringify({progress:p,summary:buildSummary(p)})})
+   .then(function(r){if(r.status===401){loggedOut("Please log in again so your progress can save.");return}if(!r.ok)throw 0;syncWarned=false})
+   .catch(function(){if(!syncWarned){syncWarned=true;toast("Couldn’t save. Check your internet.")}})}
+function save(){clearTimeout(syncT);syncT=setTimeout(pushNow,700)}
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden"&&syncT)pushNow()});
+addEventListener("pagehide",function(){if(syncT)pushNow()});
 function ls(p,id){if(!p.lessons[id])p.lessons[id]={learned:false,game:false,best:null,tries:0};return p.lessons[id]}
 function stars(l,s){if(s.best==null)return 0;var f=s.best/l.quiz.length;return f>=1?3:f>=.75?2:f>=.5?1:0}
 function mastered(p){return LESSONS.filter(function(l){var s=ls(p,l.id);return s.learned&&stars(l,s)>=2}).length}
 function lessonPct(p,l){var s=ls(p,l.id);return((s.learned?1:0)+(s.game?1:0)+stars(l,s)/3)/3}
 function overall(p){return LESSONS.reduce(function(a,l){return a+lessonPct(p,l)},0)/LESSONS.length}
 function totalStars(p){return LESSONS.reduce(function(a,l){return a+stars(l,ls(p,l.id))},0)}
-function xp(p){var x=0;LESSONS.forEach(function(l){var s=ls(p,l.id);x+=(s.learned?10:0)+(s.game?15:0)+(s.best||0)*5+(s.best===l.quiz.length?10:0)});var f=p.final.best||0;x+=f*3+(f>=18?10:0);return x}
+function xp(p){var x=0;LESSONS.forEach(function(l){var s=ls(p,l.id);x+=(s.learned?10:0)+(s.game?15:0)+(s.best||0)*5+(s.best===l.quiz.length?10:0)+(s.quick?10:0)+(s.memory?10:0)});var f=p.final.best||0;x+=f*3+(f>=18?10:0);return x}
 function level(x){var i=0;LEVELS.forEach(function(L,k){if(x>=L[1])i=k});var cur=LEVELS[i],nx=LEVELS[i+1];return{name:cur[0],idx:i,next:nx?nx[0]:null,pct:nx?(x-cur[1])/(nx[1]-cur[1]):1,toNext:nx?nx[1]-x:0}}
 function dayKey(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
 function streak(p){var set={};p.days.forEach(function(d){set[d]=1});var d=new Date(),n=0;if(!set[dayKey(d)])d.setDate(d.getDate()-1);while(set[dayKey(d)]){n++;d.setDate(d.getDate()-1)}return n}
@@ -489,14 +536,45 @@ addEventListener("hashchange",function(){V={step:PEND||"learn",card:0,game:null,
 /* ---------- views ---------- */
 function topbar(){
   var p=P();if(!p)return '<span class="brand">'+logo()+' Aqeedah Journey</span>';
-  var x=xp(p),lv=level(x),names=Object.keys(S.profiles);
+  var x=xp(p),lv=level(x);
   return '<button class="brand" data-act="home" aria-label="Go to the home page">'+logo()+'<span class="bt">Aqeedah Journey</span></button><span class="spacer"></span>'+
    '<span class="chip" title="Experience points"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="var(--sun)"/></svg>'+x+' XP</span>'+
    '<span class="chip" title="Days in a row">'+flame()+streak(p)+'<span class="hs">&nbsp;day streak</span></span>'+
-   '<details class="who"><summary>'+esc(S.cur)+'</summary><div class="menu"><div class="eyebrow">Who is learning?</div>'+names.map(function(n){return '<button data-act="switch" data-name="'+esc(n)+'" aria-current="'+(n===S.cur)+'">'+esc(n)+'</button>'}).join("")+
-   '<form class="add" data-form="add"><input type="text" id="addname" maxlength="20" placeholder="Add a child" aria-label="New child name"><button class="btn" type="submit" style="min-height:44px;padding:6px 14px">Add</button></form></div></details>'}
+   '<details class="who"><summary>'+esc(S.cur)+'</summary><div class="menu"><div class="eyebrow">Signed in as</div><div style="font-weight:700;word-break:break-all">'+esc(S.user?S.user.email:"")+'</div><button data-act="logout">Log out</button></div></details>'}
 
-function welcome(){return '<section class="card welcome"><div class="cw">'+camel("happy")+'</div><h1>Assalamu alaykum!</h1><p class="lead">I’m Jamal the camel, and I’ll walk with you on your ‘Aqeedah journey. Learn ten lessons, play games, take quizzes, and watch your knowledge tree grow.</p><form data-form="start"><input type="text" id="startname" maxlength="20" placeholder="Type your first name" aria-label="Your first name" required><button class="btn sun" type="submit">Start</button></form><p class="muted" style="font-size:.9rem">Your progress is saved on this device.</p></section>'}
+function fld(id,label,type,extra,hint){return '<label class="fld"><span>'+label+'</span><input id="'+id+'" name="'+id+'" type="'+type+'" '+extra+' required>'+(hint?'<small>'+hint+'</small>':'')+'</label>'}
+function welcome(){
+  if(A.down)return '<section class="card welcome"><div class="cw">'+camel("kind")+'</div><h1>Can’t reach the server</h1><p class="lead">Check your internet, then try again.</p><button class="btn sun" data-act="retryboot">Try again</button></section>';
+  var reg=A.mode==="register",err=A.err;A.err="";
+  var pw='<label class="fld"><span>Password</span><span class="pw"><input id="password" name="password" type="password" required '+(reg?'minlength="8" maxlength="200" autocomplete="new-password"':'maxlength="200" autocomplete="current-password"')+'><button type="button" class="eye" data-act="showpw" aria-label="Show password">Show</button></span>'+(reg?'<small>At least 8 characters. Only you will know it.</small>':'')+'</label>';
+  var chk=reg?'<label class="chk"><input type="checkbox" id="agreed" required><span>I’m 13 or older, or my parent or guardian says it’s OK for me to sign up.</span></label>':'';
+  return '<section class="card welcome auth"><div class="cw">'+camel("happy")+'</div><h1>Assalamu alaykum!</h1><p class="lead">I’m Jamal the camel, and I’ll walk with you on your ‘Aqeedah journey. '+(reg?'Make your own account to save your progress.':'Log in to keep learning.')+'</p>'+
+   '<div class="tabs" role="tablist"><button role="tab" data-act="authmode" data-mode="login" aria-selected="'+!reg+'">Log in</button><button role="tab" data-act="authmode" data-mode="register" aria-selected="'+reg+'">Create account</button></div>'+
+   '<form class="authform" data-form="'+(reg?'register':'login')+'">'+
+   (reg?'<div class="agerow">'+fld("name","Your name","text",'maxlength="30" autocomplete="given-name"')+fld("age","Age","number",'min="3" max="120" inputmode="numeric" autocomplete="off"')+'</div>':'')+
+   fld("email","Email","email",'maxlength="254" autocomplete="'+(reg?'email':'username')+'" value="'+esc(A.email)+'"',reg?'Under 13? Use a parent or guardian’s email.':'')+pw+chk+
+   '<div class="autherr" id="autherr" role="alert">'+esc(err)+'</div><button class="btn sun" type="submit" id="authgo">'+(reg?'Create my account':'Log in')+'</button></form>'+
+   (reg?'<p class="authnote">We only use your details to save your progress. See our <a href="/gaideus_privacy_policy.html#learn-accounts">Privacy Policy</a>.</p>':'<p class="authnote">Forgot your password? Ask your teacher or email <a href="mailto:info@gaideus.org">info@gaideus.org</a>.</p>')+'</section>'}
+function doAuth(mode,form){
+  if(A.busy)return;
+  var g=function(id){var el=form.querySelector("#"+id);return el?el.value:""};
+  var body=mode==="register"?{name:g("name"),age:g("age"),email:g("email"),password:g("password"),agreed:!!(form.querySelector("#agreed")||{}).checked}:{email:g("email"),password:g("password")};
+  var err=document.getElementById("autherr"),btn=document.getElementById("authgo");
+  A.busy=true;btn.disabled=true;err.textContent="";
+  fetch("/api/"+mode,{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json"},body:JSON.stringify(body)})
+   .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{ok:r.ok,j:j}})})
+   .then(function(x){
+     if(!x.ok){A.busy=false;btn.disabled=false;err.textContent=x.j.error||"Something went wrong. Please try again.";return}
+     if(x.j.user&&x.j.user.role==="admin"){location.href="/admin/";return}
+     return fetch("/api/me",{credentials:"same-origin"}).then(function(r){return r.json()}).then(function(d){
+       A.busy=false;A.email="";applyUser(d.user,d.progress);V={step:"learn",card:0,game:null,quiz:null};
+       if(location.hash&&location.hash!=="#home")location.hash="home";render();toast(mode==="register"?"Welcome, "+d.user.name+"!":"Welcome back, "+d.user.name+"!")})})
+   .catch(function(){A.busy=false;btn.disabled=false;err.textContent="Can’t reach the server. Check your internet."})}
+function boot(){
+  document.getElementById("app").innerHTML='<section class="card welcome"><div class="cw">'+camel("happy")+'</div><p class="lead">Loading…</p></section>';
+  A.down=false;
+  fetch("/api/me",{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+    if(d.user&&d.user.role==="user")applyUser(d.user,d.progress);render()}).catch(function(){A.down=true;render()})}
 
 function mission(p){
   for(var i=0;i<LESSONS.length;i++){var l=LESSONS[i],s=ls(p,l.id);
@@ -559,8 +637,14 @@ function makeGame(g){var o={type:g.type,err:null,done:false,msg:""};
   if(g.type==="order"){o.pool=shuffle(g.items.map(function(_,k){return k}));o.picked=[]}
   if(g.type==="match"){o.right=shuffle(g.pairs.map(function(_,k){return k}));o.sel=null;o.ok=[]}
   return o}
+var PGS=[["main","Main game"],["quick","Quick Fire"],["memory","Memory Flip"]];
 function playView(l,s){
-  var g=l.game;if(!V.game)V.game=makeGame(g);var G=V.game;
+  var pg=V.pg||"main";if(pg==="memory"&&l.game.type!=="match")pg="main";
+  var h='<div class="gpick" role="tablist" aria-label="Choose a game">'+PGS.filter(function(m){return m[0]!=="memory"||l.game.type==="match"}).map(function(m){var done=m[0]==="main"?s.game:s[m[0]];
+    return '<button role="tab" data-act="pg" data-pg="'+m[0]+'" aria-selected="'+(pg===m[0])+'"><span>'+m[1]+'</span><small>'+(done?'✓ Done':m[0]==="main"?'+15 XP':'+10 XP bonus')+'</small></button>'}).join("")+'</div>';
+  return h+(pg==="quick"?quickView(l,s):pg==="memory"?memoryView(l,s):mainGameView(l,s))}
+function mainGameView(l,s){
+  var g=l.game;if(!V.game||["sort","order","match"].indexOf(V.game.type)<0)V.game=makeGame(g);var G=V.game;
   var h='<section class="card" style="display:grid;gap:14px"><h2 class="gtitle">'+esc(g.title)+'</h2><p class="muted" style="margin:0">'+esc(g.help)+'</p>';
   if(G.done){
     h+='<div class="result"><div class="cw">'+camel("cheer")+'</div><div class="starrow">'+star(1)+star(1)+star(1)+'</div><h2>Well done, '+esc(S.cur)+'!</h2><p>'+(s.game?'You finished the game.':'You finished the game and earned 15 XP.')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="again">Play again</button><button class="btn sun" data-act="step" data-step="quiz">Go to the quiz ›</button></div></div></section>';return h}
@@ -573,6 +657,35 @@ function playView(l,s){
     h+='<div class="match"><div class="col">'+g.pairs.map(function(p,k){var d=G.ok.indexOf(k)>=0;return '<button class="choice '+(d?'done':G.sel===k?'sel':'')+'" data-act="mleft" data-k="'+k+'" '+(d?'disabled':'')+'>'+esc(p[0])+'</button>'}).join("")+'</div><div class="col">'+G.right.map(function(k){var d=G.ok.indexOf(k)>=0;return '<button class="choice '+(d?'done':'')+' '+(G.err===k?'shake wrong':'')+'" data-act="mright" data-k="'+k+'" '+(d?'disabled':'')+'>'+esc(g.pairs[k][1])+'</button>'}).join("")+'</div></div>'}
   h+='<div class="msg '+(G.mtype||'')+'" role="status">'+esc(G.msg)+'</div><div><button class="btn alt" data-act="again">Start over</button></div></section>';
   return h}
+function heart(on){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="'+(on?'var(--coral)':'none')+'" stroke="'+(on?'var(--coral)':'var(--line)')+'" stroke-width="2" stroke-linejoin="round"/></svg>'}
+function bonusDone(l,key){var p=P(),s=ls(p,l.id);if(!s[key]){s[key]=true;touch(p);toast("+10 XP bonus!");confetti(60);checkBadges(p);save()}}
+/* Quick Fire: is the answer right or wrong? Three hearts. */
+function makeQuick(l){return{type:"quick",i:0,hearts:3,score:0,picked:null,done:false,out:false,
+  rounds:shuffle(l.quiz).map(function(q){var truth=Math.random()<.5,wrong=q.o.map(function(_,k){return k}).filter(function(k){return k!==q.a});
+    return{q:q.q,shown:truth?q.o[q.a]:q.o[wrong[Math.floor(Math.random()*wrong.length)]],truth:truth,w:q.w}})}}
+function quickView(l,s){
+  if(!V.game||V.game.type!=="quick")V.game=makeQuick(l);var G=V.game,n=G.rounds.length;
+  var hearts='<span class="hearts" role="img" aria-label="'+G.hearts+' hearts left">'+heart(G.hearts>0)+heart(G.hearts>1)+heart(G.hearts>2)+'</span>';
+  if(G.done&&G.out)return '<section class="card result"><div class="cw">'+camel("kind")+'</div><h2>Out of hearts, '+esc(S.cur)+'</h2><p>No problem. Read the cards again, then have another go.</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="step" data-step="learn">Read the cards</button><button class="btn sun" data-act="again">Try again</button></div></section>';
+  if(G.done)return '<section class="card result"><div class="cw">'+camel("cheer")+'</div><div class="big">'+G.score+' / '+n+'</div><h2>Well done, '+esc(S.cur)+'!</h2><p>'+(s.quick?'You finished Quick Fire.':'You finished Quick Fire and earned 10 XP.')+'</p>'+hearts+'<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="again">Play again</button><button class="btn sun" data-act="step" data-step="quiz">Go to the quiz ›</button></div></section>';
+  var r=G.rounds[G.i],ans=G.picked!=null,ok=ans&&((G.picked===1)===r.truth);
+  var h='<section class="card" style="display:grid;gap:14px"><div class="qmeta"><span>Quick Fire · Round '+(G.i+1)+' of '+n+'</span>'+hearts+'</div><div class="qbar"><i style="width:'+(G.i/n*100)+'%"></i></div><p class="muted" style="margin:0">Is this the right answer?</p>'+
+   '<div class="prompt" style="text-align:left;font-size:1.25rem">'+esc(r.q)+'</div><div class="qa">“'+esc(r.shown)+'”</div><div class="choices" role="group" aria-label="Right or wrong">';
+  [[1,"✓ Right"],[0,"✗ Wrong"]].forEach(function(o){var cls="";if(ans){var isTruth=(o[0]===1)===r.truth;if(isTruth)cls="right";else if(o[0]===G.picked)cls="wrong"}
+    h+='<button class="choice tf '+cls+'" data-act="qf" data-k="'+o[0]+'" '+(ans?'disabled':'')+'>'+o[1]+'</button>'});
+  h+='</div>';
+  if(ans)h+='<div class="msg '+(ok?'good':'bad')+'" role="status">'+(ok?'Correct! ':'Not quite. ')+esc(r.w)+'</div><div><button class="btn" data-act="qfnext">'+(G.hearts===0||G.i===n-1?'See my result':'Next ›')+'</button></div>';
+  return h+'</section>'}
+/* Memory Flip: find each name and its meaning. */
+function makeMemory(l){var cards=[];l.game.pairs.slice(0,6).forEach(function(p,k){cards.push({k:k,t:p[0]});cards.push({k:k,t:p[1]})});
+  return{type:"memory",cards:shuffle(cards),open:[],matched:[],moves:0,lock:false,done:false}}
+function memoryView(l,s){
+  if(!V.game||V.game.type!=="memory")V.game=makeMemory(l);var G=V.game;
+  if(G.done)return '<section class="card result"><div class="cw">'+camel("cheer")+'</div><h2>You found them all, '+esc(S.cur)+'!</h2><p>It took you '+G.moves+' tries. '+(s.memory?'You finished Memory Flip.':'You finished Memory Flip and earned 10 XP.')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="again">Play again</button><button class="btn sun" data-act="step" data-step="quiz">Go to the quiz ›</button></div></section>';
+  return '<section class="card" style="display:grid;gap:14px"><h2 class="gtitle">Memory Flip</h2><p class="muted" style="margin:0">Flip two cards. Find each name and its meaning. Tries so far: '+G.moves+'</p><div class="mem">'+
+   G.cards.map(function(c,i){var m=G.matched.indexOf(c.k)>=0,up=m||G.open.indexOf(i)>=0;
+     return '<button class="mcard '+(up?'up ':'')+(m?'ok':'')+'" data-act="mflip" data-k="'+i+'" '+(up?'disabled':'')+' aria-label="'+(up?esc(c.t):'Hidden card '+(i+1))+'">'+(up?esc(c.t):'?')+'</button>'}).join("")+
+   '</div><div><button class="btn alt" data-act="again">Start over</button></div></section>'}
 function gameDone(l){var G=V.game,p=P(),s=ls(p,l.id);G.done=true;if(!s.game){s.game=true;touch(p);toast("+15 XP for the game!");confetti(60);checkBadges(p);save()}render()}
 
 /* quiz */
@@ -610,16 +723,18 @@ function render(){
 
 /* ---------- events ---------- */
 document.addEventListener("submit",function(e){var f=e.target.getAttribute("data-form");if(!f)return;e.preventDefault();
-  var inp=e.target.querySelector("input"),name=inp.value.replace(/\s+/g," ").trim().slice(0,20);if(!name)return;
-  if(!S.profiles[name])S.profiles[name]=newProfile();S.cur=name;save();V={step:"learn",card:0,game:null,quiz:null};if(f==="add"){var d=document.querySelector(".who");if(d)d.open=false}
-  if(location.hash&&location.hash!=="#home")location.hash="home";render();toast("Welcome, "+name+"!")});
+  if(f==="login"||f==="register")doAuth(f,e.target)});
 document.addEventListener("click",function(e){
   var b=e.target.closest("[data-act]");if(!b){var w=document.querySelector(".who[open]");if(w&&!e.target.closest(".who"))w.open=false;return}
   var a=b.dataset.act,r=route(),p=P(),l=r.k==="lesson"?LESSONS[r.n-1]:null,k=b.dataset.k!=null?+b.dataset.k:null;
   if(a==="home"){go("home");return}
-  if(a==="switch"){S.cur=b.dataset.name;save();V={step:"learn",card:0,game:null,quiz:null};var d=document.querySelector(".who");if(d)d.open=false;render();return}
+  if(a==="authmode"){var em=document.getElementById("email");if(em)A.email=em.value;A.mode=b.dataset.mode;A.err="";render();return}
+  if(a==="showpw"){var pi=document.getElementById("password");if(pi){var show=pi.type==="password";pi.type=show?"text":"password";b.textContent=show?"Hide":"Show";b.setAttribute("aria-label",show?"Hide password":"Show password")}return}
+  if(a==="retryboot"){boot();return}
+  if(a==="logout"){pushNow().then(function(){return fetch("/api/logout",{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json"},body:"{}"})}).catch(function(){}).then(function(){loggedOut("");location.hash=""});return}
+  if(a==="pg"){V.pg=b.dataset.pg;V.game=null;render();return}
   if(a==="mission"){var h=b.dataset.h;PEND=b.dataset.step||"learn";if(location.hash==="#"+h){V={step:PEND,card:0,game:null,quiz:null};PEND=null;render()}else{location.hash=h}return}
-  if(a==="step"){V.step=b.dataset.step;if(V.step!=="play")V.game=null;if(V.step!=="quiz")V.quiz=null;render();return}
+  if(a==="step"){V.step=b.dataset.step;V.pg="main";if(V.step!=="play")V.game=null;if(V.step!=="quiz")V.quiz=null;render();return}
   if(a==="prev"){V.card=Math.max(0,V.card-1);render();return}
   if(a==="next"){V.card++;render();return}
   if(a==="finishlearn"){var s=ls(p,l.id);if(!s.learned){s.learned=true;touch(p);toast("+10 XP for learning!");confetti(50);checkBadges(p);save()}V.step="play";V.game=null;render();return}
@@ -630,6 +745,13 @@ document.addEventListener("click",function(e){
   if(a==="mleft"){var G=V.game;G.sel=k;G.msg="Now tap the match on the right.";G.mtype="";render();return}
   if(a==="mright"){var G=V.game;if(G.sel==null){G.msg="Tap a card on the left first.";G.mtype="bad";render();return}
     if(G.sel===k){G.ok.push(k);G.sel=null;G.err=null;G.mtype="good";G.msg="A match!";if(G.ok.length===l.game.pairs.length){gameDone(l);return}}else{G.err=k;G.mtype="bad";G.msg="Not a match. Try again!"}render();if(G.err!=null)setTimeout(function(){G.err=null},600);return}
+  if(a==="qf"){var G=V.game;if(G.picked!=null)return;G.picked=k;var r=G.rounds[G.i];if((k===1)===r.truth)G.score++;else G.hearts--;render();return}
+  if(a==="qfnext"){var G=V.game;if(G.hearts===0){G.done=true;G.out=true}else if(G.i>=G.rounds.length-1){G.done=true;bonusDone(l,"quick")}else{G.i++;G.picked=null}render();return}
+  if(a==="mflip"){var G=V.game;if(G.lock||G.open.indexOf(k)>=0)return;G.open.push(k);
+    if(G.open.length===2){G.moves++;var c1=G.cards[G.open[0]],c2=G.cards[G.open[1]];
+      if(c1.k===c2.k){G.matched.push(c1.k);G.open=[];if(G.matched.length===G.cards.length/2){G.done=true;bonusDone(l,"memory")}}
+      else{G.lock=true;render();setTimeout(function(){if(V.game!==G)return;G.open=[];G.lock=false;render()},1000);return}}
+    render();return}
   /* lesson quiz */
   if(a==="ans"){var Q=V.quiz;if(Q.chosen!=null)return;Q.chosen=k;if(k===Q.qs[Q.i].a)Q.score++;render();return}
   if(a==="ansnext"){var Q=V.quiz;if(Q.i>=Q.qs.length-1){finishLessonQuiz(l)}else{Q.i++;Q.chosen=null;render()}return}
@@ -643,14 +765,14 @@ document.addEventListener("click",function(e){
     try{navigator.clipboard.writeText(t).then(function(){done("Copied!")},function(){showText(t);done("Select the text below to copy it.")})}catch(x){showText(t);done("Select the text below to copy it.")}return}
   if(a==="resetask"){document.getElementById("resetrow").innerHTML='<span style="font-weight:700">Start '+esc(S.cur)+' over from the beginning?</span><button class="btn" style="background:var(--coral);color:#fff" data-act="resetyes">Yes, reset</button><button class="btn alt" data-act="resetno">Cancel</button>';return}
   if(a==="resetno"){render();return}
-  if(a==="resetyes"){S.profiles[S.cur]=newProfile();save();render();toast("Progress reset");return}
+  if(a==="resetyes"){S.profile=newProfile();save();render();toast("Progress reset");return}
 });
 function showText(t){var row=document.querySelector(".teacher .row");if(!row)return;var ta=document.createElement("textarea");ta.value=t;ta.readOnly=true;ta.rows=9;ta.style.cssText="width:100%;font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px;background:var(--bg);color:var(--ink)";row.parentNode.appendChild(ta);ta.focus();ta.select()}
 function summary(p){var lines=["Progress for "+S.cur,"Journey: "+Math.round(overall(p)*100)+"% · Lessons mastered: "+mastered(p)+"/10 · Stars: "+totalStars(p)+"/30 · XP: "+xp(p)+" · Streak: "+streak(p)+" days"];
   LESSONS.forEach(function(l){var s=ls(p,l.id);lines.push("Lesson "+l.id+": "+(s.learned?"learned":"not read")+", "+(s.game?"game done":"game not done")+", quiz "+(s.best==null?"not taken":s.best+"/"+l.quiz.length+" ("+stars(l,s)+" stars)"))});
   lines.push("Champions’ Challenge: best "+(p.final.best||0)+"/20");return lines.join("\n")}
 
-render();
+boot();
 </script>
 </body>
 </html>

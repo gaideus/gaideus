@@ -14,3 +14,11 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+
+## GAIDEUS Learn: accounts and admin portal
+
+- `/learn/` needs a login. `/admin/` is the admin portal. The backend lives in `functions/api/` (a Cloudflare Pages Function) and stores data in a Cloudflare D1 database (`schema.sql`).
+- **Try it on your computer:** `./dev.sh`, then open http://localhost:8788 (admin login for local testing: `admin@gaideus.local` / `admin-local-password`).
+- **One-time Cloudflare setup:** create a D1 database and run `schema.sql` in its Console; in the Pages project's Settings, bind that database as `DB`, and add the secrets `ADMIN_EMAIL` and `ADMIN_PASSWORD`. Then redeploy.
+- **Publish:** `./deploy.sh "what changed"`.
