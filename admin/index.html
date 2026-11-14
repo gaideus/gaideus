@@ -9,15 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F1F6FB; --surface:#FFFFFF; --surface2:#E8F0F8; --ink:#16213A; --muted:#55627F; --line:#D5E0EE;
-  --primary:#0B7F86; --primary-ink:#FFFFFF; --primary-soft:#D6EFF0; --sun:#FFC233; --sun-soft:#FFF1C9;
+  --bg:#FFF8E6; --surface:#FFFFFF; --surface2:#FFF0C2; --ink:#33240B; --muted:#75613A; --line:#F0DDA8;
+  --primary:#FFC400; --primary-ink:#33240B; --primary-soft:#FFF0B8; --primary-text:#8A5A00; --sun:#FFB020; --sun-soft:#FFE7B8;
   --coral:#E8505B; --coral-soft:#FFE1E3; --leaf:#2E9E6B; --leaf-soft:#DAF2E5;
-  --shadow:0 2px 0 rgba(22,33,58,.07),0 10px 24px rgba(22,33,58,.07);
+  --shadow:0 2px 0 rgba(74,46,0,.08),0 10px 24px rgba(74,46,0,.08);
   --font-display:"Baloo 2","Nunito",system-ui,sans-serif; --font-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
-  --bg:#0E1526; --surface:#172039; --surface2:#1F2A48; --ink:#EAF0FF; --muted:#A3B0CE; --line:#2B3858;
-  --primary:#3CC3C6; --primary-ink:#06222A; --primary-soft:#143A48; --sun:#FFCB4D; --sun-soft:#3C3216;
+  --bg:#191307; --surface:#241C0C; --surface2:#33280F; --ink:#FFF4D9; --muted:#CDB988; --line:#4A3A18;
+  --primary:#FFCB3D; --primary-ink:#2B1F00; --primary-soft:#4A3A10; --primary-text:#FFD768; --sun:#FFB84D; --sun-soft:#4A3312;
   --coral:#FF7C86; --coral-soft:#42222B; --leaf:#4CC48A; --leaf-soft:#173A31;
   --shadow:0 2px 0 rgba(0,0,0,.3),0 10px 24px rgba(0,0,0,.25);color-scheme:dark}}
 *{box-sizing:border-box}
@@ -26,7 +26,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body)
 h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0}
 button,input{font:inherit;color:inherit}
 button{cursor:pointer}
-:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:8px}
+:focus-visible{outline:3px solid var(--primary-text);outline-offset:2px;border-radius:8px}
 .wrap{max-width:1100px;margin:0 auto}
 .card{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
 .muted{color:var(--muted)}
@@ -54,7 +54,7 @@ input{border:2px solid var(--line);border-radius:12px;padding:10px 12px;backgrou
 .tw{overflow-x:auto;margin:0 -4px}
 table{border-collapse:collapse;width:100%;min-width:760px}
 th,td{padding:10px 8px;text-align:left;border-bottom:2px solid var(--line);vertical-align:middle;white-space:nowrap}
-th{font-family:var(--font-display);color:var(--primary);font-size:.95rem;user-select:none}
+th{font-family:var(--font-display);color:var(--primary-text);font-size:.95rem;user-select:none}
 th button{background:none;border:0;padding:0;font:inherit;color:inherit;font-weight:800}
 th button[data-dir]::after{content:" ▲";font-size:.7em}
 th button[data-dir="desc"]::after{content:" ▼"}
@@ -63,7 +63,7 @@ tbody tr:hover{background:var(--surface2)}
 tbody tr:focus-visible{outline-offset:-3px}
 .who b{display:block}.who small{color:var(--muted)}
 .bar{display:inline-block;vertical-align:middle;width:84px;height:10px;border-radius:99px;background:var(--surface2);overflow:hidden;margin-right:8px}
-.bar i{display:block;height:100%;background:var(--primary)}
+.bar i{display:block;height:100%;background:var(--leaf)}
 .empty{padding:28px;text-align:center;color:var(--muted);font-weight:700}
 /* detail */
 .back{margin:6px 0 14px}
