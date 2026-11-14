@@ -205,6 +205,23 @@ th{font-family:var(--font-display);color:var(--primary)}
 .teacher summary{font-weight:800;cursor:pointer}
 .teacher .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
 .foot{color:var(--muted);font-size:.85rem;text-align:center}
+/* Jamal the camel mascot */
+.camel{display:block;width:100%;height:auto;overflow:visible}
+.camel .bob{animation:bob 3.2s ease-in-out infinite}
+.camel .head{animation:nod 4.8s ease-in-out infinite;transform-box:view-box;transform-origin:100px 58px}
+.camel .eye{animation:blink 5.5s infinite;transform-box:view-box;transform-origin:111px 37px}
+.camel .spark{animation:twinkle 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.camel .spark.s2{animation-delay:.5s}.camel .spark.s3{animation-delay:1s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes nod{0%,70%,100%{transform:rotate(0)}80%{transform:rotate(-6deg)}90%{transform:rotate(2deg)}}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes twinkle{0%,100%{transform:scale(.6);opacity:.5}50%{transform:scale(1.1);opacity:1}}
+.buddy{display:flex;align-items:flex-end;gap:12px;margin-top:12px}
+.buddy .cw{width:110px;flex:none}
+.bubble{position:relative;flex:1;background:var(--surface2);border-radius:18px;padding:12px 16px;margin:0 0 34px!important;font-weight:700}
+.bubble::before{content:"";position:absolute;left:-9px;bottom:16px;border:9px solid transparent;border-left:0;border-right-color:var(--surface2)}
+.welcome .cw{width:170px}
+.result .cw{width:130px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <style>body{margin:0}</style>
@@ -428,6 +445,21 @@ function star(on){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M
 function starRow(n){return '<span class="starrow" role="img" aria-label="'+n+' of 3 stars">'+star(n>0)+star(n>1)+star(n>2)+'</span>'}
 function medal(c){return '<svg viewBox="0 0 56 56" aria-hidden="true"><path d="M18 3h8l6 14h-8z" fill="'+c+'" opacity=".7"/><path d="M38 3h-8l-6 14h8z" fill="'+c+'"/><circle cx="28" cy="35" r="17" fill="'+c+'"/><circle cx="28" cy="35" r="12.5" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/><path d="M28 27l2.6 5.3 5.8.8-4.2 4.1 1 5.8L28 40.2l-5.2 2.8 1-5.8-4.2-4.1 5.8-.8z" fill="#fff"/></svg>'}
 function logo(){return '<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="var(--primary)"/><path d="M17 27V15" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M17 17c-6 0-8-4-8-8 5 0 8 2 8 8zM17 15c0-5 3-8 8-8 0 5-3 8-8 8z" fill="var(--sun)"/></svg>'}
+function camel(mood){mood=mood||"happy";var B="#E9B872",D="#D39A52",T="#B67E3E",L="#F7DDB0",K="#2A1E14";
+  var eyes=mood==="cheer"?'<path d="M106 39q5-7 10 0" stroke="'+K+'" stroke-width="2.8" fill="none" stroke-linecap="round"/>':'<g class="eye"><ellipse cx="111" cy="37" rx="4.2" ry="5" fill="'+K+'"/><circle cx="112.6" cy="35" r="1.6" fill="#fff"/></g><path d="M108 31.5l-2.5-3M111 30.5l-.5-3.5" stroke="'+K+'" stroke-width="1.6" stroke-linecap="round"/>';
+  var mouth=mood==="cheer"?'<path d="M121 50q6 9 12 0z" fill="#8A3B36"/>':'<path d="M122 51q5 4 10 0" stroke="'+K+'" stroke-width="2" fill="none" stroke-linecap="round"/>';
+  var extra=mood==="cheer"?'<path class="spark" d="M20 30l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="var(--sun)"/><path class="spark s2" d="M140 14l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z" fill="var(--sun)"/><path class="spark s3" d="M44 18l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2z" fill="var(--primary)"/>':
+    mood==="kind"?'<path class="spark" d="M138 22c-3-4-9-1-6 4l6 6 6-6c3-5-3-8-6-4z" fill="var(--coral)"/>':'';
+  return '<svg class="camel" viewBox="0 0 150 130" role="img" aria-label="Jamal the camel"><ellipse cx="72" cy="123" rx="46" ry="5" fill="var(--ink)" opacity=".08"/>'+extra+
+  '<g class="bob"><rect x="46" y="90" width="10" height="31" rx="5" fill="'+D+'"/><rect x="88" y="90" width="10" height="31" rx="5" fill="'+D+'"/>'+
+  '<path d="M30 80q-8 6-6 17" stroke="'+D+'" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="23.5" cy="99" rx="3.6" ry="4.6" fill="'+T+'"/>'+
+  '<ellipse cx="64" cy="84" rx="36" ry="20" fill="'+B+'"/><ellipse cx="59" cy="69" rx="21" ry="17" fill="'+B+'"/><ellipse cx="52" cy="59" rx="7" ry="4" fill="'+L+'" opacity=".8"/><ellipse cx="65" cy="95" rx="20" ry="6" fill="'+L+'"/>'+
+  '<rect x="37" y="92" width="11" height="30" rx="5.5" fill="'+B+'"/><rect x="79" y="92" width="11" height="30" rx="5.5" fill="'+B+'"/><rect x="37" y="116" width="11" height="6" rx="3" fill="'+T+'"/><rect x="79" y="116" width="11" height="6" rx="3" fill="'+T+'"/>'+
+  '<path d="M80 86C94 80 96 62 99 48L117 50C113 66 109 84 97 95Z" fill="'+B+'"/><path d="M95 61c6 4 14 4 20-1l-1 9c-6 4-14 4-21 1z" fill="var(--primary)"/><path d="M97 67l-6 14 7-2 3-11z" fill="var(--primary)"/>'+
+  '<g class="head"><ellipse cx="96" cy="26" rx="4" ry="7.5" transform="rotate(-35 96 26)" fill="'+D+'"/><ellipse cx="110" cy="40" rx="20" ry="17" fill="'+B+'"/>'+
+  '<path d="M101 25q1-7 6-4q2-6 7-1q4-4 6 3" stroke="'+T+'" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'+
+  '<ellipse cx="126" cy="47" rx="12" ry="9.5" fill="'+L+'"/><ellipse cx="132" cy="43.5" rx="1.7" ry="1.2" fill="#3A2A1C"/>'+mouth+eyes+
+  '<ellipse cx="116" cy="47.5" rx="4.5" ry="2.6" fill="var(--coral)" opacity=".45"/></g></g></svg>'}
 function flame(){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z" fill="var(--coral)"/></svg>'}
 function tree(p){
   var pos=[[120,70,26],[88,86,24],[152,86,24],[66,112,22],[174,112,22],[100,112,24],[140,112,24],[80,140,20],[160,140,20],[120,134,22]];
@@ -464,7 +496,7 @@ function topbar(){
    '<details class="who"><summary>'+esc(S.cur)+'</summary><div class="menu"><div class="eyebrow">Who is learning?</div>'+names.map(function(n){return '<button data-act="switch" data-name="'+esc(n)+'" aria-current="'+(n===S.cur)+'">'+esc(n)+'</button>'}).join("")+
    '<form class="add" data-form="add"><input type="text" id="addname" maxlength="20" placeholder="Add a child" aria-label="New child name"><button class="btn" type="submit" style="min-height:44px;padding:6px 14px">Add</button></form></div></details>'}
 
-function welcome(){return '<section class="card welcome"><div style="width:84px">'+tree({lessons:{}})+'</div><h1>Assalamu alaykum!</h1><p class="lead">Welcome to your ‘Aqeedah journey. Learn ten lessons, play games, take quizzes, and watch your knowledge tree grow.</p><form data-form="start"><input type="text" id="startname" maxlength="20" placeholder="Type your first name" aria-label="Your first name" required><button class="btn sun" type="submit">Start</button></form><p class="muted" style="font-size:.9rem">Your progress is saved on this device.</p></section>'}
+function welcome(){return '<section class="card welcome"><div class="cw">'+camel("happy")+'</div><h1>Assalamu alaykum!</h1><p class="lead">I’m Jamal the camel, and I’ll walk with you on your ‘Aqeedah journey. Learn ten lessons, play games, take quizzes, and watch your knowledge tree grow.</p><form data-form="start"><input type="text" id="startname" maxlength="20" placeholder="Type your first name" aria-label="Your first name" required><button class="btn sun" type="submit">Start</button></form><p class="muted" style="font-size:.9rem">Your progress is saved on this device.</p></section>'}
 
 function mission(p){
   for(var i=0;i<LESSONS.length;i++){var l=LESSONS[i],s=ls(p,l.id);
@@ -478,7 +510,7 @@ function home(){
   var p=P();if(!p)return welcome();
   var x=xp(p),lv=level(x),m=mission(p),pct=overall(p),done=mastered(p),today=p.days.indexOf(dayKey(new Date()))>=0;
   var attempted=LESSONS.filter(function(l){return ls(p,l.id).best!=null}),avg=attempted.length?Math.round(attempted.reduce(function(a,l){return a+ls(p,l.id).best/l.quiz.length},0)/attempted.length*100):0;
-  var h='<section class="hero"><div class="card"><div class="eyebrow">Assalamu alaykum</div><h1>'+esc(S.cur)+', let’s learn!</h1><p class="lead">'+esc(cheerLine(p))+'</p>'+
+  var h='<section class="hero"><div class="card"><div class="eyebrow">Assalamu alaykum</div><h1>'+esc(S.cur)+', let’s learn!</h1><div class="buddy"><div class="cw">'+camel("happy")+'</div><p class="lead bubble">'+esc(cheerLine(p))+'</p></div>'+
    '<div class="mission"><div class="grow"><div class="eyebrow">Your next step</div><b>'+esc(m.t)+'</b><div class="txt">'+esc(m.sub)+'</div></div><button class="btn sun" data-act="mission" data-h="'+m.h+'" data-step="'+(m.step||"")+'">Go</button></div>'+
    '<p class="muted" style="margin-top:14px;font-weight:700">Today’s goal: finish one step. '+(today?'<span style="color:var(--leaf)">Done, MashaAllah!</span>':'Not yet, you can do it.')+'</p></div>'+
    '<div class="card treecard"><div class="eyebrow">My knowledge tree</div>'+tree(p)+'<div class="level">'+esc(lv.name)+'</div><div class="xpbar" role="progressbar" aria-valuenow="'+Math.round(lv.pct*100)+'" aria-valuemin="0" aria-valuemax="100" aria-label="Progress to next level"><i style="width:'+Math.round(lv.pct*100)+'%"></i></div><div class="muted" style="font-weight:700;font-size:.9rem">'+(lv.next?lv.toNext+' XP to become a '+esc(lv.next):'You grew the whole garden!')+'</div></div></section>';
@@ -531,7 +563,7 @@ function playView(l,s){
   var g=l.game;if(!V.game)V.game=makeGame(g);var G=V.game;
   var h='<section class="card" style="display:grid;gap:14px"><h2 class="gtitle">'+esc(g.title)+'</h2><p class="muted" style="margin:0">'+esc(g.help)+'</p>';
   if(G.done){
-    h+='<div class="result"><div class="starrow">'+star(1)+star(1)+star(1)+'</div><h2>Well done, '+esc(S.cur)+'!</h2><p>'+(s.game?'You finished the game.':'You finished the game and earned 15 XP.')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="again">Play again</button><button class="btn sun" data-act="step" data-step="quiz">Go to the quiz ›</button></div></div></section>';return h}
+    h+='<div class="result"><div class="cw">'+camel("cheer")+'</div><div class="starrow">'+star(1)+star(1)+star(1)+'</div><h2>Well done, '+esc(S.cur)+'!</h2><p>'+(s.game?'You finished the game.':'You finished the game and earned 15 XP.')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="again">Play again</button><button class="btn sun" data-act="step" data-step="quiz">Go to the quiz ›</button></div></div></section>';return h}
   if(g.type==="sort"){
     var it=G.items[G.i];
     h+='<div class="qmeta"><span>Item '+(G.i+1)+' of '+G.items.length+'</span></div><div class="qbar"><i style="width:'+(G.i/G.items.length*100)+'%"></i></div><div class="prompt '+(G.err?'shake':'')+'">'+esc(it[0])+'</div><div class="choices">'+g.buckets.map(function(b,k){return '<button class="choice" data-act="sort" data-k="'+k+'">'+esc(b)+'</button>'}).join("")+'</div>'}
@@ -557,7 +589,7 @@ function quizView(l){
   if(!V.quiz)V.quiz=runQuiz(l.quiz);var Q=V.quiz,p=P(),s=ls(p,l.id);
   if(!Q.done)return '<section class="card" style="display:grid;gap:14px">'+quizBody(Q,"ans")+'</section>';
   var f=Q.score/l.quiz.length,st=f>=1?3:f>=.75?2:f>=.5?1:0,nx=LESSONS[l.id];
-  return '<section class="card result"><div class="big">'+Q.score+' / '+l.quiz.length+'</div>'+starRow(st)+'<p style="font-size:1.2rem;font-weight:700">'+resultMsg(f)+'</p><p class="muted">Your best: '+s.best+' / '+l.quiz.length+(Q.gain?' · '+Q.gain:'')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="retry">Try again</button><button class="btn alt" data-act="step" data-step="learn">Read the cards again</button>'+(nx&&st>=2?'<a class="btn sun" href="#lesson-'+nx.id+'">Next: Lesson '+nx.id+' ›</a>':'<a class="btn sun" href="#home">Back to the road</a>')+'</div></section>'}
+  return '<section class="card result"><div class="cw">'+camel(f>=.75?"cheer":f>=.5?"happy":"kind")+'</div><div class="big">'+Q.score+' / '+l.quiz.length+'</div>'+starRow(st)+'<p style="font-size:1.2rem;font-weight:700">'+resultMsg(f)+'</p><p class="muted">Your best: '+s.best+' / '+l.quiz.length+(Q.gain?' · '+Q.gain:'')+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="retry">Try again</button><button class="btn alt" data-act="step" data-step="learn">Read the cards again</button>'+(nx&&st>=2?'<a class="btn sun" href="#lesson-'+nx.id+'">Next: Lesson '+nx.id+' ›</a>':'<a class="btn sun" href="#home">Back to the road</a>')+'</div></section>'}
 function finishLessonQuiz(l){var Q=V.quiz,p=P(),s=ls(p,l.id),before=xp(p);Q.done=true;s.tries++;if(s.best==null||Q.score>s.best)s.best=Q.score;touch(p);var gain=xp(p)-before;Q.gain=gain>0?'+'+gain+' XP':'';var f=Q.score/l.quiz.length;if(f>=1)bigConfetti();else if(f>=.75)confetti(70);if(gain>0)toast("+"+gain+" XP");checkBadges(p);save();render()}
 
 /* final */
@@ -566,7 +598,7 @@ function finalView(){
   var h='<div class="crumbs"><a class="btn alt" href="#home" style="min-height:42px;padding:6px 14px">‹ Back to the road</a></div><header class="card"><div class="eyebrow">All ten lessons</div><h1 style="font-size:clamp(1.7rem,4.6vw,2.4rem)">The Champions’ Challenge</h1><p class="muted" style="margin:6px 0 0">20 mixed questions. Your best score so far: '+(p.final.best||0)+' / 20. Score 18 or more to become a Champion.</p></header>';
   if(!Q.done)return h+'<section class="card" style="display:grid;gap:14px">'+quizBody(Q,"fans")+'</section>';
   var f=Q.score/20;
-  return h+'<section class="card result"><div class="big">'+Q.score+' / 20</div><p style="font-size:1.2rem;font-weight:700">'+(Q.score>=18?"MashaAllah, "+esc(S.cur)+"! You are a Champion!":Q.score>=14?"Excellent work, "+esc(S.cur)+"! A little more practice and you will be a Champion.":Q.score>=10?"Good effort, "+esc(S.cur)+"! Review the lessons below and try again.":"Keep going, "+esc(S.cur)+". Go back to the lessons and try again soon.")+'</p><p class="muted">Your best: '+p.final.best+' / 20</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="fretry">Try again</button><a class="btn sun" href="#home">Back to the road</a></div></section>'}
+  return h+'<section class="card result"><div class="cw">'+camel(Q.score>=14?"cheer":Q.score>=10?"happy":"kind")+'</div><div class="big">'+Q.score+' / 20</div><p style="font-size:1.2rem;font-weight:700">'+(Q.score>=18?"MashaAllah, "+esc(S.cur)+"! You are a Champion!":Q.score>=14?"Excellent work, "+esc(S.cur)+"! A little more practice and you will be a Champion.":Q.score>=10?"Good effort, "+esc(S.cur)+"! Review the lessons below and try again.":"Keep going, "+esc(S.cur)+". Go back to the lessons and try again soon.")+'</p><p class="muted">Your best: '+p.final.best+' / 20</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn alt" data-act="fretry">Try again</button><a class="btn sun" href="#home">Back to the road</a></div></section>'}
 function finishFinal(){var Q=V.quiz,p=P();Q.done=true;p.final.tries++;if(Q.score>p.final.best)p.final.best=Q.score;touch(p);if(Q.score>=18)bigConfetti();else if(Q.score>=14)confetti(70);checkBadges(p);save();render()}
 
 /* ---------- render ---------- */
