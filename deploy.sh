@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Commit any changes, push to your fork (origin) and the GAIDEUS org repo (upstream).
-# Cloudflare Pages watches the org repo, so the push to upstream/main is the deploy.
+# Commit any changes and push to the GAIDEUS repo (upstream = github.com/gaideus/gaideus).
+# Cloudflare Pages watches that repo, so the push to upstream/main is the deploy.
 #
 # Usage:
 #   ./deploy.sh "What changed"      # asks before committing and pushing
@@ -20,11 +20,10 @@ if [[ "$branch" != "main" ]]; then
 fi
 
 echo "→ Checking GitHub for newer changes…"
-git fetch -q origin
 git fetch -q upstream
 
 # Stop if either remote has commits we don't have, instead of overwriting them.
-for r in origin upstream; do
+for r in upstream; do
   if ! git merge-base --is-ancestor "$r/main" HEAD; then
     echo "✋ $r/main has changes you don't have locally." >&2
     echo "   Run: git pull $r main   then run ./deploy.sh again." >&2
@@ -53,8 +52,6 @@ elif [[ "$(git rev-parse HEAD)" == "$(git rev-parse upstream/main)" ]]; then
   exit 0
 fi
 
-echo "→ Pushing to your fork (origin)…"
-git push -q origin main
 echo "→ Pushing to the GAIDEUS repo (upstream)…"
 git push -q upstream main
 
