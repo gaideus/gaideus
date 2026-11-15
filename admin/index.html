@@ -148,7 +148,7 @@ function openUser(id){
 function yn(v){return v?'<span class="yes">✓ Done</span>':'<span class="no">Not yet</span>'}
 function renderUser(u,p){
   var s=p&&p.summary,h='<div class="top"><button class="btn alt back" id="bk">‹ All learners</button></div>'+
-   '<div class="card"><div class="dhead"><div><h2>'+esc(u.name)+'</h2><div class="facts"><span>Age '+u.age+'</span><span>'+esc(u.email)+'</span><span>Joined '+esc(fmt(u.created_at))+'</span><span>Last login '+esc(ago(u.last_login))+'</span></div></div>'+
+   '<div class="card"><div class="dhead"><div><h2>'+esc(u.name)+'</h2><div class="facts"><span>Age '+u.age+'</span><span>'+(p&&p.summary&&p.summary.track==="study"?'Older-learner page':'Original page')+'</span><span>'+esc(u.email)+'</span><span>Joined '+esc(fmt(u.created_at))+'</span><span>Last login '+esc(ago(u.last_login))+'</span></div></div>'+
    '<div class="actions"><button class="btn alt" id="rp">Reset password</button><button class="btn danger" id="del">Delete account</button></div></div></div>';
   if(!p||!s){return app.innerHTML=h+'<div class="card" style="margin-top:14px"><p class="empty">'+esc(u.name)+' hasn’t started a lesson yet.</p></div>',wireUser(u)}
   function t(n,l){return '<div class="card stat"><b>'+esc(n)+'</b><span>'+l+'</span></div>'}

@@ -478,13 +478,20 @@ var BADGES=[
 
 /* ---------- state ---------- */
 var S={cur:null,user:null,profile:null};
+/* Two pages share this one engine. 15 and under get the lessons written in this file; over 15 get the
+   older-learner lessons, which the server only hands to accounts over 15 (see /api/content). */
+var KIDS=null,TRACK="Aqeedah Journey";
+function setTrack(c){LESSONS=c.lessons;FINAL=c.final;LINES=c.lines;TRACK=c.name;document.title=c.name}
+function loadTrack(u){if(!KIDS)KIDS={name:TRACK,lessons:LESSONS,final:FINAL,lines:LINES};
+  if(u.track!=="study"){setTrack(KIDS);return Promise.resolve()}
+  return fetch("/api/content",{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(setTrack)}
 var A={mode:"login",err:"",email:"",down:false,busy:false};
 function P(){return S.cur?S.profile:null}
 function newProfile(){return{lessons:{},final:{best:0,tries:0},days:[],badges:[]}}
 function applyUser(u,progress){var p=progress&&typeof progress==="object"&&progress.lessons?progress:newProfile();
   p.lessons=p.lessons||{};p.final=p.final||{best:0,tries:0};p.days=p.days||[];p.badges=p.badges||[];
   S.user=u;S.cur=u.name;S.profile=p}
-function loggedOut(msg){S.cur=null;S.user=null;S.profile=null;A.mode="login";A.err=msg||"";V={step:"learn",card:0,game:null,quiz:null};render()}
+function loggedOut(msg){if(KIDS)setTrack(KIDS);S.cur=null;S.user=null;S.profile=null;A.mode="login";A.err=msg||"";V={step:"learn",card:0,game:null,quiz:null};render()}
 
 /* ---------- saving to the server ---------- */
 var syncT=null,syncWarned=false;
@@ -492,8 +499,8 @@ function buildSummary(p){var x=xp(p);return{xp:x,level:level(x).name,mastered:ma
   lessons:LESSONS.map(function(l){var s=ls(p,l.id);return{id:l.id,title:l.title,learned:!!s.learned,game:!!s.game,quick:!!s.quick,memory:!!s.memory,best:s.best,total:l.quiz.length,stars:stars(l,s),tries:s.tries||0}}),
   final:{best:p.final.best||0,tries:p.final.tries||0},badges:p.badges.slice()}}
 function pushNow(){clearTimeout(syncT);syncT=null;var p=P();if(!p||!S.user)return Promise.resolve();
-  return fetch("/api/progress",{method:"PUT",credentials:"same-origin",keepalive:true,headers:{"content-type":"application/json"},body:JSON.stringify({progress:p,summary:buildSummary(p)})})
-   .then(function(r){if(r.status===401){loggedOut("Please log in again so your progress can save.");return}if(!r.ok)throw 0;syncWarned=false})
+  return fetch("/api/progress",{method:"PUT",credentials:"same-origin",keepalive:true,headers:{"content-type":"application/json"},body:JSON.stringify({track:S.user.track,progress:p,summary:buildSummary(p)})})
+   .then(function(r){if(r.status===403){location.reload();return}if(r.status===401){loggedOut("Please log in again so your progress can save.");return}if(!r.ok)throw 0;syncWarned=false})
    .catch(function(){if(!syncWarned){syncWarned=true;toast("Couldn’t save. Check your internet.")}})}
 function save(){clearTimeout(syncT);syncT=setTimeout(pushNow,700)}
 document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden"&&syncT)pushNow()});
@@ -586,9 +593,9 @@ addEventListener("hashchange",function(){V={step:PEND||"learn",card:0,game:null,
 
 /* ---------- views ---------- */
 function topbar(){
-  var p=P();if(!p)return '<span class="brand">'+logo()+' Aqeedah Journey</span>';
+  var p=P();if(!p)return '<span class="brand">'+logo()+' '+esc(TRACK)+'</span>';
   var x=xp(p),lv=level(x);
-  return '<button class="brand" data-act="home" aria-label="Go to the home page">'+logo()+'<span class="bt">Aqeedah Journey</span></button><span class="spacer"></span>'+
+  return '<button class="brand" data-act="home" aria-label="Go to the home page">'+logo()+'<span class="bt">'+esc(TRACK)+'</span></button><span class="spacer"></span>'+
    '<span class="chip" title="Experience points"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="var(--sun)"/></svg>'+x+' XP</span>'+
    '<span class="chip" title="Days in a row">'+flame()+streak(p)+'<span class="hs">&nbsp;day streak</span></span>'+
    '<details class="who"><summary>'+esc(S.cur)+'</summary><div class="menu"><div class="eyebrow">Signed in as</div><div style="font-weight:700;word-break:break-all">'+esc(S.user?S.user.email:"")+'</div><button data-act="logout">Log out</button></div></details>'}
@@ -618,14 +625,16 @@ function doAuth(mode,form){
      if(!x.ok){A.busy=false;btn.disabled=false;err.textContent=x.j.error||"Something went wrong. Please try again.";return}
      if(x.j.user&&x.j.user.role==="admin"){location.href="/admin/";return}
      return fetch("/api/me",{credentials:"same-origin"}).then(function(r){return r.json()}).then(function(d){
+       return loadTrack(d.user).then(function(){
        A.busy=false;A.email="";applyUser(d.user,d.progress);V={step:"learn",card:0,game:null,quiz:null};
-       if(location.hash&&location.hash!=="#home")location.hash="home";render();toast(mode==="register"?"Welcome, "+d.user.name+"!":"Welcome back, "+d.user.name+"!")})})
+       if(location.hash&&location.hash!=="#home")location.hash="home";render();toast(mode==="register"?"Welcome, "+d.user.name+"!":"Welcome back, "+d.user.name+"!")})})})
    .catch(function(){A.busy=false;btn.disabled=false;err.textContent="Can’t reach the server. Check your internet."})}
 function boot(){
   document.getElementById("app").innerHTML='<section class="card welcome"><div class="cw">'+camel("happy")+'</div><p class="lead">Loading…</p></section>';
   A.down=false;
   fetch("/api/me",{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
-    if(d.user&&d.user.role==="user")applyUser(d.user,d.progress);render()}).catch(function(){A.down=true;render()})}
+    if(!(d.user&&d.user.role==="user")){render();return}
+    return loadTrack(d.user).then(function(){applyUser(d.user,d.progress);render()})}).catch(function(){A.down=true;render()})}
 
 function mission(p){
   for(var i=0;i<LESSONS.length;i++){var l=LESSONS[i],s=ls(p,l.id);

@@ -1,6 +1,15 @@
 // GAIDEUS Learn API (Cloudflare Pages Function, served under /api/*).
 // Needs: a D1 database bound as DB, and secrets ADMIN_EMAIL + ADMIN_PASSWORD.
 
+import study from "../_content/study.js";
+
+// Which Learn page an account gets. 15 and under: the original page. Over 15: the older-learner page.
+// If the age is missing or not a number, this falls back to the original page.
+const trackFor = (age) => (Number(age) > 15 ? "study" : "kids");
+// Progress for each page is kept side by side in one row: { kids: {...}, study: {...} }.
+// Rows saved before this existed hold a single profile, which belongs to the original page.
+const parseTracks = (text) => { try { const d = JSON.parse(text); return d && d.lessons ? { kids: d } : (d || {}); } catch { return {}; } };
+
 const SESSION_DAYS = 30;
 const PBKDF2_ITERATIONS = 100000;           // Cloudflare Workers allows at most 100,000
 const MAX_BODY = 60 * 1024;
@@ -139,9 +148,8 @@ async function me(env, session) {
   const u = await env.DB.prepare("SELECT id, name, age, email FROM users WHERE id = ?").bind(session.user_id).first();
   if (!u) return json({ user: null });
   const p = await env.DB.prepare("SELECT data FROM progress WHERE user_id = ?").bind(u.id).first();
-  let progress = null;
-  try { progress = p ? JSON.parse(p.data) : null; } catch {}
-  return json({ user: { ...u, role: "user" }, progress });
+  const track = trackFor(u.age);
+  return json({ user: { ...u, role: "user", track }, progress: (p ? parseTracks(p.data)[track] : null) || null });
 }
 
 async function saveProgress(env, session, request) {
@@ -150,7 +158,12 @@ async function saveProgress(env, session, request) {
   if (!p || typeof p !== "object" || typeof p.lessons !== "object" || typeof p.final !== "object" || !Array.isArray(p.days) || !Array.isArray(p.badges))
     return fail(400, "Bad progress data.");
   if (!s || typeof s !== "object") return fail(400, "Bad summary.");
+  const u = await env.DB.prepare("SELECT age FROM users WHERE id = ?").bind(session.user_id).first();
+  if (!u) return fail(401, "Please log in.");
+  const track = trackFor(u.age);
+  if (b.track !== undefined && b.track !== track) return fail(403, "That page is not for this account.");
   const summary = JSON.stringify({
+    track,
     level: clean(s.level, 30),
     lessons: Array.isArray(s.lessons) ? s.lessons.slice(0, 20).map((l) => ({
       id: clampInt(l.id, 0, 99), title: clean(l.title, 80),
@@ -161,8 +174,9 @@ async function saveProgress(env, session, request) {
     final: { best: clampInt(s.final?.best, 0, 99), tries: clampInt(s.final?.tries, 0, 9999) },
     badges: Array.isArray(s.badges) ? s.badges.slice(0, 30).map((x) => clean(x, 40)) : [],
   });
-  const data = JSON.stringify(p);
-  if (data.length > 40000 || summary.length > 8000) return fail(413, "Too much data.");
+  if (JSON.stringify(p).length > 40000 || summary.length > 8000) return fail(413, "Too much data.");
+  const old = await env.DB.prepare("SELECT data FROM progress WHERE user_id = ?").bind(session.user_id).first();
+  const data = JSON.stringify({ ...(old ? parseTracks(old.data) : {}), [track]: p });
   await env.DB.prepare(
     `INSERT INTO progress (user_id, data, summary, xp, mastered, stars, pct, streak, updated_at)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -233,6 +247,15 @@ export async function onRequest({ request, env, params }) {
     if (method === "POST" && a === "logout" && !b) return await logout(env, request, as);
 
     if (method === "GET" && a === "me" && !b) return await me(env, await getSession(env, request, as));
+
+    // The older-learner lessons: only handed to signed-in accounts over 15.
+    if (a === "content" && !b && method === "GET") {
+      const session = await getSession(env, request, "user");
+      if (!session) return fail(401, "Please log in.");
+      const u = await env.DB.prepare("SELECT age FROM users WHERE id = ?").bind(session.user_id).first();
+      if (!u || trackFor(u.age) !== "study") return fail(403, "That page is not for this account.");
+      return json(study);
+    }
 
     if (a === "progress" && !b && method === "PUT") {
       const session = await getSession(env, request, "user");
