@@ -35,6 +35,23 @@
   --leaf:#4CC48A; --leaf2:#2C6A52; --leaf-soft:#173A31; --trunk:#B07B58; --ground:#3A3216;
   --bar:#241C0C; --shadow:0 2px 0 rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.25); color-scheme:dark}
 
+/* Older-learner page (over 15): green theme. Set by setTrack() as data-track="study" on <html>. */
+:root[data-track="study"]{
+  --logo-leaf:#FFD84D; --logo-stem:#FFFFFF;
+  --bg:#F1F8F2; --surface:#FFFFFF; --surface2:#DDEFE0; --ink:#12301F; --muted:#4C6656; --line:#C5E0CB;
+  --primary:#1F8A5B; --primary-ink:#FFFFFF; --primary-soft:#D5F0DF; --primary-text:#17694A;
+  --sun-soft:#E3F4E6; --sun-ink:#12301F; --ground:#CFE3D5; --bar:#FFFFFF;
+  --shadow:0 2px 0 rgba(18,48,31,.08), 0 10px 24px rgba(18,48,31,.08)}
+@media (prefers-color-scheme:dark){:root[data-track="study"]:not([data-theme="light"]){
+  --bg:#0E1A14; --surface:#16261D; --surface2:#1F3528; --ink:#E8F6EC; --muted:#A3C2AE; --line:#2C4A39;
+  --primary:#4CC48A; --primary-ink:#06231A; --primary-soft:#173A2B; --primary-text:#7BE0AC;
+  --sun-soft:#1F3528; --sun-ink:#E8F6EC; --ground:#1C3A2B; --bar:#16261D;
+  --shadow:0 2px 0 rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.25)}}
+:root[data-track="study"][data-theme="dark"]{
+  --bg:#0E1A14; --surface:#16261D; --surface2:#1F3528; --ink:#E8F6EC; --muted:#A3C2AE; --line:#2C4A39;
+  --primary:#4CC48A; --primary-ink:#06231A; --primary-soft:#173A2B; --primary-text:#7BE0AC;
+  --sun-soft:#1F3528; --sun-ink:#E8F6EC; --ground:#1C3A2B; --bar:#16261D;
+  --shadow:0 2px 0 rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.25)}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
@@ -481,7 +498,7 @@ var S={cur:null,user:null,profile:null};
 /* Two pages share this one engine. 15 and under get the lessons written in this file; over 15 get the
    older-learner lessons, which the server only hands to accounts over 15 (see /api/content). */
 var KIDS=null,TRACK="Aqeedah Journey";
-function setTrack(c){LESSONS=c.lessons;FINAL=c.final;LINES=c.lines;TRACK=c.name;document.title=c.name}
+function setTrack(c){document.documentElement.setAttribute("data-track",c===KIDS?"kids":"study");LESSONS=c.lessons;FINAL=c.final;LINES=c.lines;TRACK=c.name;document.title=c.name}
 function loadTrack(u){if(!KIDS)KIDS={name:TRACK,lessons:LESSONS,final:FINAL,lines:LINES};
   if(u.track!=="study"){setTrack(KIDS);return Promise.resolve()}
   return fetch("/api/content",{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(setTrack)}
@@ -524,7 +541,7 @@ function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(M
 function star(on){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="'+(on?'var(--sun)':'var(--line)')+'" stroke="'+(on?'#D99A00':'var(--line)')+'" stroke-width="1.2" stroke-linejoin="round"/></svg>'}
 function starRow(n){return '<span class="starrow" role="img" aria-label="'+n+' of 3 stars">'+star(n>0)+star(n>1)+star(n>2)+'</span>'}
 function medal(c){return '<svg viewBox="0 0 56 56" aria-hidden="true"><path d="M18 3h8l6 14h-8z" fill="'+c+'" opacity=".7"/><path d="M38 3h-8l-6 14h8z" fill="'+c+'"/><circle cx="28" cy="35" r="17" fill="'+c+'"/><circle cx="28" cy="35" r="12.5" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/><path d="M28 27l2.6 5.3 5.8.8-4.2 4.1 1 5.8L28 40.2l-5.2 2.8 1-5.8-4.2-4.1 5.8-.8z" fill="#fff"/></svg>'}
-function logo(){return '<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="var(--primary)"/><path d="M17 27V15" stroke="var(--trunk)" stroke-width="3" stroke-linecap="round"/><path d="M17 17c-6 0-8-4-8-8 5 0 8 2 8 8zM17 15c0-5 3-8 8-8 0 5-3 8-8 8z" fill="var(--leaf)"/></svg>'}
+function logo(){return '<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="var(--primary)"/><path d="M17 27V15" stroke="var(--logo-stem,var(--trunk))" stroke-width="3" stroke-linecap="round"/><path d="M17 17c-6 0-8-4-8-8 5 0 8 2 8 8zM17 15c0-5 3-8 8-8 0 5-3 8-8 8z" fill="var(--logo-leaf,var(--leaf))"/></svg>'}
 function camel(mood,fx,food){mood=mood||"happy";
   var Y="#FFC933",D="#F2A60C",T="#C77F0A",L="#FFE9A8",K="#3B2A12",W="#fff";
   var dead=mood==="dead",cheer=mood==="cheer",kind=mood==="kind";
