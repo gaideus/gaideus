@@ -254,6 +254,67 @@ th{font-family:var(--font-display);color:var(--primary-text)}
 .mcard.up{background:var(--surface);color:var(--ink);border-color:var(--line);font-size:.92rem;line-height:1.25}
 .mcard.ok{background:var(--leaf-soft);border-color:var(--leaf)}
 .mcard[disabled]{cursor:default}
+/* hub */
+.hub{display:grid;gap:18px}
+.hubhero{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-radius:28px;background:linear-gradient(135deg,var(--primary-soft),var(--surface) 75%)}
+.hubhero .cw{width:150px;flex:none}
+.hubsay{flex:1;min-width:220px;display:grid;gap:10px;justify-items:start}
+.hubsay h1{font-size:clamp(1.7rem,5vw,2.5rem);font-weight:800}
+.funbox{background:var(--surface);border:3px solid var(--primary);border-radius:20px;padding:12px 16px;width:100%}
+.funbox .ptag{background:var(--primary);color:var(--primary-ink)}
+.funbox p{margin:6px 0 0;font-size:1.15rem;font-weight:700}
+.hubrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
+.hubrow .card{display:grid;gap:8px;align-content:start;border-radius:24px;border-width:3px}
+.hubrow b{font-family:var(--font-display);font-size:1.3rem;line-height:1.2}
+.hubrow .btn{justify-self:start;margin-top:4px}
+.hstreak{background:var(--coral-soft);border-color:var(--coral)}
+.hstreak .big{display:flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:800;font-size:2.8rem;line-height:1}
+.hstreak .big svg{width:46px;height:46px}
+.week{display:flex;gap:6px}
+.week i{width:22px;height:22px;border-radius:50%;background:var(--surface);border:2px solid var(--coral)}
+.week i.on{background:var(--coral)}
+.hresume{background:var(--leaf-soft);border-color:var(--leaf)}
+.hrewards{background:var(--sun-soft);border-color:var(--sun)}
+.hmedals{display:flex;flex-wrap:wrap;gap:4px}
+.hmedals svg{width:38px;height:38px;display:block}
+.hmedals .off{opacity:.4}
+.pathtitle{font-size:1.6rem;font-weight:800}
+/* my groups */
+.mygroups{display:grid;gap:14px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.gcard{display:grid;gap:12px;border-radius:24px}
+.gcard h3{font-size:1.4rem;font-weight:800;margin-top:6px}
+.gcard .ptag{background:var(--primary-soft)}
+.gmembers{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.gmembers li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:8px 12px;border-radius:14px;border:2px solid transparent}
+.gmembers li.me{background:var(--sun-soft);border-color:var(--sun)}
+.gname{font-weight:800;overflow-wrap:anywhere}
+.youtag{display:inline-block;margin-left:8px;background:var(--ink);color:var(--surface);border-radius:999px;padding:1px 9px;font-size:.78rem;vertical-align:middle}
+.gnum{font-weight:700;font-size:.9rem;white-space:nowrap}
+.gbar{grid-column:1 / -1;grid-row:2;height:12px;border-radius:99px;background:var(--surface2);overflow:hidden}
+.gbar i{display:block;height:100%;min-width:0;background:var(--leaf);border-radius:99px}
+.gempty{display:flex;gap:14px;align-items:center;border-radius:24px;border-style:dashed}
+.gempty .gico{width:56px;height:56px;border-radius:18px;background:var(--surface2);color:var(--muted);display:grid;place-items:center;flex:none}
+.gempty .gico svg{width:34px;height:34px}
+.gempty b{font-family:var(--font-display);font-size:1.25rem}
+.gempty p{margin:2px 0 0}
+/* course menu */
+.pathhead{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pathhead .cw{width:110px;flex:none}
+.pathhead h1{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:800}
+.paths{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px}
+.pcard{--c1:var(--surface2);--c2:var(--muted);--ci:#fff;display:grid;grid-template-rows:auto 1fr auto;gap:14px;background:var(--c1);border:3px solid var(--c2);border-radius:24px;padding:20px;box-shadow:var(--shadow);color:#33240B}
+.pcard .pico{width:84px;height:84px;border-radius:24px;background:var(--c2);color:var(--ci);display:grid;place-items:center}
+.pcard .pico svg{width:54px;height:54px}
+.pcard h2{font-size:1.6rem;font-weight:800;margin:8px 0 4px}
+.pcard p{margin:0}
+.pcard .pprog{margin-top:8px;font-weight:800;font-size:.92rem}
+.ptag{display:inline-block;background:rgba(255,255,255,.75);border-radius:999px;padding:3px 12px;font-weight:800;font-size:.85rem;margin:0 6px 4px 0}
+.ptag.rec{background:#33240B;color:#fff}
+.pcard .pbtn{background:var(--c2);color:var(--ci);min-height:54px;font-size:1.1rem;width:100%}
+.pcard.soon{background:var(--surface2);border:3px dashed var(--line);color:var(--muted);box-shadow:none;filter:grayscale(1);opacity:.75;cursor:not-allowed;user-select:none}
+.pcard.soon .pico{background:var(--line);color:var(--muted)}
+.pcard.soon .pbtn{display:grid;place-items:center;border-radius:14px;background:var(--line);color:var(--muted);font-weight:800}
 /* Jamal the camel mascot */
 .camel{display:block;width:100%;height:auto;overflow:visible}
 .camel .bob{animation:bob 3.2s ease-in-out infinite}
@@ -494,21 +555,115 @@ var BADGES=[
 ];
 
 /* ---------- state ---------- */
-var S={cur:null,user:null,profile:null};
-/* Two pages share this one engine. 15 and under get the lessons written in this file; over 15 get the
-   older-learner lessons, which the server only hands to accounts over 15 (see /api/content). */
-var KIDS=null,TRACK="Aqeedah Journey";
-function setTrack(c){document.documentElement.setAttribute("data-track",c===KIDS?"kids":"study");LESSONS=c.lessons;FINAL=c.final;LINES=c.lines;TRACK=c.name;document.title=c.name}
-function loadTrack(u){if(!KIDS)KIDS={name:TRACK,lessons:LESSONS,final:FINAL,lines:LINES};
-  if(u.track!=="study"){setTrack(KIDS);return Promise.resolve()}
-  return fetch("/api/content",{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(setTrack)}
+var S={cur:null,user:null,profile:null,track:null,tracks:{}};
+/* ---------- learning paths ----------
+   The course menu is built from this one list. To add a path, add ONE entry here
+   (and its lessons on the server: see TRACKS / CONTENT in functions/api/[[route]].js).
+   id: saved with progress · icon: a key in PATH_ICONS · c1/c2/ink: card colours ·
+   min/max: ages it is recommended for · inline: lessons are the ones written in this file ·
+   soon: a greyed-out "Coming soon" card that cannot be opened. */
+var PATHS=[
+ {id:"kids",name:"Aqeedah Journey",ages:"Ages 15 and under",min:0,max:15,lessons:10,icon:"sprout",c1:"#FFF0B8",c2:"#FFC400",ink:"#33240B",inline:true,
+  desc:"Ten short lessons with Jamal the camel: read the cards, play the games, and grow your knowledge tree."},
+ {id:"study",name:"Aqeedah Studies",ages:"Ages 16 and over",min:16,max:200,lessons:10,icon:"book",c1:"#D5F0DF",c2:"#1F8A5B",ink:"#FFFFFF",
+  desc:"The same ten lessons in more depth, with the evidences, the scholars’ statements and revision questions."},
+ {soon:true,name:"New path",desc:"Another learning path is on its way."},
+ {soon:true,name:"New path",desc:"More to learn, coming later."}
+];
+var PATH_ICONS={
+ sprout:'<path d="M32 54V30" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M32 34c-13 0-18-9-18-18 11 0 18 5 18 18zM32 30c0-11 7-18 18-18 0 11-7 18-18 18z" fill="currentColor"/>',
+ book:'<path d="M8 14c8-3 16-3 24 2v36c-8-5-16-5-24-2zM56 14c-8-3-16-3-24 2v36c8-5 16-5 24-2z" fill="currentColor"/><path d="M32 16v36" stroke="rgba(0,0,0,.25)" stroke-width="2"/>',
+ lock:'<rect x="14" y="28" width="36" height="26" rx="6" fill="currentColor"/><path d="M22 28v-8a10 10 0 0 1 20 0v8" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/>'
+};
+function pathIcon(k){return '<svg viewBox="0 0 64 64" aria-hidden="true">'+(PATH_ICONS[k]||PATH_ICONS.book)+'</svg>'}
+function pathCfg(id){for(var i=0;i<PATHS.length;i++)if(PATHS[i].id===id)return PATHS[i];return null}
+var KIDS=null,TRACK="GAIDEUS Learn",CONTENT={},PKEY="gaideus-path";
+function setTrack(c,id){document.documentElement.setAttribute("data-track",id||"");LESSONS=c.lessons;FINAL=c.final;LINES=c.lines;TRACK=id?c.name:"GAIDEUS Learn";document.title=TRACK}
+function keepKids(){if(!KIDS)KIDS={name:"Aqeedah Journey",lessons:LESSONS,final:FINAL,lines:LINES}}
+function loadPath(id){keepKids();var c=pathCfg(id);if(!c||c.soon)return Promise.reject();
+  if(c.inline){setTrack(KIDS,id);return Promise.resolve()}
+  if(CONTENT[id]){setTrack(CONTENT[id],id);return Promise.resolve()}
+  return fetch("/api/content?track="+encodeURIComponent(id),{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){CONTENT[id]=j;setTrack(j,id)})}
+function fixProfile(p){p=p&&typeof p==="object"?p:newProfile();p.lessons=p.lessons||{};p.final=p.final||{best:0,tries:0};p.days=p.days||[];p.badges=p.badges||[];return p}
+function openPath(id){return loadPath(id).then(function(){S.track=id;S.profile=S.tracks[id]=fixProfile(S.tracks[id]);try{localStorage.setItem(PKEY,id)}catch(e){}
+  V={step:"learn",card:0,game:null,quiz:null};if(location.hash!=="#home")location.hash="home";render();scrollTo(0,0)})}
+function closePath(){S.track=null;S.profile=null;try{localStorage.removeItem(PKEY)}catch(e){}keepKids();setTrack(KIDS,"");if(location.hash)location.hash="";newFun();render();scrollTo(0,0);loadGroups();
+  var nb=Object.keys(allBadges()).length;if(H.badges!=null&&nb>H.badges){bigConfetti();toast(nb-H.badges===1?"You earned a new badge!":"You earned "+(nb-H.badges)+" new badges!")}H.badges=nb}
+function startedCount(p){var n=0;if(p&&p.lessons)for(var k in p.lessons){var s=p.lessons[k];if(s&&(s.learned||s.game||s.best!=null))n++}return n}
+/* ---------- the hub: greeting, streak, pick-up card, rewards ----------
+   Everything here is worked out from the progress saved on the server (days, badges, lessons),
+   so it follows the learner to any device. */
+var FUN=[
+ ["Did you know?","A camel’s hump stores fat, not water."],
+ ["Did you know?","Camels have three eyelids and two rows of eyelashes to keep the sand out."],
+ ["Did you know?","A camel can close its nostrils in a sandstorm."],
+ ["Did you know?","Baby camels are born without a hump."],
+ ["Did you know?","A camel’s wide feet stop it sinking into the sand."],
+ ["Did you know?","A thirsty camel can drink more than 100 litres of water in a few minutes."],
+ ["Jamal’s joke","What do you call a camel with no humps? Humphrey!"],
+ ["Jamal’s joke","Why did the camel cross the desert? To get to the other dune!"],
+ ["Jamal’s joke","What is a camel’s favourite day of the week? Hump day!"],
+ ["Jamal’s joke","How does a camel hide in the desert? With camel-flage!"],
+ ["Jamal says","Small steps every day grow a big tree. One step today?"],
+ ["Jamal says","Mistakes help us learn. Have another go!"]
+];
+var H={fun:-1,badges:null};
+function newFun(){var i;do{i=Math.floor(Math.random()*FUN.length)}while(i===H.fun);H.fun=i}
+function eachTrack(fn){PATHS.forEach(function(c){var p=!c.soon&&S.tracks[c.id];if(p&&typeof p==="object")fn(c,p)})}
+function allDays(){var d={};eachTrack(function(c,p){(p.days||[]).forEach(function(x){d[x]=1})});return Object.keys(d)}
+function allBadges(){var d={};eachTrack(function(c,p){(p.badges||[]).forEach(function(x){d[x]=1})});return d}
+function lessonDone(s){return !!(s&&s.learned&&s.game&&s.best!=null)}
+function doneCount(){var n=0;eachTrack(function(c,p){for(var k in p.lessons||{})if(lessonDone(p.lessons[k]))n++});return n}
+function lastPath(){var best=null,bt=-1;eachTrack(function(c,p){if(!startedCount(p))return;var t=p.at||(p.days&&p.days.length?Date.parse(p.days[p.days.length-1])||1:1);if(t>bt){bt=t;best=c}});return best}
+function nextLesson(c,p){for(var i=1;i<=c.lessons;i++)if(!lessonDone(p.lessons&&p.lessons[i]))return i;return null}
+function hubView(){
+  if(H.fun<0)newFun();var f=FUN[H.fun],days=allDays(),n=streak({days:days}),set={};days.forEach(function(d){set[d]=1});
+  var today=!!set[dayKey(new Date())],week="",hit=0;
+  for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);var on=!!set[dayKey(d)];if(on)hit++;week+='<i class="'+(on?'on':'')+'"></i>'}
+  var h='<section class="hub"><div class="card hubhero"><div class="cw">'+camel(n>=3?"cheer":"happy")+'</div><div class="hubsay"><h1>Assalamu alaykum, '+esc(S.cur)+'!</h1>'+
+   '<div class="funbox" aria-live="polite"><span class="ptag">'+esc(f[0])+'</span><p>'+esc(f[1])+'</p></div><button class="btn alt" data-act="funmore">Tell me another</button></div></div><div class="hubrow">';
+  h+='<div class="card hstreak"><div class="eyebrow">My streak</div><div class="big">'+flame()+n+'</div><b>'+(n===0?'Start your streak today!':n===1?'1 day in a row!':n+' days in a row!')+'</b>'+
+   '<div class="week" role="img" aria-label="You learned on '+hit+' of the last 7 days">'+week+'</div><span>'+(today?'You learned today. See you tomorrow!':n?'Learn today to keep it going.':'Finish one step to light the flame.')+'</span></div>';
+  var c=lastPath(),sug=pathCfg(S.user&&S.user.suggested)||PATHS[0];
+  if(c){var p=S.tracks[c.id],nx=nextLesson(c,p);
+    h+='<div class="card hresume"><div class="eyebrow">Pick up where you left off</div><b>'+esc(c.name)+'</b><span>'+(nx?'Next up: Lesson '+nx:'You finished every lesson. Try the Champions’ Challenge!')+' · '+startedCount(p)+' of '+c.lessons+' started</span>'+
+     '<button class="btn" data-act="resume" data-id="'+c.id+'" data-n="'+(nx||"")+'">Keep going ›</button></div>'}
+  else h+='<div class="card hresume"><div class="eyebrow">Ready when you are</div><b>Your first lesson is waiting</b><span>We picked '+esc(sug.name)+' for you. You can choose another path below.</span><button class="btn" data-act="resume" data-id="'+sug.id+'" data-n="1">Let’s go ›</button></div>';
+  var got=allBadges(),nb=Object.keys(got).length,dn=doneCount();
+  h+='<div class="card hrewards"><div class="eyebrow">My rewards</div><b>'+dn+(dn===1?' lesson':' lessons')+' finished · '+nb+(nb===1?' badge':' badges')+'</b><div class="hmedals">'+
+   BADGES.map(function(b){var on=!!got[b.id];return '<span class="'+(on?'on':'off')+'" role="img" title="'+esc(b.n)+'" aria-label="Badge: '+esc(b.n)+(on?', earned':', not earned yet')+'">'+medal(on?b.c:"#9A917C")+'</span>'}).join("")+
+   '</div><span>'+(nb?'Great collecting! Can you earn them all?':'Finish a lesson to win your first badge.')+'</span></div></div></section>';
+  return h}
+/* ---------- My groups: classmates' progress, from /api/groups (first names only) ---------- */
+function loadGroups(){S.groups=null;S.groupsErr=false;
+  return fetch("/api/groups",{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){S.groups=j.groups||[]})
+   .catch(function(){S.groups=[];S.groupsErr=true}).then(function(){var el=document.getElementById("mygroups");if(el&&S.user&&!S.track)el.outerHTML=groupsView()})}
+function groupsView(){
+  var h='<section id="mygroups" class="mygroups" aria-labelledby="mgh"><h2 id="mgh" class="pathtitle">My groups</h2>';
+  if(S.groups==null)h+='<p class="card muted" role="status">Loading your groups…</p>';
+  else if(S.groupsErr)h+='<p class="card muted" role="status">We couldn’t load your groups just now. Try again in a little while.</p>';
+  else if(!S.groups.length)h+='<div class="card gempty"><div class="gico">'+pathIcon("lock")+'</div><div><b>You’re not in a group yet</b><p>When your teacher adds you to a group, you’ll see how you and your classmates are doing right here.</p></div></div>';
+  else h+='<div class="ggrid">'+S.groups.map(function(g){
+    return '<div class="card gcard"><div><span class="ptag">'+esc(g.courseName)+'</span><h3>'+esc(g.name)+'</h3></div><ol class="gmembers">'+g.members.map(function(m){
+      return '<li class="'+(m.me?'me':'')+'"'+(m.me?' aria-current="true"':'')+'><span class="gname">'+esc(m.name)+(m.me?'<span class="youtag">You</span>':'')+'</span>'+
+       '<span class="gbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+m.pct+'" aria-label="'+esc(m.name)+(m.me?' (you)':'')+': '+m.pct+' percent of the course"><i style="width:'+m.pct+'%"></i></span>'+
+       '<span class="gnum">'+m.pct+'% · '+m.done+' of '+m.total+' lessons</span></li>'}).join("")+'</ol></div>'}).join("")+'</div>';
+  return h+'</section>'}
+function pathsView(){
+  var h=hubView()+groupsView()+'<h2 class="pathtitle">Choose your learning path</h2><ul class="paths">';
+  PATHS.forEach(function(c){
+    if(c.soon){h+='<li class="pcard soon" aria-disabled="true"><div class="pico">'+pathIcon("lock")+'</div><div class="pbody"><span class="ptag">Coming soon</span><h2>'+esc(c.name)+'</h2><p>'+esc(c.desc)+'</p></div><span class="pbtn" aria-hidden="true">Locked</span></li>';return}
+    var n=startedCount(S.tracks[c.id]),rec=S.user&&S.user.suggested===c.id;
+    h+='<li class="pcard" style="--c1:'+c.c1+';--c2:'+c.c2+';--ci:'+c.ink+'"><div class="pico">'+pathIcon(c.icon)+'</div><div class="pbody">'+
+     '<span class="ptag">'+esc(c.ages)+'</span>'+(rec?'<span class="ptag rec">Recommended for you</span>':'')+'<h2>'+esc(c.name)+'</h2><p>'+esc(c.desc)+'</p>'+
+     '<p class="pprog">'+(n?n+' of '+c.lessons+' lessons started':c.lessons+' lessons')+'</p></div>'+
+     '<button class="btn pbtn" data-act="openpath" data-id="'+c.id+'" aria-label="'+(n?'Continue ':'Start ')+esc(c.name)+'">'+(n?'Continue':'Start')+' ›</button></li>'});
+  return h+'</ul>'}
 var A={mode:"login",err:"",email:"",down:false,busy:false};
-function P(){return S.cur?S.profile:null}
+function P(){return S.track?S.profile:null}
 function newProfile(){return{lessons:{},final:{best:0,tries:0},days:[],badges:[]}}
-function applyUser(u,progress){var p=progress&&typeof progress==="object"&&progress.lessons?progress:newProfile();
-  p.lessons=p.lessons||{};p.final=p.final||{best:0,tries:0};p.days=p.days||[];p.badges=p.badges||[];
-  S.user=u;S.cur=u.name;S.profile=p}
-function loggedOut(msg){if(KIDS)setTrack(KIDS);S.cur=null;S.user=null;S.profile=null;A.mode="login";A.err=msg||"";V={step:"learn",card:0,game:null,quiz:null};render()}
+function applyUser(u,tracks){H.fun=-1;H.badges=null;S.user=u;S.cur=u.name;S.tracks=tracks&&typeof tracks==="object"?tracks:{};S.track=null;S.profile=null;H.badges=Object.keys(allBadges()).length;loadGroups()}
+function loggedOut(msg){keepKids();setTrack(KIDS,"");try{localStorage.removeItem(PKEY)}catch(e){}S.cur=null;S.user=null;S.profile=null;S.track=null;S.tracks={};S.groups=null;A.mode="login";A.err=msg||"";V={step:"learn",card:0,game:null,quiz:null};render()}
 
 /* ---------- saving to the server ---------- */
 var syncT=null,syncWarned=false;
@@ -516,7 +671,7 @@ function buildSummary(p){var x=xp(p);return{xp:x,level:level(x).name,mastered:ma
   lessons:LESSONS.map(function(l){var s=ls(p,l.id);return{id:l.id,title:l.title,learned:!!s.learned,game:!!s.game,quick:!!s.quick,memory:!!s.memory,best:s.best,total:l.quiz.length,stars:stars(l,s),tries:s.tries||0}}),
   final:{best:p.final.best||0,tries:p.final.tries||0},badges:p.badges.slice()}}
 function pushNow(){clearTimeout(syncT);syncT=null;var p=P();if(!p||!S.user)return Promise.resolve();
-  return fetch("/api/progress",{method:"PUT",credentials:"same-origin",keepalive:true,headers:{"content-type":"application/json"},body:JSON.stringify({track:S.user.track,progress:p,summary:buildSummary(p)})})
+  return fetch("/api/progress",{method:"PUT",credentials:"same-origin",keepalive:true,headers:{"content-type":"application/json"},body:JSON.stringify({track:S.track,progress:p,summary:buildSummary(p)})})
    .then(function(r){if(r.status===403){location.reload();return}if(r.status===401){loggedOut("Please log in again so your progress can save.");return}if(!r.ok)throw 0;syncWarned=false})
    .catch(function(){if(!syncWarned){syncWarned=true;toast("Couldn’t save. Check your internet.")}})}
 function save(){clearTimeout(syncT);syncT=setTimeout(pushNow,700)}
@@ -532,7 +687,7 @@ function xp(p){var x=0;LESSONS.forEach(function(l){var s=ls(p,l.id);x+=(s.learne
 function level(x){var i=0;LEVELS.forEach(function(L,k){if(x>=L[1])i=k});var cur=LEVELS[i],nx=LEVELS[i+1];return{name:cur[0],idx:i,next:nx?nx[0]:null,pct:nx?(x-cur[1])/(nx[1]-cur[1]):1,toNext:nx?nx[1]-x:0}}
 function dayKey(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
 function streak(p){var set={};p.days.forEach(function(d){set[d]=1});var d=new Date(),n=0;if(!set[dayKey(d)])d.setDate(d.getDate()-1);while(set[dayKey(d)]){n++;d.setDate(d.getDate()-1)}return n}
-function touch(p){var k=dayKey(new Date());if(p.days.indexOf(k)<0)p.days.push(k)}
+function touch(p){p.at=Date.now();var k=dayKey(new Date());if(p.days.indexOf(k)<0)p.days.push(k)}
 function checkBadges(p){BADGES.forEach(function(b){if(p.badges.indexOf(b.id)<0&&b.t(p)){p.badges.push(b.id);toast("New badge: "+b.n);bigConfetti()}})}
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
@@ -610,9 +765,10 @@ addEventListener("hashchange",function(){V={step:PEND||"learn",card:0,game:null,
 
 /* ---------- views ---------- */
 function topbar(){
-  var p=P();if(!p)return '<span class="brand">'+logo()+' '+esc(TRACK)+'</span>';
+  var who='<details class="who"><summary>'+esc(S.cur)+'</summary><div class="menu"><div class="eyebrow">Signed in as</div><div style="font-weight:700;word-break:break-all">'+esc(S.user?S.user.email:"")+'</div><button data-act="logout">Log out</button></div></details>';
+  var p=P();if(!p)return '<span class="brand">'+logo()+' '+esc(TRACK)+'</span>'+(S.user?'<span class="spacer"></span>'+who:'');
   var x=xp(p),lv=level(x);
-  return '<button class="brand" data-act="home" aria-label="Go to the home page">'+logo()+'<span class="bt">'+esc(TRACK)+'</span></button><span class="spacer"></span>'+
+  return '<button class="brand" data-act="home" aria-label="Go to the home page">'+logo()+'<span class="bt">'+esc(TRACK)+'</span></button><span class="spacer"></span><button class="chip" data-act="paths" style="border:0" aria-label="Back to all learning paths">All paths</button>'+
    '<span class="chip" title="Experience points"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="var(--sun)"/></svg>'+x+' XP</span>'+
    '<span class="chip" title="Days in a row">'+flame()+streak(p)+'<span class="hs">&nbsp;day streak</span></span>'+
    '<details class="who"><summary>'+esc(S.cur)+'</summary><div class="menu"><div class="eyebrow">Signed in as</div><div style="font-weight:700;word-break:break-all">'+esc(S.user?S.user.email:"")+'</div><button data-act="logout">Log out</button></div></details>'}
@@ -642,16 +798,17 @@ function doAuth(mode,form){
      if(!x.ok){A.busy=false;btn.disabled=false;err.textContent=x.j.error||"Something went wrong. Please try again.";return}
      if(x.j.user&&x.j.user.role==="admin"){location.href="/admin/";return}
      return fetch("/api/me",{credentials:"same-origin"}).then(function(r){return r.json()}).then(function(d){
-       return loadTrack(d.user).then(function(){
-       A.busy=false;A.email="";applyUser(d.user,d.progress);V={step:"learn",card:0,game:null,quiz:null};
-       if(location.hash&&location.hash!=="#home")location.hash="home";render();toast(mode==="register"?"Welcome, "+d.user.name+"!":"Welcome back, "+d.user.name+"!")})})})
+       return Promise.resolve().then(function(){
+       A.busy=false;A.email="";applyUser(d.user,d.tracks);if(location.hash)location.hash="";render();toast(mode==="register"?"Welcome, "+d.user.name+"!":"Welcome back, "+d.user.name+"!")})})})
    .catch(function(){A.busy=false;btn.disabled=false;err.textContent="Can’t reach the server. Check your internet."})}
 function boot(){
   document.getElementById("app").innerHTML='<section class="card welcome"><div class="cw">'+camel("happy")+'</div><p class="lead">Loading…</p></section>';
   A.down=false;
   fetch("/api/me",{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
     if(!(d.user&&d.user.role==="user")){render();return}
-    return loadTrack(d.user).then(function(){applyUser(d.user,d.progress);render()})}).catch(function(){A.down=true;render()})}
+    applyUser(d.user,d.tracks);var last=null;try{last=localStorage.getItem(PKEY)}catch(e){}
+    if(last&&pathCfg(last)&&!pathCfg(last).soon)return openPath(last).catch(function(){render()});
+    render()}).catch(function(){A.down=true;render()})}
 
 function mission(p){
   for(var i=0;i<LESSONS.length;i++){var l=LESSONS[i],s=ls(p,l.id);
@@ -808,7 +965,8 @@ function finishFinal(){var Q=V.quiz,p=P();Q.done=true;p.final.tries++;if(Q.score
 function render(){
   document.getElementById("bar").innerHTML=topbar();
   var app=document.getElementById("app"),r=route(),p=P();
-  if(!p){app.innerHTML=welcome();return}
+  if(!S.user){app.innerHTML=welcome();return}
+  if(!p){app.innerHTML=pathsView();return}
   app.innerHTML=r.k==="lesson"?lessonView(r.n):r.k==="final"?finalView():home()}
 
 /* ---------- events ---------- */
@@ -817,6 +975,10 @@ document.addEventListener("submit",function(e){var f=e.target.getAttribute("data
 document.addEventListener("click",function(e){
   var b=e.target.closest("[data-act]");if(!b){var w=document.querySelector(".who[open]");if(w&&!e.target.closest(".who"))w.open=false;return}
   var a=b.dataset.act,r=route(),p=P(),l=r.k==="lesson"?LESSONS[r.n-1]:null,k=b.dataset.k!=null?+b.dataset.k:null;
+  if(a==="openpath"){b.disabled=true;openPath(b.dataset.id).catch(function(){b.disabled=false;toast("Couldn’t open that path. Check your internet.")});return}
+  if(a==="funmore"){newFun();render();var fb=document.querySelector('[data-act="funmore"]');if(fb)fb.focus();return}
+  if(a==="resume"){b.disabled=true;var rn=b.dataset.n;openPath(b.dataset.id).then(function(){if(rn)location.hash="lesson-"+rn}).catch(function(){b.disabled=false;toast("Couldn’t open that path. Check your internet.")});return}
+  if(a==="paths"){pushNow().then(closePath);return}
   if(a==="home"){go("home");return}
   if(a==="authmode"){var em=document.getElementById("email");if(em)A.email=em.value;A.mode=b.dataset.mode;A.err="";render();return}
   if(a==="showpw"){var pi=document.getElementById("password");if(pi){var show=pi.type==="password";pi.type=show?"text":"password";b.textContent=show?"Hide":"Show";b.setAttribute("aria-label",show?"Hide password":"Show password")}return}

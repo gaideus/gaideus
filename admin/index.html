@@ -75,6 +75,14 @@ tbody tr:focus-visible{outline-offset:-3px}
 .pips{display:flex;flex-wrap:wrap;gap:8px}
 .pip{background:var(--sun-soft);border-radius:999px;padding:3px 12px;font-weight:800;font-size:.9rem}
 h3.sec{font-size:1.3rem;margin:22px 0 10px}
+.glist{list-style:none;margin:10px 0;padding:0;display:grid;gap:8px}
+.glist li{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface2);border-radius:14px;padding:8px 10px}
+.glist .who,.gopen{flex:1;min-width:160px;word-break:break-word}
+.gopen{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;background:none;border:0;padding:6px 4px;text-align:left;min-height:44px}
+.gopen b{text-decoration:underline}
+.btn.sm{min-height:40px;padding:6px 12px;box-shadow:none}
+.gnew{display:flex;gap:8px;flex-wrap:wrap}.gnew input{flex:1;min-width:160px}
+.gcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;margin-top:16px;align-items:start}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:800;z-index:9}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -112,7 +120,7 @@ function showLogin(msg){
 function loadList(){
   return api("GET","admin/users").then(function(j){USERS=j.users;renderList()}).catch(function(x){if(x.message!=="401"){app.innerHTML='<div class="card login"><p class="err">'+esc(x.message)+'</p></div>'}})}
 
-function topBar(){return '<div class="top"><h1>GAIDEUS Admin</h1><span class="badge">'+USERS.length+' learner'+(USERS.length===1?'':'s')+'</span><button class="btn alt" id="csv">Download CSV</button><button class="btn alt" id="out">Log out</button></div>'}
+function topBar(){return '<div class="top"><h1>GAIDEUS Admin</h1><span class="badge">'+USERS.length+' learner'+(USERS.length===1?'':'s')+'</span><button class="btn alt" id="grp">Groups</button><button class="btn alt" id="csv">Download CSV</button><button class="btn alt" id="out">Log out</button></div>'}
 function stats(){
   var week=Date.now()/1000-7*86400,active=USERS.filter(function(u){return u.last_active&&u.last_active>week}).length,
       avg=USERS.length?Math.round(USERS.reduce(function(a,u){return a+u.pct},0)/USERS.length):0,
@@ -134,7 +142,7 @@ function rowsHtml(){
 function renderList(){
   app.innerHTML=topBar()+stats()+'<div class="card"><div class="tools"><input id="q" type="search" placeholder="Search by name or email" aria-label="Search learners" value="'+esc(QUERY)+'"></div><div class="tw"><table><thead><tr>'+
    COLS.map(function(c){return '<th scope="col"><button data-sort="'+c[0]+'" '+(SORT.k===c[0]?'data-dir="'+SORT.dir+'"':'')+'>'+c[1]+'</button></th>'}).join("")+'</tr></thead><tbody id="tb">'+rowsHtml()+'</tbody></table></div></div>';
-  document.getElementById("out").onclick=logout;document.getElementById("csv").onclick=exportCsv;
+  document.getElementById("out").onclick=logout;document.getElementById("csv").onclick=exportCsv;document.getElementById("grp").onclick=loadGroups;
   document.getElementById("q").oninput=function(e){QUERY=e.target.value;document.getElementById("tb").innerHTML=rowsHtml()};
   app.querySelectorAll("th button").forEach(function(b){b.onclick=function(){var k=b.dataset.sort;SORT=SORT.k===k?{k:k,dir:SORT.dir==="asc"?"desc":"asc"}:{k:k,dir:k==="name"||k==="age"?"asc":"desc"};renderList()}});
   var tb=document.getElementById("tb");
@@ -148,7 +156,7 @@ function openUser(id){
 function yn(v){return v?'<span class="yes">✓ Done</span>':'<span class="no">Not yet</span>'}
 function renderUser(u,p){
   var s=p&&p.summary,h='<div class="top"><button class="btn alt back" id="bk">‹ All learners</button></div>'+
-   '<div class="card"><div class="dhead"><div><h2>'+esc(u.name)+'</h2><div class="facts"><span>Age '+u.age+'</span><span>'+(p&&p.summary&&p.summary.track==="study"?'Older-learner page':'Original page')+'</span><span>'+esc(u.email)+'</span><span>Joined '+esc(fmt(u.created_at))+'</span><span>Last login '+esc(ago(u.last_login))+'</span></div></div>'+
+   '<div class="card"><div class="dhead"><div><h2>'+esc(u.name)+'</h2><div class="facts"><span>Age '+u.age+'</span><span>'+(p&&p.summary&&'Last path used: '+(p.summary.track==="study"?'Aqeedah Studies':'Aqeedah Journey'))+'</span><span>'+esc(u.email)+'</span><span>Joined '+esc(fmt(u.created_at))+'</span><span>Last login '+esc(ago(u.last_login))+'</span></div></div>'+
    '<div class="actions"><button class="btn alt" id="rp">Reset password</button><button class="btn danger" id="del">Delete account</button></div></div></div>';
   if(!p||!s){return app.innerHTML=h+'<div class="card" style="margin-top:14px"><p class="empty">'+esc(u.name)+' hasn’t started a lesson yet.</p></div>',wireUser(u)}
   function t(n,l){return '<div class="card stat"><b>'+esc(n)+'</b><span>'+l+'</span></div>'}
@@ -171,6 +179,48 @@ function wireUser(u){
   document.getElementById("del").onclick=function(){
     if(!confirm("Delete "+u.name+"’s account and all their progress? This cannot be undone."))return;
     api("DELETE","admin/users/"+u.id).then(function(){toast("Account deleted.");loadList()}).catch(function(x){toast(x.message)})}}
+
+/* ---------- groups inside a course ---------- */
+function fail(x){if(x.message!=="401")toast(x.message)}
+function loadGroups(){
+  return Promise.all([api("GET","admin/groups"),api("GET","admin/users")]).then(function(r){USERS=r[1].users;renderGroups(r[0])}).catch(fail)}
+function renderGroups(d){
+  var h='<div class="top"><button class="btn alt" id="bk">‹ All learners</button><h1 style="margin-left:6px">Groups</h1><button class="btn alt" id="out">Log out</button></div>';
+  d.courses.forEach(function(c){
+    var gs=d.groups.filter(function(g){return g.course===c.id});
+    h+='<section class="card" style="margin-bottom:16px" aria-labelledby="c-'+esc(c.id)+'"><h2 id="c-'+esc(c.id)+'" style="font-size:1.4rem">'+esc(c.name)+'</h2>'+
+     (gs.length?'<ul class="glist">'+gs.map(function(g){return '<li><button class="gopen" data-open="'+g.id+'"><b>'+esc(g.name)+'</b><span class="muted">'+g.members+' member'+(g.members===1?'':'s')+'</span></button>'+
+       '<button class="btn alt sm" data-rename="'+g.id+'" data-name="'+esc(g.name)+'" aria-label="Rename '+esc(g.name)+'">Rename</button><button class="btn danger sm" data-del="'+g.id+'" data-name="'+esc(g.name)+'" aria-label="Delete '+esc(g.name)+'">Delete</button></li>'}).join("")+'</ul>'
+      :'<p class="muted" style="margin:10px 0">No groups in this course yet.</p>')+
+     '<form class="gnew" data-course="'+esc(c.id)+'"><input type="text" maxlength="40" required placeholder="New group name" aria-label="New group name for '+esc(c.name)+'"><button class="btn" type="submit">Add group</button></form></section>'});
+  app.innerHTML=h;
+  document.getElementById("bk").onclick=function(){loadList()};document.getElementById("out").onclick=logout;
+  app.querySelectorAll(".gnew").forEach(function(f){f.onsubmit=function(e){e.preventDefault();
+    api("POST","admin/groups",{course:f.dataset.course,name:f.querySelector("input").value}).then(function(){toast("Group added.");loadGroups()}).catch(fail)}});
+  app.querySelectorAll("[data-open]").forEach(function(b){b.onclick=function(){openGroup(+b.dataset.open)}});
+  app.querySelectorAll("[data-rename]").forEach(function(b){b.onclick=function(){var n=prompt("New name for this group:",b.dataset.name);if(n==null)return;
+    api("PATCH","admin/groups/"+b.dataset.rename,{name:n}).then(function(){toast("Group renamed.");loadGroups()}).catch(fail)}});
+  app.querySelectorAll("[data-del]").forEach(function(b){b.onclick=function(){if(!confirm("Delete the group “"+b.dataset.name+"”? Its learners keep their accounts and progress."))return;
+    api("DELETE","admin/groups/"+b.dataset.del).then(function(){toast("Group deleted.");loadGroups()}).catch(fail)}})}
+var GQ="";
+function openGroup(id){api("GET","admin/groups/"+id).then(function(d){renderGroup(d.group,d.members)}).catch(fail)}
+function renderGroup(g,members){
+  var inIt={};members.forEach(function(m){inIt[m.id]=1});
+  function person(u){return '<span class="who"><b>'+esc(u.name)+'</b><small>'+esc(u.email)+' · age '+u.age+'</small></span>'}
+  function candidates(){var q=GQ.trim().toLowerCase();
+    var rows=USERS.filter(function(u){return !inIt[u.id]&&(!q||(u.name+" "+u.email).toLowerCase().indexOf(q)>=0)}).slice(0,50);
+    return rows.length?rows.map(function(u){return '<li>'+person(u)+'<button class="btn sm" data-add="'+u.id+'" aria-label="Add '+esc(u.name)+' to the group">Add</button></li>'}).join("")
+      :'<li class="muted">'+(USERS.length===members.length&&USERS.length?'Every learner is already in this group.':'No learners match that search.')+'</li>'}
+  app.innerHTML='<div class="top"><button class="btn alt" id="bk">‹ All groups</button></div>'+
+   '<div class="card"><div class="muted" style="font-weight:800">'+esc(g.courseName)+'</div><h2 style="font-size:1.8rem">'+esc(g.name)+'</h2></div>'+
+   '<div class="gcols"><section class="card" aria-labelledby="mh"><h3 id="mh" style="font-size:1.2rem">Members ('+members.length+')</h3>'+
+   (members.length?'<ul class="glist">'+members.map(function(m){return '<li>'+person(m)+'<button class="btn alt sm" data-rm="'+m.id+'" aria-label="Remove '+esc(m.name)+' from the group">Remove</button></li>'}).join("")+'</ul>':'<p class="muted">No one is in this group yet.</p>')+'</section>'+
+   '<section class="card" aria-labelledby="ah"><h3 id="ah" style="font-size:1.2rem">Add learners</h3><input id="gq" type="search" placeholder="Search by name or email" aria-label="Search learners to add" value="'+esc(GQ)+'" style="margin:10px 0"><ul class="glist" id="cand">'+candidates()+'</ul></section></div>';
+  document.getElementById("bk").onclick=function(){GQ="";loadGroups()};
+  var cand=document.getElementById("cand");
+  document.getElementById("gq").oninput=function(e){GQ=e.target.value;cand.innerHTML=candidates()};
+  cand.onclick=function(e){var b=e.target.closest("[data-add]");if(!b)return;b.disabled=true;api("PUT","admin/groups/"+g.id+"/members/"+b.dataset.add).then(function(){openGroup(g.id)}).catch(fail)};
+  app.querySelectorAll("[data-rm]").forEach(function(b){b.onclick=function(){api("DELETE","admin/groups/"+g.id+"/members/"+b.dataset.rm).then(function(){openGroup(g.id)}).catch(fail)}})}
 
 /* ---------- CSV ---------- */
 function cell(v){var s=String(v==null?"":v);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}

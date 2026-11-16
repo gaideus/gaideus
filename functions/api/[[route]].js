@@ -3,8 +3,12 @@
 
 import study from "../_content/study.js";
 
-// Which Learn page an account gets. 15 and under: the original page. Over 15: the older-learner page.
-// If the age is missing or not a number, this falls back to the original page.
+// Learning paths. Learners pick their own path on the course menu; age only decides which card is
+// marked "Recommended for you". To add a path: add its id here, add its content to CONTENT below
+// (unless its lessons are written inside learn/index.html), and add one entry to PATHS in learn/index.html.
+const TRACKS = ["kids", "study"];
+const CONTENT = { study };
+const COURSE_NAMES = { kids: "Aqeedah Journey", study: "Aqeedah Studies" };
 const trackFor = (age) => (Number(age) > 15 ? "study" : "kids");
 // Progress for each page is kept side by side in one row: { kids: {...}, study: {...} }.
 // Rows saved before this existed hold a single profile, which belongs to the original page.
@@ -148,8 +152,7 @@ async function me(env, session) {
   const u = await env.DB.prepare("SELECT id, name, age, email FROM users WHERE id = ?").bind(session.user_id).first();
   if (!u) return json({ user: null });
   const p = await env.DB.prepare("SELECT data FROM progress WHERE user_id = ?").bind(u.id).first();
-  const track = trackFor(u.age);
-  return json({ user: { ...u, role: "user", track }, progress: (p ? parseTracks(p.data)[track] : null) || null });
+  return json({ user: { ...u, role: "user", suggested: trackFor(u.age) }, tracks: p ? parseTracks(p.data) : {} });
 }
 
 async function saveProgress(env, session, request) {
@@ -158,10 +161,8 @@ async function saveProgress(env, session, request) {
   if (!p || typeof p !== "object" || typeof p.lessons !== "object" || typeof p.final !== "object" || !Array.isArray(p.days) || !Array.isArray(p.badges))
     return fail(400, "Bad progress data.");
   if (!s || typeof s !== "object") return fail(400, "Bad summary.");
-  const u = await env.DB.prepare("SELECT age FROM users WHERE id = ?").bind(session.user_id).first();
-  if (!u) return fail(401, "Please log in.");
-  const track = trackFor(u.age);
-  if (b.track !== undefined && b.track !== track) return fail(403, "That page is not for this account.");
+  const track = b.track === undefined ? "kids" : b.track;
+  if (!TRACKS.includes(track)) return fail(400, "Unknown learning path.");
   const summary = JSON.stringify({
     track,
     level: clean(s.level, 30),
@@ -213,10 +214,101 @@ async function adminResetPassword(env, id, request) {
   return json({ ok: true });
 }
 async function adminDelete(env, id) {
+  await env.DB.prepare("DELETE FROM group_members WHERE user_id = ?").bind(id).run();
   await env.DB.prepare("DELETE FROM sessions WHERE user_id = ?").bind(id).run();
   await env.DB.prepare("DELETE FROM progress WHERE user_id = ?").bind(id).run();
   const r = await env.DB.prepare("DELETE FROM users WHERE id = ?").bind(id).run();
   return r.meta.changes ? json({ ok: true }) : fail(404, "No such user.");
+}
+
+/* ---------- learner: my groups ---------- */
+// What a learner may see about the groups they are in: each member's first name and course progress.
+// Never emails, ages or ids. Progress is worked out here from the saved lesson progress, nothing extra is stored.
+const COURSE_LESSONS = { kids: 10, study: study.lessons.length };
+const firstName = (n) => clean(n, 30).split(" ")[0].slice(0, 20) || "Learner";
+function courseProgress(dataText, course) {
+  const p = dataText ? parseTracks(dataText)[course] : null;
+  const total = COURSE_LESSONS[course] || 10;
+  let steps = 0, done = 0;
+  for (let i = 1; i <= total; i++) {
+    const s = p && p.lessons && p.lessons[i];
+    if (!s) continue;
+    const read = !!s.learned, played = !!s.game, quizzed = s.best != null;   // the three steps of a lesson
+    steps += read + played + quizzed;
+    if (read && played && quizzed) done++;
+  }
+  return { pct: Math.round((steps / (total * 3)) * 100), done, total };
+}
+async function myGroups(env, session) {
+  const { results: mine } = await env.DB.prepare(
+    `SELECT g.id, g.course, g.name FROM group_members m JOIN course_groups g ON g.id = m.group_id
+     WHERE m.user_id = ? ORDER BY g.name COLLATE NOCASE`).bind(session.user_id).all();
+  const groups = [];
+  for (const g of mine) {
+    const { results } = await env.DB.prepare(
+      `SELECT u.id, u.name, p.data FROM group_members m JOIN users u ON u.id = m.user_id
+       LEFT JOIN progress p ON p.user_id = u.id WHERE m.group_id = ?`).bind(g.id).all();
+    const members = results
+      .map((m) => ({ name: firstName(m.name), me: m.id === session.user_id, ...courseProgress(m.data, g.course) }))
+      .sort((x, y) => y.pct - x.pct || y.done - x.done || x.name.localeCompare(y.name));
+    groups.push({ name: g.name, course: g.course, courseName: COURSE_NAMES[g.course] || g.course, members });
+  }
+  return json({ groups });
+}
+
+/* ---------- admin: groups inside a course ---------- */
+// The router only calls these after it has checked for an admin session.
+const groupName = (v) => clean(v, 40);
+const isUnique = (e) => /UNIQUE/i.test(String(e && e.message));
+
+async function groupsList(env) {
+  const { results } = await env.DB.prepare(
+    `SELECT g.id, g.course, g.name, g.created_at, COUNT(m.user_id) AS members
+     FROM course_groups g LEFT JOIN group_members m ON m.group_id = g.id
+     GROUP BY g.id ORDER BY g.course, g.name COLLATE NOCASE`).all();
+  return json({ courses: TRACKS.map((id) => ({ id, name: COURSE_NAMES[id] || id })), groups: results });
+}
+async function groupCreate(env, request) {
+  const b = await body(request), name = groupName(b.name);
+  if (!TRACKS.includes(b.course)) return fail(400, "Unknown course.");
+  if (!name) return fail(400, "Please give the group a name.");
+  try {
+    const r = await env.DB.prepare("INSERT INTO course_groups (course, name, created_at) VALUES (?, ?, ?)").bind(b.course, name, now()).run();
+    return json({ group: { id: r.meta.last_row_id, course: b.course, name, members: 0 } }, 201);
+  } catch (e) { if (isUnique(e)) return fail(409, "That course already has a group with that name."); throw e; }
+}
+async function groupRename(env, id, request) {
+  const name = groupName((await body(request)).name);
+  if (!name) return fail(400, "Please give the group a name.");
+  try {
+    const r = await env.DB.prepare("UPDATE course_groups SET name = ? WHERE id = ?").bind(name, id).run();
+    return r.meta.changes ? json({ ok: true, name }) : fail(404, "No such group.");
+  } catch (e) { if (isUnique(e)) return fail(409, "That course already has a group with that name."); throw e; }
+}
+async function groupDelete(env, id) {
+  await env.DB.prepare("DELETE FROM group_members WHERE group_id = ?").bind(id).run();
+  const r = await env.DB.prepare("DELETE FROM course_groups WHERE id = ?").bind(id).run();
+  return r.meta.changes ? json({ ok: true }) : fail(404, "No such group.");
+}
+async function groupDetail(env, id) {
+  const group = await env.DB.prepare("SELECT id, course, name, created_at FROM course_groups WHERE id = ?").bind(id).first();
+  if (!group) return fail(404, "No such group.");
+  const { results } = await env.DB.prepare(
+    `SELECT u.id, u.name, u.age, u.email, m.added_at FROM group_members m JOIN users u ON u.id = m.user_id
+     WHERE m.group_id = ? ORDER BY u.name COLLATE NOCASE`).bind(id).all();
+  return json({ group: { ...group, courseName: COURSE_NAMES[group.course] || group.course }, members: results });
+}
+async function groupAddMember(env, id, userId) {
+  const g = await env.DB.prepare("SELECT id FROM course_groups WHERE id = ?").bind(id).first();
+  if (!g) return fail(404, "No such group.");
+  const u = await env.DB.prepare("SELECT id FROM users WHERE id = ?").bind(userId).first();
+  if (!u) return fail(404, "No such user.");
+  await env.DB.prepare("INSERT OR IGNORE INTO group_members (group_id, user_id, added_at) VALUES (?, ?, ?)").bind(id, userId, now()).run();
+  return json({ ok: true });
+}
+async function groupRemoveMember(env, id, userId) {
+  const r = await env.DB.prepare("DELETE FROM group_members WHERE group_id = ? AND user_id = ?").bind(id, userId).run();
+  return r.meta.changes ? json({ ok: true }) : fail(404, "That learner is not in this group.");
 }
 
 /* ---------- router ---------- */
@@ -248,13 +340,17 @@ export async function onRequest({ request, env, params }) {
 
     if (method === "GET" && a === "me" && !b) return await me(env, await getSession(env, request, as));
 
-    // The older-learner lessons: only handed to signed-in accounts over 15.
+    // Lessons for a path whose content lives on the server. Signed-in learners only.
     if (a === "content" && !b && method === "GET") {
+      if (!(await getSession(env, request, "user"))) return fail(401, "Please log in.");
+      const c = CONTENT[url.searchParams.get("track")];
+      return c ? json(c) : fail(404, "Unknown learning path.");
+    }
+
+    if (a === "groups" && !b && method === "GET") {
       const session = await getSession(env, request, "user");
       if (!session) return fail(401, "Please log in.");
-      const u = await env.DB.prepare("SELECT age FROM users WHERE id = ?").bind(session.user_id).first();
-      if (!u || trackFor(u.age) !== "study") return fail(403, "That page is not for this account.");
-      return json(study);
+      return await myGroups(env, session);
     }
 
     if (a === "progress" && !b && method === "PUT") {
@@ -271,6 +367,18 @@ export async function onRequest({ request, env, params }) {
         if (path.length === 3 && method === "GET") return await adminUser(env, id);
         if (path.length === 3 && method === "DELETE") return await adminDelete(env, id);
         if (path.length === 4 && path[3] === "password" && method === "POST") return await adminResetPassword(env, id, request);
+      }
+      if (b === "groups") {
+        if (path.length === 2 && method === "GET") return await groupsList(env);
+        if (path.length === 2 && method === "POST") return await groupCreate(env, request);
+        if (id && path.length === 3 && method === "GET") return await groupDetail(env, id);
+        if (id && path.length === 3 && method === "PATCH") return await groupRename(env, id, request);
+        if (id && path.length === 3 && method === "DELETE") return await groupDelete(env, id);
+        const uid = /^\d+$/.test(path[4] || "") ? +path[4] : null;
+        if (id && uid && path.length === 5 && path[3] === "members") {
+          if (method === "PUT") return await groupAddMember(env, id, uid);
+          if (method === "DELETE") return await groupRemoveMember(env, id, uid);
+        }
       }
     }
     return fail(404, "Not found.");

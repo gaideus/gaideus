@@ -38,3 +38,21 @@ CREATE TABLE IF NOT EXISTS attempts (    -- slows down password guessing and spa
 
 CREATE INDEX IF NOT EXISTS idx_attempts ON attempts(k, ts);
 CREATE INDEX IF NOT EXISTS idx_sessions_exp ON sessions(expires_at);
+
+-- Groups inside each course (also in migrations/0002_groups.sql for databases created earlier).
+CREATE TABLE IF NOT EXISTS course_groups (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  course      TEXT    NOT NULL,
+  name        TEXT    NOT NULL,
+  created_at  INTEGER NOT NULL,
+  UNIQUE (course, name)
+);
+
+CREATE TABLE IF NOT EXISTS group_members (
+  group_id    INTEGER NOT NULL REFERENCES course_groups(id) ON DELETE CASCADE,
+  user_id     INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  added_at    INTEGER NOT NULL,
+  PRIMARY KEY (group_id, user_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_group_members_user ON group_members(user_id);
