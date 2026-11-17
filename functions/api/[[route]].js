@@ -214,7 +214,8 @@ async function adminResetPassword(env, id, request) {
   return json({ ok: true });
 }
 async function adminDelete(env, id) {
-  await env.DB.prepare("DELETE FROM group_members WHERE user_id = ?").bind(id).run();
+  // Tolerate a database that has not had migrations/0002_groups.sql run yet.
+  try { await env.DB.prepare("DELETE FROM group_members WHERE user_id = ?").bind(id).run(); } catch {}
   await env.DB.prepare("DELETE FROM sessions WHERE user_id = ?").bind(id).run();
   await env.DB.prepare("DELETE FROM progress WHERE user_id = ?").bind(id).run();
   const r = await env.DB.prepare("DELETE FROM users WHERE id = ?").bind(id).run();
@@ -240,9 +241,12 @@ function courseProgress(dataText, course) {
   return { pct: Math.round((steps / (total * 3)) * 100), done, total };
 }
 async function myGroups(env, session) {
-  const { results: mine } = await env.DB.prepare(
-    `SELECT g.id, g.course, g.name FROM group_members m JOIN course_groups g ON g.id = m.group_id
-     WHERE m.user_id = ? ORDER BY g.name COLLATE NOCASE`).bind(session.user_id).all();
+  let mine;
+  try {
+    ({ results: mine } = await env.DB.prepare(
+      `SELECT g.id, g.course, g.name FROM group_members m JOIN course_groups g ON g.id = m.group_id
+       WHERE m.user_id = ? ORDER BY g.name COLLATE NOCASE`).bind(session.user_id).all());
+  } catch { return json({ groups: [] }); }   // groups tables not created yet: nobody is in a group
   const groups = [];
   for (const g of mine) {
     const { results } = await env.DB.prepare(
