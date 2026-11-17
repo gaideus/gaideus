@@ -2,13 +2,15 @@
 // Needs: a D1 database bound as DB, and secrets ADMIN_EMAIL + ADMIN_PASSWORD.
 
 import study from "../_content/study.js";
+import yusufKids from "../_content/yusuf-kids.js";
+import yusufStudy from "../_content/yusuf-study.js";
 
 // Learning paths. Learners pick their own path on the course menu; age only decides which card is
 // marked "Recommended for you". To add a path: add its id here, add its content to CONTENT below
 // (unless its lessons are written inside learn/index.html), and add one entry to PATHS in learn/index.html.
-const TRACKS = ["kids", "study"];
-const CONTENT = { study };
-const COURSE_NAMES = { kids: "Aqeedah Journey", study: "Aqeedah Studies" };
+const TRACKS = ["kids", "study", "yusuf-kids", "yusuf-study"];
+const CONTENT = { study, "yusuf-kids": yusufKids, "yusuf-study": yusufStudy };
+const COURSE_NAMES = { kids: "Aqeedah Journey", study: "Aqeedah Studies", "yusuf-kids": "Surah Yusuf (15 and under)", "yusuf-study": "Surah Yusuf (16 and over)" };
 const trackFor = (age) => (Number(age) > 15 ? "study" : "kids");
 // Progress for each page is kept side by side in one row: { kids: {...}, study: {...} }.
 // Rows saved before this existed hold a single profile, which belongs to the original page.
@@ -166,7 +168,7 @@ async function saveProgress(env, session, request) {
   const summary = JSON.stringify({
     track,
     level: clean(s.level, 30),
-    lessons: Array.isArray(s.lessons) ? s.lessons.slice(0, 20).map((l) => ({
+    lessons: Array.isArray(s.lessons) ? s.lessons.slice(0, 60).map((l) => ({
       id: clampInt(l.id, 0, 99), title: clean(l.title, 80),
       learned: !!l.learned, game: !!l.game, quick: !!l.quick, memory: !!l.memory,
       best: l.best == null ? null : clampInt(l.best, 0, 99), total: clampInt(l.total, 0, 99),
@@ -175,7 +177,7 @@ async function saveProgress(env, session, request) {
     final: { best: clampInt(s.final?.best, 0, 99), tries: clampInt(s.final?.tries, 0, 9999) },
     badges: Array.isArray(s.badges) ? s.badges.slice(0, 30).map((x) => clean(x, 40)) : [],
   });
-  if (JSON.stringify(p).length > 40000 || summary.length > 8000) return fail(413, "Too much data.");
+  if (JSON.stringify(p).length > 40000 || summary.length > 20000) return fail(413, "Too much data.");
   const old = await env.DB.prepare("SELECT data FROM progress WHERE user_id = ?").bind(session.user_id).first();
   const data = JSON.stringify({ ...(old ? parseTracks(old.data) : {}), [track]: p });
   await env.DB.prepare(
@@ -183,8 +185,8 @@ async function saveProgress(env, session, request) {
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
      ON CONFLICT(user_id) DO UPDATE SET data=excluded.data, summary=excluded.summary, xp=excluded.xp,
        mastered=excluded.mastered, stars=excluded.stars, pct=excluded.pct, streak=excluded.streak, updated_at=excluded.updated_at`
-  ).bind(session.user_id, data, summary, clampInt(s.xp, 0, 100000), clampInt(s.mastered, 0, 10),
-         clampInt(s.stars, 0, 30), clampInt(s.pct, 0, 100), clampInt(s.streak, 0, 4000), now()).run();
+  ).bind(session.user_id, data, summary, clampInt(s.xp, 0, 100000), clampInt(s.mastered, 0, 60),
+         clampInt(s.stars, 0, 180), clampInt(s.pct, 0, 100), clampInt(s.streak, 0, 4000), now()).run();
   return json({ ok: true });
 }
 
@@ -225,7 +227,8 @@ async function adminDelete(env, id) {
 /* ---------- learner: my groups ---------- */
 // What a learner may see about the groups they are in: each member's first name and course progress.
 // Never emails, ages or ids. Progress is worked out here from the saved lesson progress, nothing extra is stored.
-const COURSE_LESSONS = { kids: 10, study: study.lessons.length };
+const COURSE_LESSONS = { kids: 10 };
+for (const [id, c] of Object.entries(CONTENT)) COURSE_LESSONS[id] = c.lessons.length;
 const firstName = (n) => clean(n, 30).split(" ")[0].slice(0, 20) || "Learner";
 function courseProgress(dataText, course) {
   const p = dataText ? parseTracks(dataText)[course] : null;
