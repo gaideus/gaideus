@@ -585,7 +585,7 @@ var PATHS=[
   desc:"Ten short lessons with Jamal the camel: read the cards, play the games, and grow your knowledge tree.",credit:"Based on the course Thalathah Al-Usool | Aqeedah, Lessons 1 to 10. A few book titles are marked for teachers to check against the workbook."},
  {id:"study",subject:"aqeedah",name:"Aqeedah Studies",ages:"Ages 16 and over",min:16,max:200,lessons:10,icon:"book",c1:"#D5F0DF",c2:"#1F8A5B",ink:"#FFFFFF",
   desc:"The same ten lessons in more depth, with the evidences, the scholars’ statements and revision questions.",credit:"Based on Thalathah Al-Usool | Aqeedah course notes, Lessons 1 to 10."},
- {id:"yusuf-kids",subject:"yusuf",theme:"kids",name:"Surah Yusuf",ages:"Ages 15 and under",min:0,max:15,lessons:34,icon:"stars",c1:"#FFE3D1",c2:"#B93E0B",ink:"#FFFFFF",
+ {id:"yusuf-kids",subject:"yusuf",theme:"kids",name:"Surah Yusuf",ages:"Ages 15 and under",min:0,max:15,lessons:15,icon:"stars",c1:"#FFE3D1",c2:"#B93E0B",ink:"#FFFFFF",
   desc:"The best of stories: follow Prophet Yusuf from his dream to the well and on to Egypt, one short lesson at a time.",credit:"Based on “Lessons from Surah Yusuf” by Dr Yasir Qadhi."},
  {id:"yusuf-study",subject:"yusuf",theme:"study",name:"Surah Yusuf",ages:"Ages 16 and over",min:16,max:200,lessons:34,icon:"stars",c1:"#DCE8FF",c2:"#2B4FA8",ink:"#FFFFFF",
   desc:"A verse-by-verse study of Surah Yusuf: the story, the Arabic, and the lessons the scholars draw from it.",credit:"Based on “Lessons from Surah Yusuf” by Dr Yasir Qadhi."}
@@ -617,7 +617,13 @@ function loadPath(id){keepKids();var c=pathCfg(id);if(!c||c.soon)return Promise.
   if(CONTENT[id]){setTrack(CONTENT[id],id);return Promise.resolve()}
   return fetch("/api/content?track="+encodeURIComponent(id),{credentials:"same-origin"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){CONTENT[id]=j;setTrack(j,id)})}
 function fixProfile(p){p=p&&typeof p==="object"?p:newProfile();p.lessons=p.lessons||{};p.final=p.final||{best:0,tries:0};p.days=p.days||[];p.badges=p.badges||[];return p}
-function openPath(id){return loadPath(id).then(function(){S.track=id;S.profile=S.tracks[id]=fixProfile(S.tracks[id]);try{localStorage.setItem(PKEY,id)}catch(e){}
+/* When a course is reorganised (content.version goes up), move saved progress to the new lesson numbers using content.remap.
+   Lessons that were started stay started; quiz scores are cleared because the quizzes changed. */
+function migrate(id,p){var c=CONTENT[id];if(!c||!c.version||!c.remap||(p.v||1)>=c.version)return false;
+  var o=p.lessons||{},n={};Object.keys(o).forEach(function(k){var t=c.remap[k],s=o[k];if(!t||!s)return;var d=n[t]||(n[t]={learned:false,game:false,best:null,tries:0});
+    d.learned=d.learned||!!s.learned;d.game=d.game||!!s.game;if(s.quick)d.quick=true;if(s.memory)d.memory=true});
+  p.lessons=n;p.v=c.version;return true}
+function openPath(id){return loadPath(id).then(function(){S.track=id;S.profile=S.tracks[id]=fixProfile(S.tracks[id]);if(migrate(id,S.profile))save();try{localStorage.setItem(PKEY,id)}catch(e){}
   V={step:"learn",card:0,game:null,quiz:null};if(location.hash!=="#home")location.hash="home";render();scrollTo(0,0)})}
 function closePath(){S.track=null;S.subject=null;S.profile=null;try{localStorage.removeItem(PKEY)}catch(e){}keepKids();setTrack(KIDS,"");if(location.hash)location.hash="";newFun();render();scrollTo(0,0);loadGroups();
   var nb=Object.keys(allBadges()).length;if(H.badges!=null&&nb>H.badges){bigConfetti();toast(nb-H.badges===1?"You earned a new badge!":"You earned "+(nb-H.badges)+" new badges!")}H.badges=nb}
