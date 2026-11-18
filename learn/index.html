@@ -316,6 +316,15 @@ th{font-family:var(--font-display);color:var(--primary-text)}
 .pcard .pico svg{width:54px;height:54px}
 .pcard h2{font-size:1.6rem;font-weight:800;margin:8px 0 4px}
 .pcard p{margin:0}
+.agehead{display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--c1);border:3px solid var(--c2);border-radius:24px;color:#33240B}
+.agehead .muted{color:#4A3A1C}
+.agehead .eyebrow{color:#4A3A1C}
+.agehead .pico{width:72px;height:72px;border-radius:20px;background:var(--c2);color:var(--ci);display:grid;place-items:center;flex:none}
+.agehead .pico svg{width:46px;height:46px}
+.agehead h1{font-size:clamp(1.6rem,4.6vw,2.2rem);font-weight:800}
+.agehead h1:focus{outline:none}
+.pcard.rec{box-shadow:0 0 0 4px var(--sun),var(--shadow)}
+.gnav{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .pcard .pcredit{margin-top:6px;font-size:.85rem;font-style:italic}
 .pcard .pprog{margin-top:8px;font-weight:800;font-size:.92rem}
 .ptag{display:inline-block;background:rgba(255,255,255,.75);border-radius:999px;padding:3px 12px;font-weight:800;font-size:.85rem;margin:0 6px 4px 0}
@@ -564,7 +573,7 @@ var BADGES=[
 ];
 
 /* ---------- state ---------- */
-var S={cur:null,user:null,profile:null,track:null,tracks:{}};
+var S={cur:null,user:null,profile:null,track:null,tracks:{},subject:null};
 /* ---------- learning paths ----------
    The course menu is built from this one list. To add a path, add ONE entry here
    (and its lessons on the server: see TRACKS / CONTENT in functions/api/[[route]].js).
@@ -572,16 +581,25 @@ var S={cur:null,user:null,profile:null,track:null,tracks:{}};
    min/max: ages it is recommended for · inline: lessons are the ones written in this file ·
    soon: a greyed-out "Coming soon" card that cannot be opened. */
 var PATHS=[
- {id:"kids",name:"Aqeedah Journey",ages:"Ages 15 and under",min:0,max:15,lessons:10,icon:"sprout",c1:"#FFF0B8",c2:"#FFC400",ink:"#33240B",inline:true,
+ {id:"kids",subject:"aqeedah",name:"Aqeedah Journey",ages:"Ages 15 and under",min:0,max:15,lessons:10,icon:"sprout",c1:"#FFF0B8",c2:"#FFC400",ink:"#33240B",inline:true,
   desc:"Ten short lessons with Jamal the camel: read the cards, play the games, and grow your knowledge tree.",credit:"Based on the course Thalathah Al-Usool | Aqeedah, Lessons 1 to 10. A few book titles are marked for teachers to check against the workbook."},
- {id:"study",name:"Aqeedah Studies",ages:"Ages 16 and over",min:16,max:200,lessons:10,icon:"book",c1:"#D5F0DF",c2:"#1F8A5B",ink:"#FFFFFF",
+ {id:"study",subject:"aqeedah",name:"Aqeedah Studies",ages:"Ages 16 and over",min:16,max:200,lessons:10,icon:"book",c1:"#D5F0DF",c2:"#1F8A5B",ink:"#FFFFFF",
   desc:"The same ten lessons in more depth, with the evidences, the scholars’ statements and revision questions.",credit:"Based on Thalathah Al-Usool | Aqeedah course notes, Lessons 1 to 10."},
- {id:"yusuf-kids",theme:"kids",name:"Surah Yusuf",ages:"Ages 15 and under",min:0,max:15,lessons:34,icon:"stars",c1:"#FFE3D1",c2:"#B93E0B",ink:"#FFFFFF",
+ {id:"yusuf-kids",subject:"yusuf",theme:"kids",name:"Surah Yusuf",ages:"Ages 15 and under",min:0,max:15,lessons:34,icon:"stars",c1:"#FFE3D1",c2:"#B93E0B",ink:"#FFFFFF",
   desc:"The best of stories: follow Prophet Yusuf from his dream to the well and on to Egypt, one short lesson at a time.",credit:"Based on “Lessons from Surah Yusuf” by Dr Yasir Qadhi."},
- {id:"yusuf-study",theme:"study",name:"Surah Yusuf",ages:"Ages 16 and over",min:16,max:200,lessons:34,icon:"stars",c1:"#DCE8FF",c2:"#2B4FA8",ink:"#FFFFFF",
-  desc:"A verse-by-verse study of Surah Yusuf: the story, the Arabic, and the lessons the scholars draw from it.",credit:"Based on “Lessons from Surah Yusuf” by Dr Yasir Qadhi."},
+ {id:"yusuf-study",subject:"yusuf",theme:"study",name:"Surah Yusuf",ages:"Ages 16 and over",min:16,max:200,lessons:34,icon:"stars",c1:"#DCE8FF",c2:"#2B4FA8",ink:"#FFFFFF",
+  desc:"A verse-by-verse study of Surah Yusuf: the story, the Arabic, and the lessons the scholars draw from it.",credit:"Based on “Lessons from Surah Yusuf” by Dr Yasir Qadhi."}
+];
+/* The first screen of the course menu: one card per learning path (subject).
+   Choosing one shows its age groups (the PATHS entries with the same subject). */
+var SUBJECTS=[
+ {id:"aqeedah",name:"‘Aqeedah",icon:"sprout",c1:"#FFF0B8",c2:"#FFC400",ink:"#33240B",
+  desc:"What Muslims believe: what ‘Aqeedah means, why it matters, where it comes from, and the book Thalathah al-Usool."},
+ {id:"yusuf",name:"Surah Yusuf",icon:"stars",c1:"#DCE8FF",c2:"#2B4FA8",ink:"#FFFFFF",
+  desc:"The best of stories, verse by verse: Prophet Yusuf’s journey from his dream to the palace of Egypt.",credit:"Based on “Lessons from Surah Yusuf” by Dr Yasir Qadhi."},
  {soon:true,name:"New path",desc:"Another learning path is on its way."}
 ];
+function subjectCfg(id){for(var i=0;i<SUBJECTS.length;i++)if(SUBJECTS[i].id===id)return SUBJECTS[i];return null}
 var PATH_ICONS={
  sprout:'<path d="M32 54V30" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M32 34c-13 0-18-9-18-18 11 0 18 5 18 18zM32 30c0-11 7-18 18-18 0 11-7 18-18 18z" fill="currentColor"/>',
  book:'<path d="M8 14c8-3 16-3 24 2v36c-8-5-16-5-24-2zM56 14c-8-3-16-3-24 2v36c8-5 16-5 24-2z" fill="currentColor"/><path d="M32 16v36" stroke="rgba(0,0,0,.25)" stroke-width="2"/>',
@@ -601,7 +619,7 @@ function loadPath(id){keepKids();var c=pathCfg(id);if(!c||c.soon)return Promise.
 function fixProfile(p){p=p&&typeof p==="object"?p:newProfile();p.lessons=p.lessons||{};p.final=p.final||{best:0,tries:0};p.days=p.days||[];p.badges=p.badges||[];return p}
 function openPath(id){return loadPath(id).then(function(){S.track=id;S.profile=S.tracks[id]=fixProfile(S.tracks[id]);try{localStorage.setItem(PKEY,id)}catch(e){}
   V={step:"learn",card:0,game:null,quiz:null};if(location.hash!=="#home")location.hash="home";render();scrollTo(0,0)})}
-function closePath(){S.track=null;S.profile=null;try{localStorage.removeItem(PKEY)}catch(e){}keepKids();setTrack(KIDS,"");if(location.hash)location.hash="";newFun();render();scrollTo(0,0);loadGroups();
+function closePath(){S.track=null;S.subject=null;S.profile=null;try{localStorage.removeItem(PKEY)}catch(e){}keepKids();setTrack(KIDS,"");if(location.hash)location.hash="";newFun();render();scrollTo(0,0);loadGroups();
   var nb=Object.keys(allBadges()).length;if(H.badges!=null&&nb>H.badges){bigConfetti();toast(nb-H.badges===1?"You earned a new badge!":"You earned "+(nb-H.badges)+" new badges!")}H.badges=nb}
 function startedCount(p){var n=0;if(p&&p.lessons)for(var k in p.lessons){var s=p.lessons[k];if(s&&(s.learned||s.game||s.best!=null))n++}return n}
 /* ---------- the hub: greeting, streak, pick-up card, rewards ----------
@@ -663,21 +681,35 @@ function groupsView(){
        '<span class="gbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+m.pct+'" aria-label="'+esc(m.name)+(m.me?' (you)':'')+': '+m.pct+' percent of the course"><i style="width:'+m.pct+'%"></i></span>'+
        '<span class="gnum">'+m.pct+'% · '+m.done+' of '+m.total+' lessons</span></li>'}).join("")+'</ol></div>'}).join("")+'</div>';
   return h+'</section>'}
-function pathsView(){
-  var h=hubView()+groupsView()+'<h2 class="pathtitle">Choose your learning path</h2><ul class="paths">';
-  PATHS.forEach(function(c){
-    if(c.soon){h+='<li class="pcard soon" aria-disabled="true"><div class="pico">'+pathIcon("lock")+'</div><div class="pbody"><span class="ptag">Coming soon</span><h2>'+esc(c.name)+'</h2><p>'+esc(c.desc)+'</p></div><span class="pbtn" aria-hidden="true">Locked</span></li>';return}
-    var n=startedCount(S.tracks[c.id]),rec=S.user&&isRec(c);
+function pcardSoon(c){return '<li class="pcard soon" aria-disabled="true"><div class="pico">'+pathIcon("lock")+'</div><div class="pbody"><span class="ptag">Coming soon</span><h2>'+esc(c.name)+'</h2><p>'+esc(c.desc)+'</p></div><span class="pbtn" aria-hidden="true">Locked</span></li>'}
+function pathsView(){return S.subject&&subjectCfg(S.subject)?agesView(subjectCfg(S.subject)):subjectsView()}
+function subjectsView(){
+  var h=hubView()+groupsView()+'<h2 class="pathtitle" id="choose">Choose a learning path</h2><ul class="paths">';
+  SUBJECTS.forEach(function(c){
+    if(c.soon){h+=pcardSoon(c);return}
+    var ps=PATHS.filter(function(p){return p.subject===c.id}),n=ps.reduce(function(a,p){return a+startedCount(S.tracks[p.id])},0);
     h+='<li class="pcard" style="--c1:'+c.c1+';--c2:'+c.c2+';--ci:'+c.ink+'"><div class="pico">'+pathIcon(c.icon)+'</div><div class="pbody">'+
-     '<span class="ptag">'+esc(c.ages)+'</span>'+(rec?'<span class="ptag rec">Recommended for you</span>':'')+'<h2>'+esc(c.name)+'</h2><p>'+esc(c.desc)+'</p>'+
-     (c.credit?'<p class="pcredit">'+esc(c.credit)+'</p>':'')+'<p class="pprog">'+(n?n+' of '+c.lessons+' lessons started':c.lessons+' lessons')+'</p></div>'+
-     '<button class="btn pbtn" data-act="openpath" data-id="'+c.id+'" aria-label="'+(n?'Continue ':'Start ')+esc(c.name)+'">'+(n?'Continue':'Start')+' ›</button></li>'});
+     '<span class="ptag">'+ps.length+' age groups</span><h2>'+esc(c.name)+'</h2><p>'+esc(c.desc)+'</p>'+(c.credit?'<p class="pcredit">'+esc(c.credit)+'</p>':'')+
+     '<p class="pprog">'+(n?n+(n===1?' lesson':' lessons')+' started':ps[0].lessons+' lessons in each group')+'</p></div>'+
+     '<button class="btn pbtn" data-act="subject" data-id="'+c.id+'" aria-label="Choose '+esc(c.name)+'">'+(n?'Continue':'Choose')+' ›</button></li>'});
+  return h+'</ul>'}
+function agesView(sub){
+  var ps=PATHS.filter(function(p){return p.subject===sub.id}),rec=ps.filter(function(p){return isRec(p)})[0],age=S.user?+S.user.age:NaN;
+  var h='<div class="crumbs"><button class="btn alt" data-act="subjects" style="min-height:42px;padding:6px 14px">‹ All learning paths</button></div>'+
+   '<section class="card agehead" style="--c1:'+sub.c1+';--c2:'+sub.c2+';--ci:'+sub.ink+'"><div class="pico">'+pathIcon(sub.icon)+'</div><div><div class="eyebrow">'+esc(sub.name)+'</div><h1 id="agetitle" tabindex="-1">Choose your age group</h1>'+
+   '<p class="muted" style="margin:6px 0 0">'+(rec?'You are '+age+', so we recommend <b>'+esc(rec.ages)+'</b>. You can choose either group.':'Choose the group that suits you best.')+'</p></div></section><ul class="paths ages">';
+  ps.forEach(function(c){
+    var n=startedCount(S.tracks[c.id]),r=c===rec;
+    h+='<li class="pcard'+(r?' rec':'')+'" style="--c1:'+c.c1+';--c2:'+c.c2+';--ci:'+c.ink+'"><div class="pico">'+pathIcon(c.icon)+'</div><div class="pbody">'+
+     (r?'<span class="ptag rec">Recommended for you</span>':'')+'<h2>'+esc(c.ages)+'</h2><span class="ptag">'+esc(c.name)+'</span><p>'+esc(c.desc)+'</p>'+
+     '<p class="pprog">'+(n?n+' of '+c.lessons+' lessons started':c.lessons+' lessons')+'</p></div>'+
+     '<button class="btn pbtn" data-act="openpath" data-id="'+c.id+'" aria-label="'+(n?'Continue ':'Start ')+esc(sub.name)+', '+esc(c.ages)+'">'+(n?'Continue':'Start')+' ›</button></li>'});
   return h+'</ul>'}
 var A={mode:"login",err:"",email:"",down:false,busy:false};
 function P(){return S.track?S.profile:null}
 function newProfile(){return{lessons:{},final:{best:0,tries:0},days:[],badges:[]}}
 function applyUser(u,tracks){H.fun=-1;H.badges=null;S.user=u;S.cur=u.name;S.tracks=tracks&&typeof tracks==="object"?tracks:{};S.track=null;S.profile=null;H.badges=Object.keys(allBadges()).length;loadGroups()}
-function loggedOut(msg){keepKids();setTrack(KIDS,"");try{localStorage.removeItem(PKEY)}catch(e){}S.cur=null;S.user=null;S.profile=null;S.track=null;S.tracks={};S.groups=null;A.mode="login";A.err=msg||"";V={step:"learn",card:0,game:null,quiz:null};render()}
+function loggedOut(msg){keepKids();setTrack(KIDS,"");try{localStorage.removeItem(PKEY)}catch(e){}S.cur=null;S.user=null;S.profile=null;S.track=null;S.tracks={};S.groups=null;S.subject=null;A.mode="login";A.err=msg||"";V={step:"learn",card:0,game:null,quiz:null};render()}
 
 /* ---------- saving to the server ---------- */
 var syncT=null,syncWarned=false;
@@ -920,12 +952,13 @@ function mainGameView(l,s){
   if(G.lock){h+='<div class="msg good" role="status">That was the last one!</div></section>';return h}
   if(g.type==="sort"){
     var it=G.items[G.i];
-    h+='<div class="qmeta"><span>Item '+(G.i+1)+' of '+G.items.length+'</span></div><div class="qbar"><i style="width:'+(G.i/G.items.length*100)+'%"></i></div><div class="prompt '+(G.err?'shake':'')+'">'+esc(it[0])+'</div><div class="choices">'+g.buckets.map(function(b,k){return '<button class="choice" data-act="sort" data-k="'+k+'">'+esc(b)+'</button>'}).join("")+'</div>'}
+    h+='<div class="qmeta"><span>Item '+(G.i+1)+' of '+G.items.length+'</span></div><div class="qbar"><i style="width:'+(G.i/G.items.length*100)+'%"></i></div><div class="prompt '+(G.err?'shake':'')+'">'+esc(it[0])+'</div><div class="choices">'+g.buckets.map(function(b,k){var on=G.picked!=null;return '<button class="choice'+(on&&k===it[1]?' right':'')+'" data-act="sort" data-k="'+k+'"'+(on?' disabled':'')+'>'+esc(b)+'</button>'}).join("")+'</div>'}
   if(g.type==="order"){
     h+='<ol class="placed">'+G.picked.map(function(k,n){return '<li><b>'+(n+1)+'</b>'+esc(g.items[k])+'</li>'}).join("")+'</ol><div class="choices">'+G.pool.filter(function(k){return G.picked.indexOf(k)<0}).map(function(k){return '<button class="choice '+(G.err===k?'shake wrong':'')+'" data-act="order" data-k="'+k+'">'+esc(g.items[k])+'</button>'}).join("")+'</div>'}
   if(g.type==="match"){
     h+='<div class="match"><div class="col">'+g.pairs.map(function(p,k){var d=G.ok.indexOf(k)>=0;return '<button class="choice '+(d?'done':G.sel===k?'sel':'')+'" data-act="mleft" data-k="'+k+'" '+(d?'disabled':'')+'>'+esc(p[0])+'</button>'}).join("")+'</div><div class="col">'+G.right.map(function(k){var d=G.ok.indexOf(k)>=0;return '<button class="choice '+(d?'done':'')+' '+(G.err===k?'shake wrong':'')+'" data-act="mright" data-k="'+k+'" '+(d?'disabled':'')+'>'+esc(g.pairs[k][1])+'</button>'}).join("")+'</div></div>'}
-  h+='<div class="msg '+(G.mtype||'')+'" role="status">'+esc(G.msg)+'</div><div><button class="btn alt" data-act="again">Start over</button></div></section>';
+  h+='<div class="msg '+(G.mtype||'')+'" role="status">'+esc(G.msg)+'</div><div class="gnav"><button class="btn alt" data-act="again">Start over</button>'+
+   (g.type==="sort"&&G.picked!=null?'<button class="btn" data-act="sortnext">'+(G.i===G.items.length-1?'See my result ›':'Next ›')+'</button>':'')+'</div></section>';
   return h}
 function heart(on){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="'+(on?'var(--coral)':'none')+'" stroke="'+(on?'var(--coral)':'var(--line)')+'" stroke-width="2" stroke-linejoin="round"/></svg>'}
 function bonusDone(l,key){var p=P(),s=ls(p,l.id);if(!s[key]){s[key]=true;touch(p);toast("+10 XP bonus!");confetti(60);checkBadges(p);save()}}
@@ -1001,6 +1034,8 @@ document.addEventListener("click",function(e){
   if(a==="openpath"){b.disabled=true;openPath(b.dataset.id).catch(function(){b.disabled=false;toast("Couldn’t open that path. Check your internet.")});return}
   if(a==="funmore"){newFun();render();var fb=document.querySelector('[data-act="funmore"]');if(fb)fb.focus();return}
   if(a==="resume"){b.disabled=true;var rn=b.dataset.n;openPath(b.dataset.id).then(function(){if(rn)location.hash="lesson-"+rn}).catch(function(){b.disabled=false;toast("Couldn’t open that path. Check your internet.")});return}
+  if(a==="subject"){S.subject=b.dataset.id;render();scrollTo(0,0);var at=document.getElementById("agetitle");if(at)at.focus();return}
+  if(a==="subjects"){S.subject=null;render();var ch=document.getElementById("choose");if(ch)ch.scrollIntoView();var sb=document.querySelector('[data-act="subject"]');if(sb)sb.focus({preventScroll:true});return}
   if(a==="paths"){pushNow().then(closePath);return}
   if(a==="home"){go("home");return}
   if(a==="authmode"){var em=document.getElementById("email");if(em)A.email=em.value;A.mode=b.dataset.mode;A.err="";render();return}
@@ -1016,9 +1051,11 @@ document.addEventListener("click",function(e){
   if(a==="again"){V.game=null;render();return}
   /* games */
   if(a==="sort"){var G=V.game;if(G.lock)return;var it=G.items[G.i];
-    if(it[1]===k){G.err=null;G.mtype="good";G.msg="Yes!";G.i++;fedOne(G);if(G.i>=G.items.length){finishFed(G,function(){gameDone(l)});return}}
+    if(G.picked!=null)return;
+    if(it[1]===k){G.err=null;G.mtype="good";G.msg="Yes! That’s right.";G.picked=k;fedOne(G);render();var nb=document.querySelector('[data-act="sortnext"]');if(nb)nb.focus({preventScroll:true});return}
     else{G.err=1;G.mtype="bad";G.msg="Not quite. Think again!";if(hurtOne(G)){render();return}}
     render();if(G.err)setTimeout(function(){G.err=null},600);return}
+  if(a==="sortnext"){var G=V.game;if(G.picked==null)return;G.picked=null;G.msg="";G.mtype="";if(G.i>=G.items.length-1){gameDone(l);return}G.i++;render();return}
   if(a==="order"){var G=V.game;if(G.lock)return;
     if(k===G.picked.length){G.picked.push(k);G.err=null;G.mtype="good";G.msg="Yes!";fedOne(G);if(G.picked.length===l.game.items.length){finishFed(G,function(){gameDone(l)});return}}
     else{G.err=k;G.mtype="bad";G.msg="That one comes later. Try another!";if(hurtOne(G)){render();return}}
