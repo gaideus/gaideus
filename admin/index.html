@@ -53,6 +53,7 @@ input{border:2px solid var(--line);border-radius:12px;padding:10px 12px;backgrou
 .tools input{max-width:320px;flex:1;min-width:180px}
 .tw{overflow-x:auto;margin:0 -4px}
 table{border-collapse:collapse;width:100%;min-width:760px}
+.acts{display:flex;gap:6px;flex-wrap:nowrap}
 th,td{padding:10px 8px;text-align:left;border-bottom:2px solid var(--line);vertical-align:middle;white-space:nowrap}
 th{font-family:var(--font-display);color:var(--primary-text);font-size:.95rem;user-select:none}
 th button{background:none;border:0;padding:0;font:inherit;color:inherit;font-weight:800}
@@ -135,19 +136,22 @@ function sorted(){
   rows.sort(function(a,b){var x=a[k],y=b[k];if(k==="name"){return m*String(x).localeCompare(String(y))}return m*((x||0)-(y||0))});
   return rows}
 function rowsHtml(){
-  var rows=sorted();if(!rows.length)return '<tr><td colspan="9" class="empty">'+(USERS.length?'No one matches that search.':'No one has signed up yet.')+'</td></tr>';
+  var rows=sorted();if(!rows.length)return '<tr><td colspan="10" class="empty">'+(USERS.length?'No one matches that search.':'No one has signed up yet.')+'</td></tr>';
   return rows.map(function(u){return '<tr tabindex="0" data-id="'+u.id+'" aria-label="Open '+esc(u.name)+'"><td class="who"><b>'+esc(u.name)+'</b><small>'+esc(u.email)+'</small></td><td>'+u.age+'</td>'+
    '<td><span class="bar" aria-hidden="true"><i style="width:'+u.pct+'%"></i></span>'+u.pct+'%</td><td>'+u.mastered+'</td><td>'+u.stars+'</td><td>'+u.xp+'</td><td>'+u.streak+' d</td>'+
-   '<td title="'+esc(fmt(u.last_active))+'">'+esc(ago(u.last_active))+'</td><td title="'+esc(fmt(u.created_at))+'">'+esc(ago(u.created_at))+'</td></tr>'}).join("")}
+   '<td title="'+esc(fmt(u.last_active))+'">'+esc(ago(u.last_active))+'</td><td title="'+esc(fmt(u.created_at))+'">'+esc(ago(u.created_at))+'</td>'+
+   '<td><div class="acts"><button class="btn alt sm" data-rp="'+u.id+'" aria-label="Reset password for '+esc(u.name)+'">Reset password</button><button class="btn danger sm" data-del="'+u.id+'" aria-label="Delete '+esc(u.name)+'">Delete</button></div></td></tr>'}).join("")}
 function renderList(){
   app.innerHTML=topBar()+stats()+'<div class="card"><div class="tools"><input id="q" type="search" placeholder="Search by name or email" aria-label="Search learners" value="'+esc(QUERY)+'"></div><div class="tw"><table><thead><tr>'+
-   COLS.map(function(c){return '<th scope="col"><button data-sort="'+c[0]+'" '+(SORT.k===c[0]?'data-dir="'+SORT.dir+'"':'')+'>'+c[1]+'</button></th>'}).join("")+'</tr></thead><tbody id="tb">'+rowsHtml()+'</tbody></table></div></div>';
+   COLS.map(function(c){return '<th scope="col"><button data-sort="'+c[0]+'" '+(SORT.k===c[0]?'data-dir="'+SORT.dir+'"':'')+'>'+c[1]+'</button></th>'}).join("")+'<th scope="col">Actions</th></tr></thead><tbody id="tb">'+rowsHtml()+'</tbody></table></div></div>';
   document.getElementById("out").onclick=logout;document.getElementById("csv").onclick=exportCsv;document.getElementById("grp").onclick=loadGroups;
   document.getElementById("q").oninput=function(e){QUERY=e.target.value;document.getElementById("tb").innerHTML=rowsHtml()};
   app.querySelectorAll("th button").forEach(function(b){b.onclick=function(){var k=b.dataset.sort;SORT=SORT.k===k?{k:k,dir:SORT.dir==="asc"?"desc":"asc"}:{k:k,dir:k==="name"||k==="age"?"asc":"desc"};renderList()}});
   var tb=document.getElementById("tb");
-  tb.onclick=function(e){var tr=e.target.closest("tr[data-id]");if(tr)openUser(+tr.dataset.id)};
-  tb.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){var tr=e.target.closest("tr[data-id]");if(tr){e.preventDefault();openUser(+tr.dataset.id)}}}}
+  tb.onclick=function(e){var b=e.target.closest("button[data-rp],button[data-del]");
+    if(b){var id=+(b.dataset.rp||b.dataset.del),u=USERS.filter(function(x){return x.id===id})[0];if(u){if(b.dataset.rp)resetPw(u);else delUser(u)}return}
+    var tr=e.target.closest("tr[data-id]");if(tr)openUser(+tr.dataset.id)};
+  tb.onkeydown=function(e){if(e.target.closest("button"))return;if(e.key==="Enter"||e.key===" "){var tr=e.target.closest("tr[data-id]");if(tr){e.preventDefault();openUser(+tr.dataset.id)}}}}
 function logout(){api("POST","logout?as=admin",{}).then(function(){showLogin("")}).catch(function(){showLogin("")})}
 
 /* ---------- one learner ---------- */
@@ -172,13 +176,15 @@ function renderUser(u,p){
 var BADGE_NAMES={first:"First Step",whiz:"Quiz Whiz",games:"Game Master",streak:"3-Day Streak",half:"Halfway There",all:"Journey Complete",bonus:"Bonus Hunter",champ:"Champion"};
 function wireUser(u){
   document.getElementById("bk").onclick=function(){loadList()};
-  document.getElementById("rp").onclick=function(){
+  document.getElementById("rp").onclick=function(){resetPw(u)};
+  document.getElementById("del").onclick=function(){delUser(u)}}
+function resetPw(u){
     var pw=prompt("Type a new temporary password for "+u.name+" (at least 8 characters).\nThey will be signed out everywhere, then can log in with this.");
     if(pw==null)return;
-    api("POST","admin/users/"+u.id+"/password",{password:pw}).then(function(){toast("Password changed. Tell "+u.name+" the new one.")}).catch(function(x){toast(x.message)})};
-  document.getElementById("del").onclick=function(){
+    api("POST","admin/users/"+u.id+"/password",{password:pw}).then(function(){toast("Password changed. Tell "+u.name+" the new one.")}).catch(function(x){toast(x.message)})}
+function delUser(u){
     if(!confirm("Delete "+u.name+"’s account and all their progress? This cannot be undone."))return;
-    api("DELETE","admin/users/"+u.id).then(function(){toast("Account deleted.");loadList()}).catch(function(x){toast(x.message)})}}
+    api("DELETE","admin/users/"+u.id).then(function(){toast("Account deleted.");loadList()}).catch(function(x){toast(x.message)})}
 
 /* ---------- groups inside a course ---------- */
 function fail(x){if(x.message!=="401")toast(x.message)}
