@@ -13,28 +13,28 @@ const LESSONS = [
    6
   ],
   "title": "The Best of Stories",
-  "short": "The surah begins, and Yusuf has a dream",
-  "big": "Allah calls the story of Yusuf “the best of stories”. It begins when young Yusuf dreams that eleven stars, the sun and the moon bow down to him. His father Ya‘qub knows it is a special dream, and tells him to keep it secret from his brothers.",
+  "short": "A clear Book, and Yusuf’s special dream",
+  "big": "Allah calls the story of Yusuf “the best of stories”. It begins when young Yusuf, about seven years old, dreams that eleven stars, the sun and the moon bow down to him. His father Ya‘qub knows it is a special dream, and tells him to keep it secret from his brothers.",
   "remember": [
    "The surah starts with three letters: Alif, Lam, Ra. Only Allah knows their full meaning.",
+   "The Qur’an is a clear Book, sent down in Arabic so that we may understand.",
+   "The word for story, qissah, means following footprints in the sand.",
    "Yusuf was the son of Ya‘qub, son of Ishaq, son of Ibrahim: four prophets in one family.",
-   "The Qur’an is a clear Book. Anyone who wants its guidance can find it.",
    "The dream: eleven stars, the sun and the moon bowing down to Yusuf.",
-   "Allah sent the Qur’an down in Arabic so that we may understand.",
    "Ya‘qub said: do not tell your brothers, or they may plot against you."
   ],
   "more": [
    {
-    "t": "Why does Allah tell us stories?",
-    "p": "The Arabic word for story, qissah, comes from a word that means following footprints in the sand. When we listen to someone’s story, we walk in their footsteps. Stories show us how to live our faith, and they make our iman stronger."
+    "t": "Letters and a clear Book",
+    "p": "Some surahs start with letters that do not make a word, like Alif, Lam, Ra. Straight after them, Allah usually praises the Qur’an. The Qur’an is made of the same letters the Arabs used every day, yet nobody could ever make anything like it."
    },
    {
-    "t": "A noble family",
-    "p": "The Prophet ﷺ was asked who the most noble person was. He said it was Yusuf: the noble one, son of a noble one, son of a noble one, son of a noble one. His father, grandfather and great-grandfather were all prophets."
+    "t": "Walking in their footsteps",
+    "p": "Long ago, desert trackers followed footprints in the sand. The word qissah, story, comes from that. When we listen to the story of Yusuf, it is as if we walk in his footsteps and learn from every step. Its big lesson: evil never wins in the end."
    },
    {
-    "t": "A gift in a hard time",
-    "p": "Allah sent this surah when life was very hard for the Prophet ﷺ. People were mocking him and hurting him. The story of Yusuf comforted him: just as Yusuf won in the end, he would too."
+    "t": "How did the Prophet ﷺ know?",
+    "p": "Allah says the Prophet ﷺ did not know this story before. He lived in Makkah and had no books about it. Only Allah could have told him: that is one of the signs that he was a true prophet."
    },
    {
     "t": "Three kinds of dreams",
@@ -45,31 +45,31 @@ const LESSONS = [
     ]
    },
    {
-    "t": "The big lessons",
-    "l": [
-     "Allah is always watching over His servants.",
-     "Evil never wins in the end.",
-     "Those who are patient and do good come out on top."
-    ]
+    "t": "Keep it safe",
+    "p": "The Prophet ﷺ said a dream is like a bird flying, so we should only tell it to someone who cares about us. Ya‘qub knew the brothers might become jealous. He did not call his sons bad. He said Shaytan is the enemy. And he did not feel jealous himself, even though the dream meant Yusuf would become greater than him."
+   },
+   {
+    "t": "Jealousy is like fire",
+    "p": "The Prophet ﷺ said jealousy eats up good deeds the way fire eats wood. So we should not show off what we have, and when someone else has a blessing, we can say “ma sha’ Allah” and be happy for them."
    }
   ],
-  "home": "Tell someone at home: “Allah calls the story of Yusuf the best of stories.” Ask them what they already know about Prophet Yusuf.",
+  "home": "Tell someone at home: “Allah calls the story of Yusuf the best of stories.” Then, the next time a friend gets something nice, say “ma sha’ Allah” and be happy for them.",
   "game": {
    "type": "match",
-   "title": "Who is who?",
-   "help": "Tap a name on the left, then who it is on the right.",
+   "title": "Who or what is it?",
+   "help": "Tap a word on the left, then what it means on the right.",
    "pairs": [
     [
+     "Alif, Lam, Ra",
+     "Letters only Allah fully understands"
+    ],
+    [
+     "Qissah",
+     "A story, like following footprints"
+    ],
+    [
      "Ya‘qub",
-     "Yusuf’s father"
-    ],
-    [
-     "Ishaq",
-     "Yusuf’s grandfather"
-    ],
-    [
-     "Ibrahim",
-     "Yusuf’s great-grandfather"
+     "Yusuf’s father, a prophet"
     ],
     [
      "The eleven stars",
@@ -89,62 +89,62 @@ const LESSONS = [
    {
     "q": "What does Allah call the story of Yusuf?",
     "o": [
+     "A short story",
      "The best of stories",
-     "The longest story",
-     "A sad story"
+     "An old legend"
     ],
-    "a": 0,
-    "w": "Allah calls it “the best of stories”."
+    "a": 1,
+    "w": "Allah calls it the best of stories."
    },
    {
-    "q": "What did Yusuf see in his dream?",
+    "q": "What does the word qissah (story) come from?",
     "o": [
-     "Eleven stars, the sun and the moon bowing to him",
-     "A wolf in the desert",
-     "A river full of fish"
+     "Following footprints in the sand",
+     "Writing on paper",
+     "Singing a song"
     ],
     "a": 0,
-    "w": "Eleven stars, the sun and the moon bowed down to him."
+    "w": "Listening to a story is like walking in someone’s footsteps."
    },
    {
-    "q": "Which letters begin Surah Yusuf?",
+    "q": "In what language did Allah send down the Qur’an?",
     "o": [
-     "Alif, Lam, Ra",
-     "Ya, Sin",
-     "Qaf"
-    ],
-    "a": 0,
-    "w": "It begins with Alif, Lam, Ra."
-   },
-   {
-    "q": "Who did Yusuf tell about his dream?",
-    "o": [
-     "His father, Ya‘qub",
-     "His brothers",
-     "A king"
-    ],
-    "a": 0,
-    "w": "He told his father, Prophet Ya‘qub."
-   },
-   {
-    "q": "In which language did Allah send down the Qur’an?",
-    "o": [
-     "Arabic",
+     "Greek",
      "Persian",
-     "Greek"
+     "Arabic"
     ],
-    "a": 0,
+    "a": 2,
     "w": "An Arabic Qur’an, so that we may understand."
    },
    {
-    "q": "Why did Ya‘qub say not to tell the brothers?",
+    "q": "In the dream, who were the eleven stars?",
     "o": [
-     "They might become jealous and plot against him",
-     "They were asleep",
-     "Dreams must always be kept secret"
+     "Yusuf’s brothers",
+     "Kings of Egypt",
+     "Angels"
     ],
     "a": 0,
-    "w": "He feared they would become jealous and plot against Yusuf."
+    "w": "The stars were his brothers; the sun and moon were his parents."
+   },
+   {
+    "q": "Why did Ya‘qub tell Yusuf to keep the dream secret?",
+    "o": [
+     "It was a bad dream",
+     "The brothers might become jealous and plot",
+     "Dreams are always silly"
+    ],
+    "a": 1,
+    "w": "He wanted to protect Yusuf and keep the family at peace."
+   },
+   {
+    "q": "What does jealousy do to good deeds?",
+    "o": [
+     "Makes them bigger",
+     "Eats them up, like fire eats wood",
+     "Nothing at all"
+    ],
+    "a": 1,
+    "w": "So we say “ma sha’ Allah” instead."
    }
   ]
  },
@@ -156,86 +156,133 @@ const LESSONS = [
   ],
   "title": "The Brothers’ Plan",
   "short": "Jealousy leads to a terrible idea",
-  "big": "Yusuf’s ten older brothers became jealous. They thought their father loved Yusuf and his little brother Binyamin more than them, and made a terrible plan to get rid of Yusuf.",
+  "big": "Allah says this story has lessons for anyone who asks. Yusuf’s ten older brothers became jealous: they thought their father loved Yusuf and little Binyamin more than them. Jealousy stopped them thinking clearly, and they made a terrible plan to get rid of Yusuf.",
   "remember": [
-   "Yusuf had ten older brothers. Binyamin was his brother from the same mother.",
-   "The brothers said: our father loves Yusuf and his brother more, even though we are a strong group.",
-   "They planned to kill Yusuf or send him far away. One brother said: do not kill him, put him in a well.",
-   "They told themselves: “We will be good people afterwards.” This is a trick of Shaytan.",
+   "The story has lessons for everyone who asks about it.",
+   "The brothers said: our father loves Yusuf and his brother more, even though we are a big group.",
+   "Parents must be fair with gifts, but nobody can control how much love is in the heart.",
+   "They said: “We will be good people afterwards.” This is a trick of Shaytan.",
+   "One brother said: do not kill him; put him at the bottom of a well.",
    "Ya‘qub said: I fear a wolf may eat him."
   ],
   "more": [
    {
-    "t": "Love is in the heart",
-    "p": "The brothers could only say that their father loved Yusuf more. They could not say he gave Yusuf more things. Parents must be fair with gifts, but no one can control how much love is in the heart."
+    "t": "Fair with gifts",
+    "p": "A man once wanted the Prophet ﷺ to be a witness to a gift he gave one of his sons. The Prophet ﷺ asked: “Have you given all your children the same?” Parents must be fair with what they give. The brothers could only say their father loved Yusuf more, not that he gave him more."
    },
    {
     "t": "Shaytan’s trick",
-    "p": "Shaytan says: “Do the wrong thing now and be good later.” But one wrong leads to another. After hurting Yusuf, the brothers had to lie, and then swear that the lie was true."
+    "p": "Shaytan says: “Do the wrong thing now, and be good later.” But one wrong leads to another. After hurting Yusuf, the brothers had to lie, and then swear that the lie was true."
    },
    {
     "t": "A good wish, a wrong way",
-    "p": "The brothers wanted their father’s love. That is a good thing to want. But they chose a haram way to get it, and they lost. Their father’s heart broke, and he missed Yusuf even more."
+    "p": "The brothers wanted their father’s love. That is a good thing to want! But they chose a haram way to get it, and it went wrong. Their father’s heart broke, and he missed Yusuf even more. Doing wrong never brings what we really want."
    },
    {
-    "t": "Asking their father",
-    "p": "The brothers said: “Send Yusuf with us tomorrow to play. We will look after him.” Ya‘qub felt in his heart that something was wrong. He said it would make him sad, and that he feared a wolf. In the end, he let Yusuf go."
+    "t": "Playing is good",
+    "p": "The brothers asked: “Send Yusuf with us tomorrow to have fun and play.” Playing is allowed in Islam. The Prophet ﷺ raced his wife ‘A’ishah and played with his grandsons al-Hasan and al-Husayn. But wasting all our time is not good."
+   },
+   {
+    "t": "A father’s heart",
+    "p": "The brothers tried hard to persuade Ya‘qub: “Why don’t you trust us? We will look after him!” But Ya‘qub’s heart told him something was wrong. He said it would make him sad, and that he feared a wolf. In the end, he let Yusuf go."
    }
   ],
   "home": "The next time you feel jealous of a brother, sister or friend, make a du‘a for them and give them salam. The Prophet ﷺ taught us that spreading salam makes love grow.",
   "game": {
-   "type": "order",
-   "title": "The plan, step by step",
-   "help": "Tap the events in the order they happened.",
+   "type": "sort",
+   "title": "Ya‘qub’s way or the brothers’ way?",
+   "help": "Who did each thing: Ya‘qub, or the jealous brothers?",
+   "buckets": [
+    "Ya‘qub’s way",
+    "The brothers’ way"
+   ],
    "items": [
-    "The brothers feel jealous of Yusuf",
-    "They talk about getting rid of him",
-    "One brother says: do not kill him, use a well",
-    "They ask their father to let Yusuf come and play",
-    "Ya‘qub says he fears a wolf",
-    "Ya‘qub lets Yusuf go with them"
+    [
+     "Keeping peace in the family",
+     0
+    ],
+    [
+     "Feeling jealous of Yusuf",
+     1
+    ],
+    [
+     "Blaming Shaytan, not his sons",
+     0
+    ],
+    [
+     "“Do wrong now, be good later”",
+     1
+    ],
+    [
+     "Listening to what his heart felt",
+     0
+    ],
+    [
+     "Making a plan to hurt Yusuf",
+     1
+    ]
    ]
   },
   "quiz": [
    {
     "q": "Why were the brothers jealous?",
     "o": [
-     "They thought their father loved Yusuf and Binyamin more",
      "Yusuf had more money",
+     "They thought their father loved Yusuf and Binyamin more",
      "Yusuf was taller than them"
     ],
-    "a": 0,
+    "a": 1,
     "w": "They thought their father loved Yusuf and his brother more."
+   },
+   {
+    "q": "What must parents be fair with?",
+    "o": [
+     "The gifts they give",
+     "How tall their children are",
+     "Their children’s names"
+    ],
+    "a": 0,
+    "w": "Gifts must be fair; love is in the heart."
+   },
+   {
+    "q": "What is Shaytan’s trick in this story?",
+    "o": [
+     "“Do wrong now, be good later”",
+     "“Always tell the truth”",
+     "“Pray on time”"
+    ],
+    "a": 0,
+    "w": "One wrong leads to another."
    },
    {
     "q": "What did one brother suggest instead of killing Yusuf?",
     "o": [
+     "Sending him to school",
      "Putting him in a well",
-     "Selling his shirt",
-     "Sending him to school"
+     "Selling his toys"
     ],
-    "a": 0,
-    "w": "He said: do not kill him, put him in a well."
+    "a": 1,
+    "w": "He said: put him at the bottom of a well."
    },
    {
-    "q": "Which animal did Ya‘qub say he feared?",
+    "q": "Is playing allowed in Islam?",
     "o": [
-     "A wolf",
+     "No, never",
+     "Yes, the Prophet ﷺ raced and played too",
+     "Only on Fridays"
+    ],
+    "a": 1,
+    "w": "Play is fine, but not wasting all our time."
+   },
+   {
+    "q": "What did Ya‘qub say he was afraid of?",
+    "o": [
      "A lion",
-     "A snake"
+     "A storm",
+     "A wolf"
     ],
-    "a": 0,
-    "w": "He said he feared a wolf might eat Yusuf."
-   },
-   {
-    "q": "“Do wrong now and be good later” is a trick of…",
-    "o": [
-     "Shaytan",
-     "A good friend",
-     "The angels"
-    ],
-    "a": 0,
-    "w": "It is one of Shaytan’s tricks. One wrong leads to another."
+    "a": 2,
+    "w": "He feared a wolf might eat Yusuf."
    }
   ]
  },
@@ -247,111 +294,112 @@ const LESSONS = [
   ],
   "title": "Into the Well, Sold in Egypt",
   "short": "Beautiful patience and Allah’s plan",
-  "big": "The brothers threw Yusuf into a dark well and came home with fake tears and a shirt with false blood. Ya‘qub answered with beautiful patience. Travellers found Yusuf and sold him in Egypt, where an important man took him into his home: all part of Allah’s plan.",
+  "big": "The brothers threw Yusuf into a dark well, but Allah filled his heart with calm. They came home at night with fake tears and a shirt with false blood, and Ya‘qub answered with beautiful patience. Travellers found Yusuf and sold him in Egypt, where an important man took him into his home: all part of Allah’s plan.",
   "remember": [
-   "In the well, Allah inspired Yusuf: one day you will tell them what they did, and they will not know who you are.",
-   "A caravan stopped at the well. The water-boy let down his bucket and found Yusuf.",
+   "In the well, Allah told Yusuf: one day you will remind them of what they did.",
    "The brothers came home in the evening, crying fake tears.",
-   "They hid him and sold him for a few silver coins.",
-   "Their story: we were racing, and a wolf ate Yusuf.",
-   "The man who bought him said: take good care of him. He may be useful to us, or we may adopt him as a son."
+   "Ya‘qub said: “Beautiful patience. Allah is the One whose help I seek.”",
+   "A caravan stopped at the well, and the water-drawer found Yusuf in his bucket.",
+   "They sold him for a few silver coins.",
+   "When Yusuf grew up, Allah gave him wisdom and knowledge: Allah rewards those who do good."
   ],
   "more": [
    {
     "t": "Not alone in the dark",
-    "p": "Allah put calm into Yusuf’s heart. The message meant three things: he would not die in the well, he would see his family again, and one day he would be the stronger one."
+    "p": "Allah put calm into Yusuf’s scared heart. His message promised three things: Yusuf would not die in the well, he would see his family again, and one day he would be the stronger one. Knowing a happy ending is coming makes hard times easier. Our happy ending is Jannah."
    },
    {
-    "t": "From a well to a great house",
-    "p": "Yusuf could have ended up with a cruel master. Instead, Allah lifted him from the bottom of a well and placed him in the home of an important minister of Egypt, called al-‘Aziz."
+    "t": "Forgive and don’t remind",
+    "p": "Allah never calls the brothers bad names in the surah. They said sorry later, and Allah forgave them. When we forgive someone, we should not keep reminding them of their mistake, or tell everyone about it."
    },
    {
     "t": "Tears do not prove the truth",
     "p": "A famous judge called Shurayh once stayed calm while a woman cried loudly in front of him. His students were surprised. He said: the brothers of Yusuf cried too, and they were the ones who had done wrong. We judge by facts, not by tears."
    },
    {
-    "t": "A few silver coins",
-    "p": "The travellers sold Yusuf cheaply because he had cost them nothing, and they wanted to get rid of him quickly. People often do not value what they get for free. We should take care not to treat our Islam like that."
+    "t": "Beautiful patience",
+    "p": "The blood on Yusuf’s shirt was fake, and Ya‘qub knew it. He did not shout. He said he would have beautiful patience: not complaining to people, and taking his sadness to Allah. Then he said “wa-llahu al-musta‘an”: Allah is the One whose help I seek."
    },
    {
-    "t": "Beautiful patience",
-    "p": "Ya‘qub did not believe the story. He said: “Your souls have tempted you to do something.” Then he said he would have beautiful patience. That means not complaining to people, and taking your sadness to Allah."
+    "t": "From a well to a great house",
+    "p": "The travellers sold Yusuf cheaply because he had cost them nothing. People often do not value what they get for free. But Allah had a plan: instead of a cruel master, Yusuf went to the home of al-‘Aziz, an important minister, who told his wife: take good care of him."
    }
   ],
-  "home": "Learn the words Ya‘qub said: “Allahu al-Musta‘an”, which means Allah is the One whose help I seek. Say them the next time something feels too hard.",
+  "home": "Learn the words Ya‘qub said: “wa-llahu al-musta‘an”, which means Allah is the One whose help I seek. Say them the next time something feels too hard.",
   "game": {
    "type": "order",
    "title": "Yusuf’s journey",
    "help": "Tap the events in the order they happened.",
    "items": [
-    "Yusuf is alone in the well",
+    "The brothers put Yusuf in the well",
+    "Allah fills Yusuf’s heart with calm",
+    "The brothers come home crying fake tears",
+    "Ya‘qub says: beautiful patience",
     "A caravan stops for water",
-    "The water-boy finds Yusuf",
-    "Yusuf is hidden and taken to Egypt",
-    "He is sold for a few silver coins",
-    "Al-‘Aziz tells his wife to take good care of him"
+    "Yusuf is sold for a few silver coins",
+    "Al-‘Aziz takes him into his home"
    ]
   },
   "quiz": [
    {
-    "q": "What did Allah tell Yusuf in the well?",
+    "q": "What did Allah put in Yusuf’s heart in the well?",
     "o": [
-     "One day you will remind them of what they did",
-     "Climb out straight away",
-     "Your brothers are coming back for you"
+     "Anger",
+     "Calm",
+     "Fear"
     ],
-    "a": 0,
-    "w": "Allah told him that one day he would remind them of this."
+    "a": 1,
+    "w": "Allah gave him calm and a promise."
    },
    {
-    "q": "Who found Yusuf in the well?",
+    "q": "When did the brothers come home to their father?",
     "o": [
-     "Travellers in a caravan",
-     "His brothers",
-     "His father"
+     "In the evening",
+     "At breakfast",
+     "The next week"
     ],
     "a": 0,
-    "w": "A caravan of travellers found him."
+    "w": "They came at night, crying fake tears."
    },
    {
-    "q": "What did the brothers bring as “proof”?",
+    "q": "What did the judge Shurayh learn from this story?",
     "o": [
-     "Yusuf’s shirt with false blood",
-     "A wolf",
-     "Yusuf’s shoes"
+     "Crying always means you are telling the truth",
+     "Judge by facts, not by tears",
+     "Never listen to anyone"
     ],
-    "a": 0,
-    "w": "They brought his shirt, stained with false blood."
+    "a": 1,
+    "w": "The brothers cried too, and they had done wrong."
    },
    {
-    "q": "How much was Yusuf sold for?",
+    "q": "What is “beautiful patience”?",
     "o": [
-     "A few silver coins",
-     "A chest of gold",
-     "A hundred camels"
+     "Never feeling sad",
+     "Not complaining to people, and taking your sadness to Allah",
+     "Shouting until you feel better"
     ],
-    "a": 0,
-    "w": "He was sold cheaply, for a few silver coins."
+    "a": 1,
+    "w": "That is what Ya‘qub did."
    },
    {
-    "q": "How did Ya‘qub answer?",
+    "q": "How did the water-drawer find Yusuf?",
     "o": [
-     "With beautiful patience",
-     "With great shouting",
-     "By leaving home"
+     "In his bucket",
+     "Behind a tree",
+     "In a tent"
     ],
     "a": 0,
-    "w": "He said he would have beautiful patience and asked Allah for help."
+    "w": "He let down his bucket and found a boy!"
    },
    {
-    "q": "Which land was Yusuf taken to?",
+    "q": "What did Allah give Yusuf when he grew up?",
     "o": [
-     "Egypt",
-     "Yemen",
-     "Persia"
+     "Gold and silver",
+     "Wisdom and knowledge",
+     "A big army"
     ],
-    "a": 0,
-    "w": "He was taken to Egypt."
+    "a": 1,
+    "w": "Allah rewards those who do good."
    }
   ]
  },
@@ -363,133 +411,112 @@ const LESSONS = [
   ],
   "title": "Allah Is My Refuge",
   "short": "Yusuf says no to wrong, and the torn shirt",
-  "big": "When the lady of the house called Yusuf to do something very wrong, he said at once: “Allah is my refuge!” He ran to the door, she tore his shirt from behind, and the torn shirt showed that Yusuf was telling the truth.",
+  "big": "Yusuf grew up in the house of al-‘Aziz. One day the lady of the house locked the doors and asked him to do something very wrong. Yusuf said at once: “Allah is my refuge!” He ran to the door, she tore his shirt from behind, and the torn shirt showed that Yusuf was telling the truth.",
   "remember": [
-   "The Prophet ﷺ said that Yusuf was given half of all beauty.",
-   "Both of them raced to the door: Yusuf to escape from sin, and the lady to stop him.",
-   "The lady of the house locked the doors and called Yusuf to sin.",
-   "She tore his shirt from the back.",
-   "Yusuf’s first words were “Ma‘adha Allah”: Allah is my refuge.",
-   "She blamed Yusuf at once. Yusuf said: it was she who tried to make me do wrong."
+   "Allah gave Yusuf half of all beauty.",
+   "When the lady asked him to do wrong, he said: “Allah is my refuge!”",
+   "Yusuf remembered that Allah was watching him, and that kept him safe.",
+   "She tore his shirt from the back as he ran to the door.",
+   "She blamed Yusuf, but a man from her own family said: look at the shirt.",
+   "The shirt was torn from the back, so Yusuf was telling the truth."
   ],
   "more": [
    {
     "t": "A very hard test",
-    "p": "Yusuf was a servant in her house, and she was a powerful lady. No one else was there, and the doors were locked. Saying no was hard and dangerous. But Yusuf still said no."
+    "p": "Yusuf was a young man living as a servant in the lady’s house. She was rich and powerful, and she kept asking him to do something Allah does not allow. One day she locked all the doors. It was a very hard test."
    },
    {
-    "t": "Same action, different hearts",
-    "p": "Two people ran to the same door. One was running away from sin, and the other was chasing it. We should not judge people only by what we see on the outside."
-   },
-   {
-    "t": "Turn to Allah first",
-    "p": "Yusuf did not trust in his own strength. He asked Allah for protection straight away. Allah tells us in the Qur’an: if Shaytan tempts you, seek refuge with Allah."
-   },
-   {
-    "t": "One sin leads to another",
-    "p": "The lady planned one sin. When she was caught, she told a lie and blamed an innocent person. The same thing happened to Yusuf’s brothers. Blaming others for our own wrong is what Iblis did."
+    "t": "Run to Allah",
+    "p": "Yusuf did not try to be strong on his own. Straight away he said: “Ma‘adha-llah”, Allah is my refuge. When Shaytan whispers to us to do wrong, we should do the same: turn to Allah at once."
    },
    {
     "t": "Allah is watching",
-    "p": "The Qur’an says Yusuf saw a sign from his Lord. The strongest explanation is that he knew, with no doubt, that Allah was watching him. Even behind locked doors, Allah sees everything."
+    "p": "Allah showed Yusuf a sign. Many scholars say it was his strong feeling that Allah was watching him. When we remember that Allah sees us, it is much easier to stay away from wrong. Allah calls Yusuf one of His sincere, chosen servants."
+   },
+   {
+    "t": "Don’t blame others",
+    "p": "When her husband appeared, the lady quickly blamed Yusuf. Blaming someone else for your own mistake is a very bad thing. It is what Iblis did when he said it was Allah’s fault that he went wrong. When we make a mistake, we should own it and say sorry."
+   },
+   {
+    "t": "Look at the clues",
+    "p": "A man from the lady’s family gave a clever test. If the shirt was torn at the front, she was telling the truth. If it was torn at the back, Yusuf was running away and she was pulling him. It was torn at the back! We should look at the facts before deciding who is right."
    }
   ],
-  "home": "When no one can see you, remember: Allah sees me. Choose one moment today to do the right thing when nobody is looking.",
+  "home": "Learn to say “Ma‘adha-llah” (Allah is my refuge). The next time you want to do something you know is wrong, say it and remember that Allah is watching.",
   "game": {
-   "type": "sort",
-   "title": "What did Yusuf do?",
-   "help": "Did Yusuf do this, or not?",
-   "buckets": [
-    "Yusuf did this",
-    "Yusuf did not do this"
-   ],
+   "type": "order",
+   "title": "What happened in the house?",
+   "help": "Tap the events in the order they happened.",
    "items": [
-    [
-     "Said: Allah is my refuge",
-     0
-    ],
-    [
-     "Agreed to do wrong",
-     1
-    ],
-    [
-     "Remembered that Allah was watching",
-     0
-    ],
-    [
-     "Trusted only in his own strength",
-     1
-    ],
-    [
-     "Said: wrongdoers never succeed",
-     0
-    ],
-    [
-     "Forgot Allah because the doors were locked",
-     1
-    ]
+    "The lady locks the doors",
+    "Yusuf says: “Allah is my refuge!”",
+    "They both run to the door",
+    "She tears his shirt from the back",
+    "Her husband is at the door",
+    "She blames Yusuf",
+    "A man from her family looks at the shirt"
    ]
   },
   "quiz": [
    {
-    "q": "What were Yusuf’s first words when he was called to do wrong?",
+    "q": "What did Yusuf say when the lady asked him to do wrong?",
     "o": [
-     "Allah is my refuge",
-     "I am afraid of your husband",
-     "Maybe later"
+     "“Maybe later”",
+     "“Allah is my refuge!”",
+     "“Nobody will know”"
+    ],
+    "a": 1,
+    "w": "He turned to Allah straight away."
+   },
+   {
+    "q": "What kept Yusuf safe from doing wrong?",
+    "o": [
+     "Remembering that Allah was watching",
+     "A locked door",
+     "His brothers"
     ],
     "a": 0,
-    "w": "He said “Ma‘adha Allah”: Allah is my refuge."
+    "w": "Many scholars say that was the sign he saw."
    },
    {
     "q": "Where was Yusuf’s shirt torn?",
     "o": [
-     "From the back",
-     "From the front",
-     "On the sleeve"
+     "At the front",
+     "On the sleeve",
+     "At the back"
     ],
-    "a": 0,
-    "w": "It was torn from the back."
+    "a": 2,
+    "w": "Because he was running away."
    },
    {
-    "q": "How much beauty was Yusuf given?",
+    "q": "What did the lady do when her husband appeared?",
     "o": [
-     "Half of all beauty",
-     "Just a little",
-     "The surah does not say he was beautiful"
+     "Said sorry",
+     "Blamed Yusuf",
+     "Ran away"
     ],
-    "a": 0,
-    "w": "The Prophet ﷺ said Yusuf was given half of all beauty."
+    "a": 1,
+    "w": "Blaming others for our mistakes is what Iblis did."
    },
    {
-    "q": "What did the torn shirt prove?",
+    "q": "Who gave the test about the shirt?",
     "o": [
-     "Yusuf was running away and told the truth",
-     "Yusuf was to blame",
-     "Nothing at all"
-    ],
-    "a": 0,
-    "w": "It showed Yusuf was running away, so he was truthful."
-   },
-   {
-    "q": "What sign helped Yusuf to stay away from sin?",
-    "o": [
-     "Knowing for sure that Allah was watching him",
-     "A letter from his father",
-     "A loud noise outside"
-    ],
-    "a": 0,
-    "w": "The strongest view is that he knew Allah was watching him."
-   },
-   {
-    "q": "Who said to check the shirt?",
-    "o": [
-     "A witness from the lady’s own family",
+     "A man from the lady’s own family",
      "Yusuf’s father",
-     "The king of Egypt"
+     "The king"
     ],
     "a": 0,
-    "w": "A witness from her own family suggested it."
+    "w": "So nobody could say he was against her."
+   },
+   {
+    "q": "What should we do before deciding who is right?",
+    "o": [
+     "Pick the richest person",
+     "Look at the facts",
+     "Pick the one who shouts loudest"
+    ],
+    "a": 1,
+    "w": "The clue of the shirt showed the truth."
    }
   ]
  },
@@ -500,109 +527,138 @@ const LESSONS = [
    35
   ],
   "title": "Prison Is Dearer to Me",
-  "short": "Yusuf chooses Allah over everything",
-  "big": "The women of the city gossiped, and the lady threatened Yusuf with prison. Yusuf made du‘a: he would rather be in prison than disobey Allah. Allah answered him, and Yusuf was sent to prison even though he was innocent.",
+  "short": "Gossip, a banquet, and Yusuf’s du‘a",
+  "big": "Soon the women of the city were gossiping about the lady. She invited them to a feast, and when they saw Yusuf they were so amazed they cut their hands. The lady threatened Yusuf with prison. Yusuf made du‘a: he would rather be in prison than disobey Allah. Allah answered him, and Yusuf was sent to prison even though he was innocent.",
   "remember": [
-   "Women in the city gossiped about the lady of the house.",
-   "At her banquet, the women were so amazed by Yusuf that they cut their hands. They said: this is a noble angel!",
-   "The lady said: obey me, or you will go to prison.",
-   "Yusuf’s du‘a: “My Lord, prison is dearer to me than what they call me to.”",
-   "Allah answered his du‘a. Yusuf was sent to prison even though he was innocent."
+   "Gossip spreads fast, and it grows as it goes.",
+   "Backbiting means saying things about someone behind their back that they would not like.",
+   "At the feast, the women cut their hands when they saw Yusuf.",
+   "Yusuf’s good heart was even more beautiful than his face.",
+   "Yusuf’s du‘a: “My Lord, prison is dearer to me than what they invite me to.”",
+   "Allah answered his du‘a: du‘a is the believer’s weapon."
   ],
   "more": [
    {
-    "t": "The harm of gossip",
+    "t": "Three kinds of bad talk",
     "l": [
-     "Ghibah (backbiting): saying something true about a person that they would not like.",
-     "Buhtan (slander): saying something untrue about a person.",
-     "Namimah (carrying tales): passing on what someone said in order to cause trouble."
+     "Backbiting (ghibah): saying something about someone that they would not like, even if it is true.",
+     "Slander (buhtan): telling a lie about someone. That is even worse.",
+     "Tale-carrying (namimah): passing gossip on to make trouble. The Prophet ﷺ said a tale-carrier will not enter Paradise."
     ]
    },
    {
-    "t": "Beauty on the inside",
-    "p": "The lady herself said that Yusuf firmly refused. Yusuf was beautiful on the outside, and also on the inside: he was modest and had good character. Inner beauty matters most."
+    "t": "What to do when people gossip",
+    "p": "If your friends start talking badly about someone who is not there, stand up for that person, or at least stay quiet and change the subject. Covering people’s mistakes is better than spreading them."
    },
    {
-    "t": "Du‘a is the believer’s weapon",
-    "p": "Yusuf said: “If You do not turn their plan away from me, I might give in.” He knew he needed Allah’s help. Allah answered him and turned their plan away."
+    "t": "The feast",
+    "p": "The lady gave each woman a knife to cut fruit, then called Yusuf in. When they saw him, they were so amazed that they cut their hands and did not even feel it. They said: “This is not a human being, this is a noble angel!”"
    },
    {
-    "t": "One test after another",
-    "p": "First the well, then a comfortable home, then prison. Life is a series of tests. Each time we pass one, the reward grows. At the end of all the tests is Jannah."
+    "t": "Prison or doing wrong?",
+    "p": "The lady said: do what I say, or go to prison. Yusuf chose prison, because doing wrong would lead to something much worse in the Hereafter. He also said: I cannot stay strong unless You help me, O Allah. He knew he needed Allah’s help."
+   },
+   {
+    "t": "Up and down, then Jannah",
+    "p": "Yusuf’s life went from a dark well, to a rich house, to prison. Life is full of tests, and after each test Allah brings ease. For those who stay patient and good, the very last ease is Jannah."
    }
   ],
-  "home": "This week, if someone starts to gossip, change the subject or say something good about the person.",
+  "home": "Make your own du‘a today, asking Allah to help you stay away from something you find hard to resist. Then try a gossip-free week: only say good things about people who are not there.",
   "game": {
-   "type": "match",
-   "title": "Name it",
-   "help": "Tap a word on the left, then its meaning on the right.",
-   "pairs": [
+   "type": "sort",
+   "title": "Good words or bad words?",
+   "help": "Is each one good to do, or not OK?",
+   "buckets": [
+    "Good to do",
+    "Not OK"
+   ],
+   "items": [
     [
-     "Ghibah",
-     "Saying something true that a person would not like"
+     "Sticking up for a friend who isn’t there",
+     0
     ],
     [
-     "Buhtan",
-     "Saying something untrue about a person"
+     "Saying something kind about someone",
+     0
     ],
     [
-     "Namimah",
-     "Carrying tales to cause trouble"
+     "Changing the subject when others gossip",
+     0
     ],
     [
-     "Du‘a",
-     "Calling on Allah for help"
+     "Backbiting",
+     1
     ],
     [
-     "Sabr",
-     "Patience"
+     "Telling a lie about someone",
+     1
     ],
     [
-     "Jannah",
-     "The reward at the end of all the tests"
+     "Passing gossip on to make trouble",
+     1
     ]
    ]
   },
   "quiz": [
    {
-    "q": "What did the women do when they saw Yusuf?",
+    "q": "What is backbiting?",
     "o": [
-     "They cut their hands in amazement",
-     "They ran away",
-     "They fell asleep"
+     "Saying kind things",
+     "Saying things behind someone’s back that they would not like",
+     "Biting your own back"
     ],
-    "a": 0,
-    "w": "They were so amazed that they cut their hands."
+    "a": 1,
+    "w": "Even if it is true, it is backbiting."
    },
    {
-    "q": "What did Yusuf prefer to disobeying Allah?",
+    "q": "What happened when the women saw Yusuf at the feast?",
     "o": [
-     "Prison",
-     "Money",
-     "Escaping to another land"
+     "They laughed",
+     "They cut their hands",
+     "They went home"
     ],
-    "a": 0,
-    "w": "He said prison was dearer to him than sin."
+    "a": 1,
+    "w": "They were so amazed they did not feel it."
    },
    {
-    "q": "What is backbiting (ghibah)?",
+    "q": "What did Yusuf say in his du‘a?",
     "o": [
-     "Saying something true about someone that they would not like",
-     "Praising someone",
-     "Keeping a secret"
+     "“Prison is dearer to me than what they invite me to”",
+     "“Please make me rich”",
+     "“Make them forget me”"
     ],
     "a": 0,
-    "w": "Saying something true about a person, behind their back, that they would not like."
+    "w": "He chose prison over disobeying Allah."
    },
    {
-    "q": "What happened after Yusuf made du‘a?",
+    "q": "What is even more beautiful than a handsome face?",
     "o": [
-     "Allah answered him and turned their plan away",
-     "Nothing happened",
-     "He was sent back to his father"
+     "Fancy clothes",
+     "A good heart and good manners",
+     "A big house"
     ],
-    "a": 0,
-    "w": "Allah answered and protected him from their plan."
+    "a": 1,
+    "w": "Yusuf had both kinds of beauty."
+   },
+   {
+    "q": "Did Allah answer Yusuf’s du‘a?",
+    "o": [
+     "No",
+     "Yes, He turned their plotting away from him",
+     "Only after many years"
+    ],
+    "a": 1,
+    "w": "Du‘a is the believer’s weapon."
+   },
+   {
+    "q": "Was Yusuf guilty when he went to prison?",
+    "o": [
+     "Yes",
+     "No, he was innocent",
+     "Nobody knows"
+    ],
+    "a": 1,
+    "w": "They knew he was innocent, but sent him to prison anyway."
    }
   ]
  },
@@ -614,133 +670,129 @@ const LESSONS = [
   ],
   "title": "Yusuf in Prison",
   "short": "Calling to Allah, and two dreams come true",
-  "big": "In prison, two young men asked Yusuf about their dreams. First he told them about Allah, the One. Then he explained their dreams, and asked the man who would be freed to mention him to the King. But Shaytan made the man forget.",
+  "big": "In prison, two young men who served the king asked Yusuf about their dreams. Before explaining them, Yusuf kindly told them about Allah, the One. Then he explained their dreams, and asked the man who would be freed to mention him to the King. But Shaytan made the man forget, and Yusuf stayed in prison for several more years.",
   "remember": [
-   "Two servants of the king went to prison with Yusuf.",
-   "The wine-maker would be freed and serve drinks to the king again.",
-   "One dreamt he was pressing grapes for wine. The other dreamt birds were eating bread from his head.",
-   "The baker would be punished, and birds would eat from his head.",
-   "They said: we can see that you are a good person.",
-   "Yusuf said: the matter you asked about has been decided."
+   "The two young men were the king’s drink-server and the king’s baker.",
+   "They trusted Yusuf because of his good character.",
+   "Yusuf said his knowledge came from Allah, not from himself.",
+   "He started by telling them about Allah, the One.",
+   "He said: “Mention me to your master”: asking people for help is allowed.",
+   "Shaytan made the man forget, and Yusuf stayed in prison for several years."
   ],
   "more": [
    {
-    "t": "Good manners open hearts",
-    "p": "The prisoners came to Yusuf because of his good character. People listen to someone who is kind and honest. Our good manners are the first way we show people Islam."
+    "t": "Good manners first",
+    "p": "Even in prison, Yusuf was kind, honest and helpful, so the other prisoners trusted him. They said: “We see that you are one of the good-doers.” When people see our good manners, they want to listen to us."
    },
    {
-    "t": "Gentle with bad news",
-    "p": "Yusuf did not say which man would be punished. He said “one of you”. When we have sad news to share, we should be gentle."
+    "t": "Allah first",
+    "p": "Before explaining the dreams, Yusuf told them the most important thing: there is only one God, Allah. The Prophet ﷺ taught the same thing: when you teach someone about Islam, start with Allah."
    },
    {
-    "t": "Tawhid comes first",
-    "p": "Yusuf spoke about Allah before he explained the dreams. The Prophet ﷺ taught the same when he sent Mu‘adh to Yemen: first call people to La ilaha illa Allah, then teach them prayer, then charity."
+    "t": "Thankful, even in prison",
+    "p": "Yusuf had been thrown into a well, sold, blamed for something he did not do and put in prison. Still, he did not complain. He said: “This is Allah’s kindness to us.” He thought about his blessings, not his problems."
    },
    {
-    "t": "Trust Allah and take the means",
-    "p": "Yusuf asked the freed man for help. This is not wrong. Tawakkul means we trust Allah and also do what we can, just as the Prophet ﷺ made plans, made friends and asked for help."
+    "t": "“O my two prison friends”",
+    "p": "Yusuf spoke to them kindly, like friends. He asked them: “Are many different gods better, or Allah, the One, the Supreme?” Al-Wahid means the One, and al-Qahhar means the Supreme, stronger than any king."
    },
    {
-    "t": "“O my two friends of the prison”",
-    "p": "Yusuf called them his friends. He spoke kindly and asked them a simple question: is it better to have many gods, or One God who is in charge of everything? He spoke against idol worship, but he did not insult the prisoners."
+    "t": "Du‘a and doing your part",
+    "p": "Yusuf made du‘a, and he also asked the man to mention him to the king. Trusting Allah means doing both. The man forgot, and Yusuf stayed in prison for several more years. But Allah had a plan: after hardship comes ease."
    }
   ],
-  "home": "Think of a friend or neighbour who is not Muslim. What is one kind thing you could do for them this week?",
+  "home": "Next time you are stuck with a problem, do both things Yusuf did: make du‘a to Allah, and ask someone who can help.",
   "game": {
-   "type": "sort",
-   "title": "What did Yusuf teach?",
-   "help": "Is this part of Yusuf’s message, or not?",
-   "buckets": [
-    "Yusuf’s message",
-    "Not his message"
-   ],
-   "items": [
+   "type": "match",
+   "title": "Dreams and lessons",
+   "help": "Tap a thing on the left, then what it means on the right.",
+   "pairs": [
     [
-     "Allah is One",
-     0
+     "Pressing grapes for drink",
+     "He will serve the king again"
     ],
     [
-     "Worship many gods",
-     1
+     "Birds eating bread on his head",
+     "He will not survive"
     ],
     [
-     "My knowledge is from my Lord",
-     0
+     "“Mention me to your master”",
+     "Asking for help is allowed"
     ],
     [
-     "All religions are the same",
-     1
+     "Al-Wahid",
+     "The One"
     ],
     [
-     "Only Allah decides",
-     0
+     "Al-Qahhar",
+     "The Supreme, stronger than any king"
     ],
     [
-     "Idols are just names people made up",
-     0
+     "Several years",
+     "Most say seven more years"
     ]
    ]
   },
   "quiz": [
    {
-    "q": "Why did the two prisoners come to Yusuf?",
+    "q": "Why did the two young men trust Yusuf?",
     "o": [
-     "They saw that he was a good person",
-     "He asked them to",
-     "They were his brothers"
+     "He was the strongest",
+     "Because of his good character",
+     "He gave them food"
     ],
-    "a": 0,
-    "w": "They said: we see that you are one of the good-doers."
-   },
-   {
-    "q": "What did the wine-maker’s dream mean?",
-    "o": [
-     "He would serve the king again",
-     "He would become king",
-     "He would travel"
-    ],
-    "a": 0,
-    "w": "He would be freed and serve the king."
-   },
-   {
-    "q": "What did Yusuf talk about before explaining the dreams?",
-    "o": [
-     "Allah is One and should be worshipped alone",
-     "The food in prison",
-     "How to escape"
-    ],
-    "a": 0,
-    "w": "He called them to tawhid first."
-   },
-   {
-    "q": "What did Yusuf ask the freed man to do?",
-    "o": [
-     "Mention him to the king",
-     "Bring him food",
-     "Find his father"
-    ],
-    "a": 0,
-    "w": "Mention me in the presence of your master."
+    "a": 1,
+    "w": "“We see you are one of the good-doers.”"
    },
    {
     "q": "Where did Yusuf say his knowledge came from?",
     "o": [
-     "His Lord taught him",
-     "A book of magic",
+     "From books",
+     "From his own cleverness",
+     "From Allah"
+    ],
+    "a": 2,
+    "w": "He said: this is from what my Lord taught me."
+   },
+   {
+    "q": "What did Yusuf talk about first?",
+    "o": [
+     "Allah, the One",
+     "The prison food",
      "His brothers"
     ],
     "a": 0,
-    "w": "This is what my Lord has taught me."
+    "w": "Always start with Allah."
    },
    {
-    "q": "Who made the man forget?",
+    "q": "Did Yusuf complain about his hard life?",
     "o": [
-     "Shaytan",
-     "The king",
-     "Yusuf"
+     "Yes, all the time",
+     "No, he was thankful for Allah’s kindness",
+     "Only to the guards"
+    ],
+    "a": 1,
+    "w": "He thought about his blessings."
+   },
+   {
+    "q": "What did Yusuf ask the man who was set free?",
+    "o": [
+     "To bring him food",
+     "To mention him to the king",
+     "To find his father"
+    ],
+    "a": 1,
+    "w": "Asking for help is allowed."
+   },
+   {
+    "q": "Why did Yusuf stay in prison longer?",
+    "o": [
+     "Shaytan made the man forget",
+     "Yusuf wanted to stay",
+     "The king said no"
     ],
     "a": 0,
-    "w": "Shaytan made him forget to mention Yusuf."
+    "w": "But Allah had a plan for him."
    }
   ]
  },
