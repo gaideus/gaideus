@@ -1080,115 +1080,129 @@ const LESSONS = [
   ],
   "title": "The Brothers Come to Egypt",
   "short": "A promise, and different gates",
-  "big": "The famine brought Yusuf’s brothers to Egypt for food. Yusuf knew them, but they did not know him. He asked them to bring their youngest brother next time. Ya‘qub let Binyamin go only after a promise by Allah, and told his sons to enter the city through different gates.",
+  "big": "The famine reached Yusuf’s family, and his brothers came to Egypt to buy food. Yusuf knew them straight away, but they did not know him. He was kind and generous, and asked them to bring their youngest brother next time. Ya‘qub let Binyamin go only after a promise by Allah, and told his sons to enter the city through different gates.",
   "remember": [
-   "The brothers came to Egypt to buy grain during the famine.",
-   "The brothers said: send our brother with us, and we will look after him.",
-   "Enter through different gates, not all through one.",
-   "Yusuf recognised them, but they did not recognise him.",
-   "Those were the same words they had said about Yusuf long ago.",
-   "It would help them avoid attention and the evil eye."
+   "Thanks to Yusuf’s plan, Egypt had enough food even in the hard years.",
+   "Yusuf knew his brothers, but they did not recognise him.",
+   "He gave them food, looked after them, and secretly put their goods back in their bags.",
+   "He said: next time, bring your youngest brother.",
+   "Ya‘qub said: Allah is the best Protector.",
+   "He told them to enter by different gates, and to trust Allah."
   ],
   "more": [
    {
     "t": "Why didn’t they know him?",
-    "p": "The last time they saw Yusuf he was a little boy. Now he was a grown man and a great minister of Egypt. They could never have imagined that their little brother was alive, let alone in charge of Egypt’s food."
+    "p": "The brothers last saw Yusuf when he was a little boy, about seven years old. Now he was a grown man and an important minister of Egypt. They never imagined their little brother could be alive, let alone in charge of all of Egypt’s food!"
    },
    {
-    "t": "Not stung twice",
-    "p": "The Prophet ﷺ said a believer is not stung twice from the same hole. Ya‘qub had been hurt once by trusting his sons, so he was careful the second time."
+    "t": "Kind first",
+    "p": "Yusuf gave his brothers lots of food and looked after them like guests. He also secretly put back the things they had brought to pay with, because he knew the family was poor. He wanted them to come back with Binyamin."
+   },
+   {
+    "t": "Can I trust you?",
+    "p": "The brothers said: “We will look after Binyamin!” That was exactly what they had said about Yusuf long ago. Ya‘qub said: “Should I trust you, like I trusted you with his brother?” Then he said: Allah is the best Protector. He made them promise by Allah to bring Binyamin back."
    },
    {
     "t": "The evil eye is real",
-    "p": "The Prophet ﷺ said: the evil eye is real. It comes from jealousy. In Surah al-Falaq we ask Allah to protect us from the envier when he envies."
+    "p": "Ya‘qub told his eleven sons to use different gates. One reason was so they would not stand out as strangers. Another was the evil eye, which comes from jealousy. When we see something nice that someone has, we say “ma sha’ Allah” and ask Allah to bless it. Reading Surah al-Falaq protects us too."
    },
    {
-    "t": "Kindness, not revenge",
-    "p": "Yusuf had the power to punish them. Instead he gave them full measure, extra food for the journey, and good hospitality."
-   },
-   {
-    "t": "Al-Hafiz, the Guardian",
-    "p": "Ya‘qub did not put his trust in his sons. He put it in Allah, the best Guardian. We can call on Allah by this name when we worry about people we love."
-   },
-   {
-    "t": "Say “ma sha’ Allah”",
-    "p": "When we see something nice that someone else has, we should say “ma sha’ Allah” or “tabarak Allah” and ask Allah to bless them. We should never wish that they lose it."
+    "t": "Trusting Allah",
+    "p": "Ya‘qub did his best to protect his sons, and then said: “In Allah I put my trust.” That is tawakkul: plan well, do your best, and leave the rest to Allah."
    }
   ],
-  "home": "Is there someone you could be kind to even though they were unkind to you once? Try it this week.",
+  "home": "Learn Surah al-Falaq if you don’t know it yet, and say “ma sha’ Allah” the next time you see something nice that someone else has.",
   "game": {
-   "type": "order",
-   "title": "The first visit",
-   "help": "Tap the events in the order they happened.",
-   "items": [
-    "The famine reaches Palestine",
-    "The brothers travel to Egypt",
-    "Yusuf recognises them",
-    "He gives them grain and hospitality",
-    "He asks them to bring their youngest brother",
-    "He hides their goods in their bags"
+   "type": "match",
+   "title": "What does it mean?",
+   "help": "Tap a word on the left, then what it means on the right.",
+   "pairs": [
+    [
+     "Different gates",
+     "So they would not stand out, and to protect from the evil eye"
+    ],
+    [
+     "Their goods in the bags",
+     "Yusuf’s secret gift"
+    ],
+    [
+     "“Ma sha’ Allah”",
+     "What we say when something impresses us"
+    ],
+    [
+     "Al-Hafiz",
+     "Allah, the best Protector"
+    ],
+    [
+     "A promise by Allah",
+     "What Ya‘qub made his sons give"
+    ],
+    [
+     "Tawakkul",
+     "Doing your best, then trusting Allah"
+    ]
    ]
   },
   "quiz": [
    {
-    "q": "Why did the brothers go to Egypt?",
+    "q": "Why did the brothers come to Egypt?",
     "o": [
-     "To buy grain during the famine",
      "To find Yusuf",
-     "To see the King"
-    ],
-    "a": 0,
-    "w": "There was a famine, and Egypt had stored food."
-   },
-   {
-    "q": "Why did the brothers want Binyamin to come?",
-    "o": [
-     "To get more grain from Egypt",
-     "To play in the desert",
+     "To buy food in the famine",
      "To visit the King"
     ],
-    "a": 0,
-    "w": "They could only get more grain if he came."
-   },
-   {
-    "q": "How did Ya‘qub tell his sons to enter the city?",
-    "o": [
-     "Through different gates",
-     "All through one gate",
-     "At night"
-    ],
-    "a": 0,
-    "w": "Through separate gates."
+    "a": 1,
+    "w": "Egypt had food thanks to Yusuf’s plan."
    },
    {
     "q": "Did the brothers recognise Yusuf?",
     "o": [
-     "No, but he recognised them",
      "Yes, straight away",
+     "No, they had last seen him as a little boy",
      "Only Binyamin did"
     ],
-    "a": 0,
-    "w": "He knew them, but they did not know him."
+    "a": 1,
+    "w": "But Yusuf knew them."
    },
    {
-    "q": "Why was Ya‘qub worried?",
+    "q": "What did Yusuf secretly put back in their bags?",
     "o": [
-     "They had promised to look after Yusuf before",
-     "Binyamin was ill",
-     "The road was flooded"
+     "Stones",
+     "The goods they brought to pay with",
+     "Letters"
     ],
-    "a": 0,
-    "w": "They said the same words about Yusuf long ago."
+    "a": 1,
+    "w": "He knew the family was poor."
    },
    {
-    "q": "What did the Prophet ﷺ say about the evil eye?",
+    "q": "Who did Yusuf ask them to bring next time?",
     "o": [
-     "It is real",
-     "It is a made-up story",
-     "It only harms animals"
+     "Their father",
+     "Their youngest brother, Binyamin",
+     "Their mother"
     ],
-    "a": 0,
-    "w": "The evil eye is real."
+    "a": 1,
+    "w": "He wanted to see his brother."
+   },
+   {
+    "q": "What should we say when we see something nice someone has?",
+    "o": [
+     "“I want that”",
+     "“Ma sha’ Allah”",
+     "Nothing"
+    ],
+    "a": 1,
+    "w": "It protects from the evil eye."
+   },
+   {
+    "q": "What is tawakkul?",
+    "o": [
+     "Doing nothing",
+     "Doing your best, then trusting Allah",
+     "Worrying a lot"
+    ],
+    "a": 1,
+    "w": "Ya‘qub planned, then trusted Allah."
    }
   ]
  },
@@ -1200,115 +1214,133 @@ const LESSONS = [
   ],
   "title": "Binyamin and the Cup",
   "short": "“I am your brother”, and the missing cup",
-  "big": "Yusuf secretly told Binyamin: “I am your brother!” Then the King’s cup was found in Binyamin’s bag, so he had to stay in Egypt. The brothers begged Yusuf to take one of them instead, but Yusuf stayed calm and fair.",
+  "big": "Yusuf secretly told Binyamin: “I am your brother! Don’t be sad.” Then, as part of Allah’s plan, the King’s cup was found in Binyamin’s bag, so he could stay in Egypt with Yusuf. The brothers asked Yusuf to take one of them instead, but Yusuf stayed calm and fair, and never told a lie.",
   "remember": [
-   "Yusuf told Binyamin: I am your brother, so don’t be sad about what they did.",
-   "The brothers swore: we did not come to cause trouble, and we are not thieves.",
-   "They said: if he stole, so did a brother of his before.",
-   "Yusuf secretly put the King’s measuring cup in Binyamin’s bag.",
-   "They were asked: what is the punishment if you are lying?",
-   "Yusuf held back his anger and said nothing about who he was."
+   "Yusuf told Binyamin: “I am your brother, so don’t be sad.”",
+   "Yusuf put the King’s measuring cup in Binyamin’s bag himself.",
+   "The brothers said they were not thieves, and they were telling the truth.",
+   "They said the one whose bag had the cup should stay: that was the law of their father Ya‘qub.",
+   "When the brothers said something unfair about Yusuf, he stayed calm and quiet.",
+   "Yusuf said: we will only keep the one with whom we found our things, not someone else."
   ],
   "more": [
    {
-    "t": "A happy secret",
-    "p": "Binyamin was very young when Yusuf disappeared. Imagine his joy at meeting his brother again after so many years! Yusuf told him not to be sad about how the other brothers had treated him."
+    "t": "A secret hug",
+    "p": "Yusuf had not seen his little brother Binyamin for many years. He took him aside and said: “I really am your brother! Don’t be sad about what the others used to do.” Binyamin was too young to remember Yusuf’s face, but he knew the whole story from their father."
    },
    {
-    "t": "Stealing is a big sin",
-    "p": "The Prophet ﷺ said Allah curses the thief. Taking what belongs to others is a serious wrong. The brothers were right: this time they had not stolen anything."
+    "t": "Allah’s plan",
+    "p": "Egypt did not let strangers stay forever, so Yusuf needed a way to keep Binyamin. Allah gave him a plan: the King’s cup in Binyamin’s bag. Then the brothers themselves said the rule: whoever has it in his bag stays. Allah says: “This is how We planned for Yusuf.”"
+   },
+   {
+    "t": "Stealing is very serious",
+    "p": "The brothers were upset when someone called them thieves, because stealing is a big sin. The Prophet ﷺ warned us strongly about it. We should never take what is not ours."
    },
    {
     "t": "Staying calm",
-    "p": "The brothers told a lie about Yusuf himself, right in front of him. Yusuf could have shouted, but he stayed calm and kept his plan. Sometimes being quiet is the wiser choice."
+    "p": "The brothers said something unfair: “If he stole, his brother stole before.” They were talking about Yusuf, right in front of him! Yusuf did not get angry or shout. He kept it inside. Sometimes staying quiet is the wisest thing to do."
    },
    {
-    "t": "Part of Allah’s plan",
-    "p": "Yusuf planned a way to keep Binyamin with him in Egypt. Allah says later: this is how We planned for Yusuf."
-   },
-   {
-    "t": "Allah’s clever plan",
-    "p": "Under Egypt’s law, Yusuf could not have kept Binyamin. But the brothers chose their own family rule, and that let Binyamin stay. Allah says: this is how We planned for Yusuf."
-   },
-   {
-    "t": "Careful words",
-    "p": "Yusuf did not say “the one who stole”, because Binyamin had not stolen. He said “the one with whom we found our property”. A prophet never lies."
+    "t": "Always tell the truth",
+    "p": "Yusuf never said Binyamin stole, because he hadn’t. He said: “We will only keep the one with whom we found our things.” Every word was true. A Muslim never lies, even when things are hard."
    }
   ],
-  "home": "Is there someone in your family you haven’t spoken to for a while? Call them or send them a kind message.",
+  "home": "Today, try to make every single thing you say completely true, even small things. At the end of the day, check how you did.",
   "game": {
-   "type": "order",
-   "title": "At the caravan",
-   "help": "Tap the events in the order they happened.",
+   "type": "sort",
+   "title": "Who said it?",
+   "help": "Did Yusuf say it, or the brothers?",
+   "buckets": [
+    "Yusuf",
+    "The brothers"
+   ],
    "items": [
-    "Yusuf takes Binyamin aside",
-    "He says: I am your brother",
-    "The cup is placed in Binyamin’s bag",
-    "A caller shouts: you are thieves!",
-    "The brothers ask: what have you lost?",
-    "A camel-load of grain is offered as a reward"
+    [
+     "“I am your brother, don’t be sad”",
+     0
+    ],
+    [
+     "“We will only keep the one with whom we found our things”",
+     0
+    ],
+    [
+     "“Allah forbid!”",
+     0
+    ],
+    [
+     "“We are not thieves!”",
+     1
+    ],
+    [
+     "“If he stole, a brother of his stole before”",
+     1
+    ],
+    [
+     "“Take one of us instead”",
+     1
+    ]
    ]
   },
   "quiz": [
    {
-    "q": "What did Yusuf tell Binyamin?",
+    "q": "What did Yusuf tell Binyamin in secret?",
     "o": [
-     "I am your brother",
-     "You must leave Egypt",
-     "I am the King"
+     "“I am your brother”",
+     "“You are in trouble”",
+     "“Go home”"
     ],
     "a": 0,
-    "w": "He told him: I am your brother."
+    "w": "He told him not to be sad."
    },
    {
-    "q": "What rule did the brothers give for a thief?",
+    "q": "Where was the King’s cup found?",
     "o": [
-     "He stays as a servant",
-     "He pays one coin",
-     "He is let go"
+     "In Yusuf’s room",
+     "In Binyamin’s bag",
+     "In the river"
     ],
-    "a": 0,
-    "w": "In their land, the thief became a servant of the one he stole from."
+    "a": 1,
+    "w": "Part of Allah’s plan."
    },
    {
-    "q": "What did the brothers say about Binyamin’s brother?",
+    "q": "Who said the rule that the one with the cup should stay?",
     "o": [
-     "That he had stolen before",
-     "That he was a king",
-     "That he was lost"
+     "The King",
+     "The brothers themselves",
+     "Binyamin"
     ],
-    "a": 0,
-    "w": "They falsely said he had stolen before."
+    "a": 1,
+    "w": "It was the law of Ya‘qub."
    },
    {
-    "q": "What went missing?",
+    "q": "How did Yusuf react when the brothers said something unfair about him?",
     "o": [
-     "The King’s measuring cup",
-     "A camel",
-     "A ring"
+     "He shouted",
+     "He stayed calm and kept it inside",
+     "He cried"
     ],
-    "a": 0,
-    "w": "The King’s measuring cup."
+    "a": 1,
+    "w": "Sometimes quiet is wisest."
    },
    {
-    "q": "Whose bag was the cup found in?",
+    "q": "Did Yusuf ever say Binyamin stole?",
     "o": [
-     "Binyamin’s",
-     "The eldest brother’s",
-     "Nobody’s"
+     "Yes",
+     "No, he only said where the cup was found",
+     "He said everyone stole"
     ],
-    "a": 0,
-    "w": "It came out of Binyamin’s bag."
+    "a": 1,
+    "w": "Yusuf never lied."
    },
    {
-    "q": "What did Yusuf do when he heard their lie?",
+    "q": "Why wouldn’t Yusuf take another brother instead?",
     "o": [
-     "He stayed calm and kept his secret",
-     "He shouted at them",
-     "He told them who he was"
+     "He did not like them",
+     "Punishing someone else would be unfair",
+     "The King said no"
     ],
-    "a": 0,
-    "w": "He held back his anger."
+    "a": 1,
+    "w": "That would be unjust."
    }
   ]
  },
@@ -1320,133 +1352,133 @@ const LESSONS = [
   ],
   "title": "Never Lose Hope",
   "short": "Beautiful patience, and complaining only to Allah",
-  "big": "Now Ya‘qub had lost three sons, but he still said: beautiful patience, and perhaps Allah will bring them all back. He cried for Yusuf, complained only to Allah, and told his sons: go and search, and never lose hope in Allah’s mercy.",
+  "big": "The brothers went home without Binyamin, and the eldest brother was so sorry that he stayed behind in Egypt. Now Ya‘qub had lost three sons. His eyes turned white from crying for Yusuf, but he still said: beautiful patience, and perhaps Allah will bring them all back. He told his sons: go and search, and never lose hope in Allah’s mercy.",
   "remember": [
-   "The eldest said: remember your promise to your father, and how you failed him about Yusuf.",
-   "Ya‘qub said: oh, my sorrow for Yusuf!",
-   "He stayed in Egypt until his father allowed him, or Allah decided.",
-   "His eyes turned white from crying, but he held his sadness inside.",
-   "The others said to their father: your son stole. Ask the city and the caravan.",
-   "His sons said: you will make yourself ill thinking of Yusuf."
+   "The eldest brother was sorry, and stayed in Egypt rather than break his promise.",
+   "Ya‘qub did not believe the brothers this time, because they had lied before.",
+   "He said again: beautiful patience. Perhaps Allah will bring them all back.",
+   "Ya‘qub cried so much for Yusuf that his eyes turned white.",
+   "He said: “I complain only to Allah.”",
+   "Never lose hope in Allah’s mercy!"
   ],
   "more": [
    {
-    "t": "Feeling sorry for the past",
-    "p": "The eldest brother remembered what they had done to Yusuf and felt sorry. He did not want to break his father’s heart again."
-   },
-   {
-    "t": "Crying is not weakness",
-    "p": "Ya‘qub cried, and his patience was still beautiful. When the Prophet’s ﷺ baby son Ibrahim died, he cried too and said: the eyes shed tears and the heart is sad, but we only say what pleases our Lord."
-   },
-   {
-    "t": "Hiding faults, praising good",
-    "p": "When this brother did something wrong long ago, Allah just said “one of them”. Now that he did something good, Allah calls him “the eldest”. The Prophet ﷺ also praised good deeds by name and did not name people who made mistakes."
-   },
-   {
-    "t": "Complain to Allah, not about Allah",
-    "p": "It is good to tell Allah about our sadness, as Ya‘qub did. What we must not do is complain about Allah, as if He were unfair."
+    "t": "A sorry brother",
+    "p": "The eldest brother remembered the promise they made to their father, and how they had let Yusuf down before. He felt so sorry that he said: I will not go home until my father lets me, or Allah decides for me. Feeling truly sorry is the first step to changing."
    },
    {
     "t": "The boy who cried wolf",
-    "p": "This time the brothers were telling the truth, but it was hard for their father to believe them. Lies make it hard for people to trust us later."
+    "p": "Long ago, the brothers lied: “A wolf ate Yusuf!” Now they were telling the truth about Binyamin, but their father could not believe them. When we tell lies, people stop believing us even when we tell the truth."
+   },
+   {
+    "t": "It’s OK to cry",
+    "p": "Ya‘qub cried for Yusuf for many years. Crying does not mean you are not patient. The Prophet ﷺ also cried when his little son Ibrahim died. He said: the eyes cry and the heart is sad, but we only say what pleases Allah."
+   },
+   {
+    "t": "Tell Allah",
+    "p": "Ya‘qub said: “I complain only to Allah.” We can always tell Allah when we are sad and ask Him for help. But we never say: “Allah, why are You being unfair to me?”"
+   },
+   {
+    "t": "Never give up",
+    "p": "Ya‘qub knew Yusuf’s dream had not come true yet, so Yusuf must be alive! He told his sons: go and search with all your senses, and never lose hope in Allah’s mercy. Only people without faith give up on Allah."
    }
   ],
-  "home": "If you ever make a mistake, say sorry and try to put it right, like the eldest brother tried to do.",
+  "home": "Is there something you have been hoping for a long time? Make du‘a for it again today, and do not give up.",
   "game": {
    "type": "sort",
-   "title": "Good or not good?",
-   "help": "Is this a good way to deal with sadness, or not?",
+   "title": "Hope or giving up?",
+   "help": "Is each one keeping hope, or giving up?",
    "buckets": [
-    "Good",
-    "Not good"
+    "Keeping hope",
+    "Giving up"
    ],
    "items": [
     [
-     "Telling Allah about your sadness",
+     "Making du‘a again and again",
      0
     ],
     [
-     "Saying Allah is unfair",
+     "Saying: maybe Allah will make it better",
+     0
+    ],
+    [
+     "Trying again and searching",
+     0
+    ],
+    [
+     "Saying: it will never get better",
      1
     ],
     [
-     "Crying when you are sad",
-     0
-    ],
-    [
-     "Giving up hope in Allah’s mercy",
+     "Stopping trying",
      1
     ],
     [
-     "Asking Allah for help",
-     0
-    ],
-    [
-     "Keeping hope and searching for a way",
-     0
+     "Saying: Allah, it’s not fair!",
+     1
     ]
    ]
   },
   "quiz": [
    {
-    "q": "Who stayed behind in Egypt?",
+    "q": "Why did the eldest brother stay in Egypt?",
     "o": [
-     "The eldest brother",
-     "Ya‘qub",
-     "The youngest brother"
+     "He liked it there",
+     "He felt sorry and would not break his promise",
+     "The King asked him to"
     ],
-    "a": 0,
-    "w": "The eldest stayed until his father allowed him to return."
+    "a": 1,
+    "w": "Feeling sorry is the first step to changing."
    },
    {
-    "q": "What happened to Ya‘qub’s eyes?",
-    "o": [
-     "They turned white from crying",
-     "They turned blue",
-     "Nothing happened"
-    ],
-    "a": 0,
-    "w": "His eyes turned white from sorrow."
-   },
-   {
-    "q": "Why was it hard for Ya‘qub to believe them?",
+    "q": "Why didn’t Ya‘qub believe his sons this time?",
     "o": [
      "They had lied to him before",
      "They spoke too quietly",
-     "They were too tired"
+     "He was asleep"
     ],
     "a": 0,
-    "w": "Their lie about Yusuf made it hard to trust them."
+    "w": "Lies make people stop believing us."
    },
    {
-    "q": "To whom did Ya‘qub complain?",
+    "q": "How many sons had Ya‘qub lost now?",
     "o": [
-     "Only to Allah",
-     "To his neighbours",
-     "To the King"
+     "One",
+     "Two",
+     "Three"
     ],
-    "a": 0,
-    "w": "I complain of my grief only to Allah."
+    "a": 2,
+    "w": "Yusuf, Binyamin and the eldest."
    },
    {
-    "q": "What did Ya‘qub say again?",
+    "q": "Is it OK to cry when we are sad?",
     "o": [
-     "Beautiful patience",
-     "I give up",
-     "Go away"
+     "No, never",
+     "Yes, the Prophet ﷺ cried too",
+     "Only babies cry"
     ],
-    "a": 0,
-    "w": "Fa-sabrun jamil: beautiful patience."
+    "a": 1,
+    "w": "Crying is not being impatient."
    },
    {
-    "q": "What did Ya‘qub tell his sons to do?",
+    "q": "Who did Ya‘qub complain to?",
     "o": [
-     "Search for Yusuf and his brother",
+     "His neighbours",
+     "Only Allah",
+     "The King"
+    ],
+    "a": 1,
+    "w": "“I complain only to Allah.”"
+   },
+   {
+    "q": "What did Ya‘qub tell his sons?",
+    "o": [
      "Stay at home",
-     "Forget Yusuf"
+     "Go and search, and never lose hope in Allah’s mercy",
+     "Forget about Yusuf"
     ],
-    "a": 0,
-    "w": "Go and search, and never lose hope."
+    "a": 1,
+    "w": "Never give up on Allah."
    }
   ]
  },
@@ -1458,125 +1490,117 @@ const LESSONS = [
   ],
   "title": "“I Am Yusuf!”",
   "short": "The big surprise, and no blame today",
-  "big": "On their third visit, Yusuf told his brothers who he was. They said sorry, and he forgave them straight away: “No blame on you today.” Then he sent his shirt home to bring back his father’s sight.",
+  "big": "On their third trip, the brothers came to Egypt poor and hungry. Yusuf asked them: “Do you know what you did to Yusuf and his brother?” They gasped: “Are you really Yusuf?” He said: “I am Yusuf, and this is my brother. Allah has been kind to us.” They said sorry, and he forgave them straight away: “No blame on you today.” Then he sent his shirt home to bring back his father’s sight.",
   "remember": [
-   "The brothers said: hard times have hit us, and our goods are poor. Please be kind to us.",
-   "The brothers admitted: we were truly wrong.",
-   "Yusuf asked: do you remember what you did to Yusuf and his brother when you did not know better?",
-   "Yusuf said: no blame on you today. Allah will forgive you. He is the Most Merciful.",
-   "They said: are you really Yusuf?",
-   "Years later, the Prophet ﷺ said the same words to the people of Makkah."
+   "The brothers came a third time, poor and hungry, and asked for charity.",
+   "Yusuf asked kindly: “Do you know what you did to Yusuf?”",
+   "He said: “I am Yusuf, and this is my brother. Allah has been kind to us.”",
+   "Whoever is patient and obeys Allah, Allah never wastes their reward.",
+   "Yusuf forgave them: “No blame on you today.”",
+   "He sent his shirt to make his father see again."
   ],
   "more": [
    {
-    "t": "Kind even now",
-    "p": "Yusuf did not shout at them. He said “when you did not know better”, giving them an easy way to feel sorry. He spoke about himself as “Yusuf”, so it would not feel like an attack."
+    "t": "The big surprise",
+    "p": "The brothers could not believe it. The great minister of Egypt was their little brother Yusuf, the one they had thrown into the well! They asked: “Are you really, really Yusuf?”"
    },
    {
-    "t": "Saying sorry is the first step",
-    "p": "The brothers finally said: we were wrong. To make tawbah, we first have to admit our mistake."
+    "t": "Kind, even now",
+    "p": "Yusuf was now powerful and could have punished them. Instead he asked his question gently, and said they did it “when you did not know better”, to make it easier for them. He did not tell them off."
    },
    {
     "t": "All from Allah",
-    "p": "Yusuf did not say “look how powerful I am”. He said: Allah has been kind to us. Everything good comes from Allah."
+    "p": "Yusuf did not say: “Look how great I am!” He said: “Allah has been kind to us.” Then he taught them: whoever is patient and careful to obey Allah, Allah never wastes their reward. That is the big lesson of the whole surah."
    },
    {
-    "t": "Forgiving completely",
-    "p": "Yusuf did not say “I will think about it” or keep reminding them. He forgave them straight away and completely."
+    "t": "No blame today",
+    "p": "The brothers said: “We did wrong.” Yusuf said: “No blame on you today. Allah will forgive you.” Many years later, when the Prophet ﷺ returned to Makkah in victory, he said the very same words to the people who had hurt him: “No blame on you today. Go, you are free.”"
    },
    {
-    "t": "The message of the whole surah",
-    "p": "Yusuf said: whoever fears Allah and is patient, Allah will not waste their reward. That is the story of his whole life in one sentence."
+    "t": "Three special shirts",
+    "l": [
+     "The shirt with fake blood, when the brothers lied.",
+     "The shirt torn from the back, which showed Yusuf was telling the truth.",
+     "The shirt Yusuf sent home, which made his father see again."
+    ]
    }
   ],
-  "home": "Learn this line by heart: “Whoever fears Allah and is patient, Allah never wastes the reward of those who do good.”",
+  "home": "Is there someone who said sorry to you? Forgive them, and don’t remind them of what they did. Say: “No blame on you today.”",
   "game": {
-   "type": "match",
-   "title": "The three shirts",
-   "help": "Tap a shirt on the left, then what it did on the right.",
-   "pairs": [
-    [
-     "The shirt with false blood",
-     "The brothers’ lie"
-    ],
-    [
-     "The shirt torn from the back",
-     "Showed Yusuf was innocent"
-    ],
-    [
-     "The shirt sent home",
-     "Brought back Ya‘qub’s sight"
-    ],
-    [
-     "“No blame on you today”",
-     "Yusuf’s forgiveness"
-    ],
-    [
-     "The Conquest of Makkah",
-     "The Prophet ﷺ said the same words"
-    ]
+   "type": "order",
+   "title": "The big day",
+   "help": "Tap the events in the order they happened.",
+   "items": [
+    "The brothers come a third time, poor and hungry",
+    "They ask Yusuf for charity",
+    "Yusuf asks: do you know what you did to Yusuf?",
+    "They ask: are you really Yusuf?",
+    "“I am Yusuf, and this is my brother”",
+    "The brothers say: we did wrong",
+    "Yusuf: “No blame on you today”",
+    "Yusuf sends his shirt home"
    ]
   },
   "quiz": [
    {
-    "q": "What did the brothers ask the minister for?",
+    "q": "Why did the brothers come to Egypt the third time?",
     "o": [
-     "To be kind and give them full measure",
-     "A new house",
-     "A job in the palace"
+     "For a holiday",
+     "They were poor and hungry",
+     "To find Yusuf"
     ],
-    "a": 0,
-    "w": "They were poor and asked for kindness."
+    "a": 1,
+    "w": "The famine had made them poor."
    },
    {
-    "q": "What did the brothers admit?",
+    "q": "What did the brothers ask when they understood?",
     "o": [
-     "That they had been wrong",
-     "That they were tired",
-     "That they were lost"
+     "“Where is the King?”",
+     "“Are you really Yusuf?”",
+     "“Can we go home?”"
     ],
-    "a": 0,
-    "w": "They said: we have truly been sinful."
+    "a": 1,
+    "w": "They could hardly believe it."
    },
    {
-    "q": "What question did Yusuf ask them?",
+    "q": "Who did Yusuf say his success came from?",
     "o": [
-     "Do you remember what you did to Yusuf and his brother?",
-     "Where are your camels?",
-     "How old are you?"
-    ],
-    "a": 0,
-    "w": "He asked about what they had done."
-   },
-   {
-    "q": "What did Yusuf say to them?",
-    "o": [
-     "No blame on you today",
-     "Go to prison",
-     "Never come back"
-    ],
-    "a": 0,
-    "w": "No blame on you today. Allah will forgive you."
-   },
-   {
-    "q": "Who did Yusuf say had been kind to them?",
-    "o": [
+     "Himself",
      "Allah",
-     "The King",
-     "His brothers"
+     "The King"
     ],
-    "a": 0,
-    "w": "Allah has been kind to us."
+    "a": 1,
+    "w": "“Allah has been kind to us.”"
    },
    {
-    "q": "Who said Yusuf’s words again in Makkah?",
+    "q": "What did Yusuf say when the brothers said sorry?",
     "o": [
-     "The Prophet Muhammad ﷺ",
-     "Abu Bakr",
-     "The King of Egypt"
+     "“Go away!”",
+     "“No blame on you today”",
+     "“I will punish you”"
+    ],
+    "a": 1,
+    "w": "He forgave them straight away."
+   },
+   {
+    "q": "Who said the same words years later?",
+    "o": [
+     "The Prophet ﷺ, to the people of Makkah",
+     "The King of Egypt",
+     "Ya‘qub"
     ],
     "a": 0,
-    "w": "He forgave the people of Makkah with Yusuf’s words."
+    "w": "“No blame on you today. Go, you are free.”"
+   },
+   {
+    "q": "What did Yusuf’s shirt do for his father?",
+    "o": [
+     "Kept him warm",
+     "Made him see again",
+     "Nothing"
+    ],
+    "a": 1,
+    "w": "The third special shirt."
    }
   ]
  },
@@ -1588,129 +1612,112 @@ const LESSONS = [
   ],
   "title": "The Dream Comes True",
   "short": "The family together again, and Yusuf’s du‘a",
-  "big": "Ya‘qub smelled Yusuf’s scent from far away, and the shirt brought back his sight. The whole family came to Egypt and bowed to Yusuf, just like the stars, the sun and the moon in his dream. Then Yusuf made a beautiful du‘a: let me die as a Muslim.",
+  "big": "Ya‘qub smelled Yusuf’s scent from far away, and when the shirt touched his face he could see again. The whole family came to Egypt, and they all bowed to Yusuf, just like the eleven stars, the sun and the moon in his dream. Yusuf thanked Allah, and made a beautiful du‘a: let me die as a Muslim.",
   "remember": [
-   "Ya‘qub said: I sense the smell of Yusuf.",
-   "Yusuf welcomed his parents: enter Egypt safely, if Allah wills.",
-   "My Lord, You have given me some power and taught me the meaning of dreams.",
-   "The family said: you are still lost in your old idea.",
-   "He raised his parents onto the throne.",
-   "O Creator of the heavens and the earth!"
+   "Ya‘qub smelled Yusuf’s scent while the caravan was still far away.",
+   "The shirt touched his face, and he could see again!",
+   "The brothers asked their father to pray for Allah to forgive them.",
+   "The family bowed to Yusuf: the dream from long ago came true.",
+   "Yusuf did not mention the well, so his brothers would not feel bad.",
+   "Yusuf’s du‘a: “Let me die as a Muslim, and join me with the good people.”"
   ],
   "more": [
    {
-    "t": "Who brought the good news?",
-    "p": "Many scholars said the son who carried the shirt with good news was the same one who once carried the shirt with false blood. Imagine how he felt!"
+    "t": "A scent from far away",
+    "p": "When the caravan left Egypt with Yusuf’s shirt, Ya‘qub said: “I can smell Yusuf!” People said he was just imagining it. But he was right! Then the shirt touched his face and he could see again. He said: “Didn’t I tell you? I know things from Allah that you don’t.” He never gave up hope."
    },
    {
-    "t": "Bowing then and now",
-    "p": "In the law of Ya‘qub, bowing down to show respect was allowed. In our Islam it is not: we bow and prostrate only to Allah. When Mu‘adh once bowed to the Prophet ﷺ, he told him: don’t do that."
+    "t": "Saying sorry",
+    "p": "The brothers said to their father: “Please ask Allah to forgive us. We did wrong.” Ya‘qub said he would. Many scholars say he waited for the last part of the night, the best time to make du‘a. Allah forgave the brothers, and they became good people."
    },
    {
-    "t": "Thank Allah first",
-    "p": "Yusuf began by thanking Allah and praising Him, and only then asked. Allah says: if you are grateful, I will give you more."
+    "t": "The dream comes true",
+    "p": "The whole family came to live in Egypt. Yusuf raised his parents up high, and they all bowed to him, just like the stars, the sun and the moon in his dream! Back then, bowing to show respect was allowed. In our religion today, we bow only to Allah."
    },
    {
-    "t": "Saying sorry to their father",
-    "p": "The brothers had already said sorry to Yusuf. Now they said sorry to their father too. The Prophet ﷺ said: feeling sorry is part of repentance."
+    "t": "Kind words",
+    "p": "Yusuf thanked Allah for bringing him out of prison. He did not say “out of the well”, because he did not want his brothers to feel bad. He said Shaytan had made trouble between them. He chose kind words."
    },
    {
-    "t": "Yusuf’s good manners",
-    "p": "Yusuf thanked Allah for getting him out of prison, but he did not mention the well. Talking about the well would have embarrassed his brothers. He even blamed Shaytan, not them, for what went wrong."
-   },
-   {
-    "t": "The most important wish",
-    "p": "Yusuf had power, a palace and his family back. But what he asked for was to die as a Muslim. In the end, that is what matters most."
+    "t": "Yusuf’s du‘a",
+    "p": "Yusuf had power, a palace and his family back. But in his du‘a he first thanked Allah, then asked for the most important thing: “Let me die as a Muslim, and put me with the good people.” We can make the same du‘a."
    }
   ],
-  "home": "Try to wake up a little before Fajr one day this week and make du‘a, like Ya‘qub did for his sons.",
+  "home": "Learn Yusuf’s du‘a: “Tawaffani musliman wa alhiqni bi-s-salihin” (let me die as a Muslim, and join me with the good people). Say it after your prayers, after first thanking Allah.",
   "game": {
-   "type": "match",
-   "title": "The dream comes true",
-   "help": "Tap a part of the dream on the left, then who it was on the right.",
-   "pairs": [
-    [
-     "The eleven stars",
-     "Yusuf’s eleven brothers"
-    ],
-    [
-     "The sun and the moon",
-     "Yusuf’s parents"
-    ],
-    [
-     "Bowing down",
-     "Showing respect, as their law allowed"
-    ],
-    [
-     "Al-Latif",
-     "Allah, the Subtle and Kind"
-    ],
-    [
-     "The well",
-     "Not mentioned, out of kindness"
-    ]
+   "type": "order",
+   "title": "The happy ending",
+   "help": "Tap the events in the order they happened.",
+   "items": [
+    "Ya‘qub smells Yusuf’s scent",
+    "The shirt touches his face",
+    "He can see again!",
+    "The brothers ask him to pray for forgiveness",
+    "The family travels to Egypt",
+    "They bow to Yusuf, like the stars, sun and moon",
+    "Yusuf makes his du‘a"
    ]
   },
   "quiz": [
    {
-    "q": "What did Ya‘qub sense when the caravan left Egypt?",
+    "q": "What did Ya‘qub smell from far away?",
     "o": [
-     "The smell of Yusuf",
-     "Rain coming",
-     "A storm"
+     "Bread",
+     "Yusuf’s scent",
+     "Flowers"
     ],
-    "a": 0,
-    "w": "He said: I sense the smell of Yusuf."
+    "a": 1,
+    "w": "He never gave up hope."
    },
    {
-    "q": "Where did Yusuf raise his parents?",
+    "q": "What happened when the shirt touched Ya‘qub’s face?",
     "o": [
-     "Onto the throne",
-     "Onto a camel",
-     "Onto a ship"
-    ],
-    "a": 0,
-    "w": "He raised his parents onto the throne."
-   },
-   {
-    "q": "How did Yusuf begin his du‘a?",
-    "o": [
-     "By thanking Allah for His blessings",
-     "By asking for gold",
-     "By complaining"
-    ],
-    "a": 0,
-    "w": "Thank and praise Allah first, then ask."
-   },
-   {
-    "q": "What happened when the shirt was put over his face?",
-    "o": [
-     "He could see again",
      "He fell asleep",
+     "He could see again",
      "Nothing"
     ],
-    "a": 0,
-    "w": "His sight came back."
+    "a": 1,
+    "w": "Just as Yusuf said."
    },
    {
-    "q": "Which dream came true?",
+    "q": "What did the brothers ask their father?",
     "o": [
-     "The eleven stars, the sun and the moon",
-     "The seven fat cows",
-     "The bread and the birds"
+     "For money",
+     "To ask Allah to forgive them",
+     "To go back home"
     ],
-    "a": 0,
-    "w": "His childhood dream."
+    "a": 1,
+    "w": "Saying sorry is the first step."
    },
    {
-    "q": "What did Yusuf ask to die as?",
+    "q": "Which dream came true when the family bowed to Yusuf?",
     "o": [
-     "A Muslim",
-     "A king",
-     "A rich man"
+     "The King’s dream",
+     "Yusuf’s dream of the stars, sun and moon",
+     "The baker’s dream"
     ],
-    "a": 0,
-    "w": "Let me die as a Muslim."
+    "a": 1,
+    "w": "The dream from when he was a boy."
+   },
+   {
+    "q": "Why didn’t Yusuf mention the well?",
+    "o": [
+     "He forgot",
+     "So his brothers would not feel bad",
+     "It was not important"
+    ],
+    "a": 1,
+    "w": "He chose kind words."
+   },
+   {
+    "q": "What did Yusuf ask for in his du‘a?",
+    "o": [
+     "A bigger palace",
+     "To die as a Muslim and be with the good people",
+     "More gold"
+    ],
+    "a": 1,
+    "w": "The most important thing."
    }
   ]
  },
@@ -1722,62 +1729,66 @@ const LESSONS = [
   ],
   "title": "A Lesson for People Who Think",
   "short": "The end of the surah",
-  "big": "Allah reminds the Prophet ﷺ that this story was news only Allah knew. He tells him to say: this is my way, I call to Allah. The surah ends: in their stories is a lesson for people who think.",
+  "big": "Allah tells the Prophet ﷺ: this story is news only Allah knew. Most people will not believe, but you ask them for nothing; it is a reminder for everyone. He tells him to say: this is my way, I call to Allah. The surah ends: in their stories is a lesson for people who think.",
   "remember": [
-   "This story is from the unseen, which Allah revealed to the Prophet ﷺ.",
-   "People pass by Allah’s signs in the heavens and the earth without thinking.",
-   "Allah sent messengers from among the people of the towns.",
-   "He was not there when the brothers plotted.",
-   "Many say they believe in Allah but also worship others.",
-   "Travel and look at what happened to those who rejected them."
+   "Only Allah knew this story: the Prophet ﷺ could not have learned it anywhere else.",
+   "Most people will not believe, even when we try our best.",
+   "The Prophet ﷺ never asked for any reward.",
+   "Allah’s signs are all around us: we should stop and think about them.",
+   "There is one straight path to Allah.",
+   "In their stories is a lesson for people who think."
   ],
   "more": [
    {
-    "t": "How could he know?",
-    "p": "Makkah was a small town. Very few people could read, and there were no Bibles in Arabic. The secret plan of the brothers was known to nobody but them. The Prophet ﷺ could only know it because Allah revealed it."
+    "t": "Only Allah knew",
+    "p": "In Makkah there were no books about Yusuf, and almost nobody could read. So how did the Prophet ﷺ know all these details, even what the brothers said in secret? Allah told him. That is one sign that the Qur’an is from Allah."
    },
    {
-    "t": "Signs everywhere",
-    "p": "The sun, the moon, the sea, the mountains, even our own bodies: all are signs of Allah. Let’s stop and think about them."
+    "t": "Do your best",
+    "p": "The Prophet ﷺ wanted everyone to believe, but most people did not. Allah told him: your job is to do your best; the results are up to Allah. When we invite people to good, we do our best and leave the rest to Allah."
    },
    {
-    "t": "Help comes at last",
-    "p": "The prophets were patient for a very long time, and then Allah’s help came. Allah saved the Prophet ﷺ many times too. So never give up."
+    "t": "Nothing in return",
+    "p": "The Prophet ﷺ never asked for money or rewards. Once ‘Umar saw him sleeping on a rough mat that left marks on his side, and cried. The Prophet ﷺ said: kings have this world, and we have the Hereafter."
    },
    {
-    "t": "Not for money",
-    "p": "Prophets never asked people to pay them. The Prophet ﷺ lived simply, sleeping on a mat of palm leaves. When ‘Umar cried at this, he said: are you not happy that they have this world and we have the Hereafter?"
+    "t": "Look around",
+    "p": "The sun, the moon, the stars, the oceans, the mountains, and even you yourself: these are all signs of Allah. Many people walk right past them without thinking. Let’s stop and think!"
    },
    {
-    "t": "Believing is not enough",
-    "p": "The people of Makkah believed Allah created them, but they also prayed to idols. True iman means worshipping Allah alone."
-   },
-   {
-    "t": "Beginning and end",
-    "p": "The surah began: “We tell you the best of stories.” It ends: “In their stories is a lesson.” First we listen to the story, then we think about its lessons."
+    "t": "One straight path",
+    "p": "The Prophet ﷺ once drew one straight line in the sand and said: this is Allah’s path. Then he drew lots of lines to the sides: these are other paths, with Shaytan calling on each one. We stay on the one straight path. The best way to invite others to it is with good manners, just like Yusuf."
    }
   ],
-  "home": "Ask a grown-up what “Dhikr” means, and tell them it is also a name of the Qur’an.",
+  "home": "Go outside with a grown-up and find five signs of Allah: the sky, a tree, a bird, the clouds, and you! Say “SubhanAllah” for each one.",
   "game": {
    "type": "match",
-   "title": "Beginning and end",
-   "help": "Tap the beginning on the left, then the matching end on the right.",
+   "title": "Lessons at the end",
+   "help": "Tap a word on the left, then what it means on the right.",
    "pairs": [
     [
-     "“The best of stories” (verse 3)",
-     "“In their stories is a lesson” (verse 111)"
+     "News of the unseen",
+     "Things only Allah knew"
     ],
     [
-     "Signs for those who ask",
+     "No reward",
+     "The Prophet ﷺ asked for nothing"
+    ],
+    [
+     "Signs of Allah",
+     "The sun, the moon, the stars, and us"
+    ],
+    [
+     "The straight path",
+     "The one way to Allah"
+    ],
+    [
+     "Good manners",
+     "The best way to invite people to Allah"
+    ],
+    [
+     "‘Ibrah",
      "A lesson for people who think"
-    ],
-    [
-     "Yusuf’s dream",
-     "The dream comes true"
-    ],
-    [
-     "The Prophet ﷺ is sad",
-     "Allah’s help comes at last"
     ]
    ]
   },
@@ -1785,62 +1796,62 @@ const LESSONS = [
    {
     "q": "How did the Prophet ﷺ know the story of Yusuf?",
     "o": [
-     "Allah revealed it to him",
-     "He read it in a book",
-     "His friends told him"
+     "From a book in Makkah",
+     "Allah told him",
+     "A traveller told him"
     ],
-    "a": 0,
-    "w": "It is news of the unseen, revealed by Allah."
+    "a": 1,
+    "w": "Only Allah knew."
    },
    {
-    "q": "What do many people do with Allah’s signs?",
+    "q": "What should we do if people don’t listen when we invite them to good?",
     "o": [
-     "Walk past them without thinking",
-     "Write them down",
-     "Hide them"
+     "Give up",
+     "Do our best and leave the results to Allah",
+     "Get angry"
     ],
-    "a": 0,
-    "w": "They pass them by without reflecting."
+    "a": 1,
+    "w": "Just like the Prophet ﷺ."
    },
    {
-    "q": "Were the messengers before the Prophet ﷺ also rejected?",
+    "q": "What reward did the Prophet ﷺ ask for?",
     "o": [
-     "Yes",
-     "No",
-     "Only one"
+     "Gold",
+     "Nothing at all",
+     "A palace"
     ],
-    "a": 0,
-    "w": "Allah reminds him that they were too."
+    "a": 1,
+    "w": "He slept on a simple mat."
    },
    {
-    "q": "Which part of the story was most secret?",
+    "q": "Which of these is a sign of Allah?",
     "o": [
-     "The brothers’ plan",
-     "The King’s dream",
-     "The banquet"
+     "The sun and the moon",
+     "A video game",
+     "A toy"
     ],
     "a": 0,
-    "w": "Nobody but the brothers knew it."
+    "w": "Signs are all around us."
    },
    {
-    "q": "How did the Prophet ﷺ call to Allah?",
+    "q": "How many straight paths to Allah are there?",
     "o": [
-     "With clear knowledge",
-     "With shouting",
-     "With money"
+     "One",
+     "Two",
+     "Lots"
     ],
     "a": 0,
-    "w": "‘Ala basirah: with clear sight."
+    "w": "The Prophet ﷺ drew one straight line."
    },
    {
-    "q": "What came to the messengers at last?",
+    "q": "Who is the lesson of these stories for?",
     "o": [
-     "Allah’s help",
-     "A storm",
-     "Gold"
+     "People who think",
+     "Only kings",
+     "Nobody"
     ],
     "a": 0,
-    "w": "Our help came to them."
+    "w": "Let’s be people who think!"
    }
   ]
  },
@@ -1870,157 +1881,158 @@ const LESSONS = [
   ],
   "title": "Lessons from Surah Yusuf",
   "short": "Lessons for our homes, our hearts and our ending",
-  "big": "Surah Yusuf is full of lessons for our lives: honour our parents, beware of jealousy, turn to Allah when tempted, forgive, and never give up. The surah is even built like a ring around the King’s dream: another sign that it is from Allah.",
+  "big": "Allah says there are lessons in this story for people who think. Surah Yusuf teaches us to be patient, to tell Allah our worries, to forgive, to honour our parents, to stay away from jealousy, and never to give up. And the whole surah is built like a mirror around the King’s dream: another sign that it is from Allah.",
   "remember": [
-   "Read the stories of the Qur’an and share them.",
-   "Jealousy can make people do terrible things.",
-   "Say sorry to people you have hurt, and to Allah.",
-   "The middle of the ring is the King’s dream.",
-   "Parents should be fair with their children.",
-   "Gossip is a bad habit. Stand up for people who are not there."
+   "Read the story again and again: every time you will find new lessons.",
+   "Beautiful patience means telling our worries to Allah.",
+   "Jealousy is like fire: it eats up good deeds.",
+   "Forgive people who say sorry, and don’t remind them of their mistakes.",
+   "Honour your parents, like Yusuf did.",
+   "What matters most is how we end: Yusuf asked Allah to let him die as a Muslim."
   ],
   "more": [
    {
-    "t": "Lessons we learned",
+    "t": "Lessons for our homes",
     "l": [
-     "Allah’s stories are the best stories.",
-     "Knowledge is a blessing from Allah.",
-     "Be thankful for what you have, and happy with what Allah did not give you.",
-     "A believer is careful and thinks ahead.",
-     "Beautiful patience means taking your sadness to Allah."
+     "Honour your parents: Yusuf went out to meet them and sat them up high.",
+     "Good homes help children grow up good: Allah looks after the children of good people.",
+     "Shaytan tries to make families fight. When we argue, we stop, say “a‘udhu billah”, and make up."
     ]
    },
    {
-    "t": "Lessons we learned",
+    "t": "Lessons for our hearts",
     "l": [
-     "Inner beauty, good character, lasts longer than outer beauty.",
-     "A bad thought is not a sin, but acting on it is.",
-     "Patience always tastes sweet in the end.",
-     "Don’t hurt people’s feelings.",
-     "Being generous opens people’s hearts."
+     "Inner beauty, being kind and good, is better than a pretty face.",
+     "Don’t show off, and say “ma sha’ Allah” when others have something nice.",
+     "Gossip and jealousy hurt our hearts. Keep away from them.",
+     "Don’t rush: Yusuf took his time before leaving prison, and it worked out best."
     ]
    },
    {
-    "t": "Lessons we learned",
+    "t": "Lessons for hard times",
     "l": [
-     "Good things are from Allah; Shaytan tries to cause trouble.",
-     "Shaytan loves to break up families.",
-     "We learn through failures before success.",
-     "Allah can make even enemies into friends.",
-     "Allah saves the righteous even when things look hopeless."
+     "Tell Allah your worries: du‘a is the best medicine.",
+     "Do your best, then trust Allah.",
+     "After every hard time, Allah brings ease. Yusuf went from a well, to prison, to the palace!"
     ]
    },
    {
-    "t": "Matching pairs",
+    "t": "Lessons about sorry",
     "l": [
-     "Yusuf’s dream ↔ The dream comes true.",
-     "Sold as a slave in Egypt ↔ In charge of Egypt’s storehouses.",
-     "Tempted by the minister’s wife ↔ She says he is innocent.",
-     "Put in prison ↔ Let out of prison.",
-     "Explains the prisoners’ dreams ↔ Explains the King’s dream."
+     "If you hurt someone, say sorry to them, and ask Allah to forgive you.",
+     "Forgive others, like Yusuf did: “No blame on you today.”",
+     "Never give up on anyone: the brothers did something terrible, but they changed and became good."
     ]
    },
    {
-    "t": "Honouring parents",
-    "p": "Yusuf went out of the city to welcome his parents and raised them onto the throne. After Allah, nobody deserves our respect more than our parents."
-   },
-   {
-    "t": "Calling to Islam",
-    "p": "Yusuf first showed his good character, then waited for the right moment, and then started with tawhid. That is how we should share Islam."
+    "t": "A mirror story",
+    "p": "Scholars noticed that Surah Yusuf is built like a mirror! The King’s dream is in the middle. Before it, Yusuf goes into prison; after it, he comes out. Before it, he is a servant; after it, he is in charge of Egypt’s food. Before it, he is taken from his father; after it, they are together again. Only Allah could make a story so perfect."
    }
   ],
-  "home": "Do one thing to honour your parents today without being asked.",
+  "home": "Choose your favourite lesson from Surah Yusuf. Draw a picture of it, and tell your family why you chose it.",
   "game": {
-   "type": "match",
-   "title": "Complete the ring",
-   "help": "Tap a part on the left, then its matching pair on the right.",
-   "pairs": [
+   "type": "sort",
+   "title": "Yusuf’s way",
+   "help": "Is each one something to do, or something to avoid?",
+   "buckets": [
+    "Do it",
+    "Avoid it"
+   ],
+   "items": [
     [
-     "Yusuf’s dream",
-     "The dream comes true"
+     "Be patient and tell Allah your worries",
+     0
     ],
     [
-     "Sold as a slave in Egypt",
-     "In charge of the storehouses"
+     "Forgive someone who says sorry",
+     0
     ],
     [
-     "Tempted by the minister’s wife",
-     "She says he is innocent"
+     "Honour your parents",
+     0
     ],
     [
-     "Put in prison",
-     "Let out of prison"
+     "Say “ma sha’ Allah”",
+     0
     ],
     [
-     "Explains the prisoners’ dreams",
-     "Explains the King’s dream"
+     "Be jealous",
+     1
     ],
     [
-     "The prisoner forgets him",
-     "The prisoner remembers him"
+     "Gossip about people",
+     1
+    ],
+    [
+     "Show off",
+     1
+    ],
+    [
+     "Rush into things",
+     1
     ]
    ]
   },
   "quiz": [
    {
-    "q": "How did Yusuf honour his parents?",
+    "q": "How many times should we read the story of Yusuf?",
     "o": [
-     "He raised them onto the throne",
-     "He sent them away",
-     "He forgot them"
+     "Just once",
+     "Again and again: there are always new lessons",
+     "Never"
     ],
-    "a": 0,
-    "w": "He welcomed them and raised them up."
+    "a": 1,
+    "w": "Lessons for people who think."
    },
    {
-    "q": "What should we do when we are tempted to do wrong?",
+    "q": "What is jealousy like?",
     "o": [
-     "Turn to Allah straight away",
-     "Do it quickly",
-     "Hide it"
+     "Water",
+     "A fire that eats up good deeds",
+     "A flower"
     ],
-    "a": 0,
-    "w": "Yusuf said: Allah is my refuge."
+    "a": 1,
+    "w": "So we say “ma sha’ Allah” instead."
    },
    {
-    "q": "Is “do wrong now, say sorry later” real tawbah?",
+    "q": "What did Yusuf say when he forgave his brothers?",
     "o": [
-     "No",
-     "Yes",
-     "Sometimes"
+     "“Never come back”",
+     "“No blame on you today”",
+     "“You owe me”"
     ],
-    "a": 0,
-    "w": "Real tawbah needs regret and stopping."
+    "a": 1,
+    "w": "And he didn’t remind them."
    },
    {
-    "q": "What is in the middle of the ring?",
+    "q": "What is the best medicine when we feel sad or worried?",
     "o": [
-     "The King’s dream",
+     "Du‘a to Allah",
+     "Shouting",
+     "Giving up"
+    ],
+    "a": 0,
+    "w": "Tell Allah your worries."
+   },
+   {
+    "q": "What is in the middle of Surah Yusuf’s mirror?",
+    "o": [
      "The well",
+     "The King’s dream",
      "The banquet"
     ],
-    "a": 0,
-    "w": "Everything turns around the King’s dream."
+    "a": 1,
+    "w": "Everything mirrors around it."
    },
    {
-    "q": "Why should we not show off our blessings?",
+    "q": "What did Yusuf ask for at the end of his life?",
     "o": [
-     "It can make others jealous",
-     "It is boring",
-     "It costs money"
+     "A bigger palace",
+     "To die as a Muslim and be with the good people",
+     "More gold"
     ],
-    "a": 0,
-    "w": "Ya‘qub warned Yusuf not to tell his brothers."
-   },
-   {
-    "q": "Is a bad thought a sin by itself?",
-    "o": [
-     "No, acting on it is",
-     "Yes, always",
-     "Only on Fridays"
-    ],
-    "a": 0,
-    "w": "We are not punished for passing thoughts we don’t act on."
+    "a": 1,
+    "w": "How we end matters most."
    }
   ]
  }
