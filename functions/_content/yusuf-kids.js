@@ -804,49 +804,71 @@ const LESSONS = [
   ],
   "title": "The King’s Dream",
   "short": "Seven fat cows, and a plan to save Egypt",
-  "big": "The King dreamt of seven fat cows eaten by seven thin ones. Nobody could explain it until the wine-maker remembered Yusuf. Yusuf explained the dream and gave a plan: store food in the seven good years for the seven hard years to come.",
+  "big": "The King of Egypt dreamt of seven fat cows eaten by seven thin ones. His advisers said it was just a muddled dream. Then the man who had been in prison remembered Yusuf. Yusuf explained the dream and gave a plan to save Egypt from hunger, without even asking to be let out first.",
   "remember": [
-   "The King dreamt of seven fat cows eaten by seven thin ones.",
-   "The wine-maker called Yusuf “O man of truth”.",
-   "He also saw seven green ears of corn and seven dry ones.",
-   "Seven good years: plant, and leave the grain in its ears, except a little to eat.",
-   "His chiefs said: these are mixed-up dreams, and we do not know their meaning.",
-   "Then seven hard years would eat up what was stored."
+   "The King dreamt of seven fat cows eaten by seven thin cows, and seven green and seven dry ears of grain.",
+   "His advisers did not know the meaning, but would not say “I don’t know”.",
+   "The man from prison finally remembered Yusuf, after many years.",
+   "Yusuf did not get angry with him for forgetting.",
+   "Seven good years, then seven hard years, then a year of lots of rain.",
+   "Yusuf helped everyone, even the people who had been unfair to him."
   ],
   "more": [
    {
-    "t": "“The King”, not “Pharaoh”",
-    "p": "In Yusuf’s story the Qur’an calls the ruler “the King”. In Musa’s story it says “Pharaoh”. Historians say the rulers in Yusuf’s time did not use the title Pharaoh. The Prophet ﷺ could not have known this himself: it shows the Qur’an is from Allah."
+    "t": "A king, not a Pharaoh",
+    "p": "In the story of Musa, the ruler of Egypt is called Fir‘awn (Pharaoh). In the story of Yusuf, he is called al-Malik, the King. Historians found out that in Yusuf’s time, Egypt’s rulers did not call themselves Pharaoh. The Prophet ﷺ could not have known this, but Allah did!"
    },
    {
-    "t": "No grudge",
-    "p": "The wine-maker had forgotten Yusuf for years and did not even say sorry. Yusuf did not scold him. He simply helped."
+    "t": "It’s OK to say “I don’t know”",
+    "p": "The King’s advisers did not know what the dream meant. Instead of saying “we don’t know”, they said it was just a muddled dream. It is always better to be honest and say “I don’t know” or “Allah knows best”."
    },
    {
-    "t": "Saying “I don’t know”",
-    "p": "The advisers did not want to admit they did not know. So they said the dream was just a jumble. It is better to say honestly: I don’t know."
+    "t": "No grudges",
+    "p": "The man who forgot Yusuf for seven years did not even say sorry. But Yusuf did not tell him off. He helped him straight away. The Prophet ﷺ was amazed at Yusuf’s patience: he did not even say “let me out first”."
    },
    {
-    "t": "More than an answer",
-    "p": "Yusuf was only asked for the meaning, but he also gave a plan to store food. He wanted to help everyone in Egypt, even people who had treated him badly."
+    "t": "Yusuf’s plan",
+    "l": [
+     "Seven good years: grow lots of grain, eat only a little, and keep the rest in its ears so it lasts.",
+     "Seven hard years: eat from the store, and keep some seeds to plant later.",
+     "Then a year of lots of rain. That year was not in the dream: Yusuf worked it out himself!"
+    ]
    },
    {
-    "t": "Remembering at last",
-    "p": "The wine-maker had forgotten Yusuf for years. When he saw that nobody could explain the dream, he finally remembered his old friend in prison."
+    "t": "Kind to everyone",
+    "p": "The people of Egypt worshipped idols, and some had treated Yusuf unfairly. Still, he gave them a plan that saved their lives. When we show mercy to others, Allah shows mercy to us."
    }
   ],
-  "home": "Practise saying “I don’t know, but I will find out” when you are not sure of an answer.",
+  "home": "Is there someone who forgot about you or let you down? Do something kind for them this week, just like Yusuf did.",
   "game": {
-   "type": "order",
-   "title": "Yusuf’s plan, in order",
-   "help": "Tap the steps in the right order.",
-   "items": [
-    "Seven years of good harvests",
-    "Store the grain in its ears",
-    "Eat only a little",
-    "Seven hard years of drought",
-    "Use what was stored",
-    "A year of rain and plenty"
+   "type": "match",
+   "title": "What does the dream mean?",
+   "help": "Tap a part of the dream on the left, then its meaning on the right.",
+   "pairs": [
+    [
+     "Seven fat cows",
+     "Seven good years"
+    ],
+    [
+     "Seven thin cows",
+     "Seven hard years"
+    ],
+    [
+     "Green ears of grain",
+     "Plenty of food to grow"
+    ],
+    [
+     "Dry ears of grain",
+     "Crops that fail"
+    ],
+    [
+     "Grain kept in its ears",
+     "It lasts much longer"
+    ],
+    [
+     "The year of rain",
+     "Yusuf worked it out himself"
+    ]
    ]
   },
   "quiz": [
@@ -854,61 +876,61 @@ const LESSONS = [
     "q": "What did the King see in his dream?",
     "o": [
      "Seven fat cows eaten by seven thin cows",
-     "A giant bird",
-     "A burning city"
+     "Eleven stars",
+     "A big ship"
     ],
     "a": 0,
-    "w": "Seven fat cows eaten by seven thin ones, and green and dry ears of corn."
+    "w": "And seven green and seven dry ears of grain."
    },
    {
-    "q": "What did the seven fat cows stand for?",
+    "q": "What did the King’s advisers say?",
     "o": [
-     "Seven years of good harvests",
+     "“It is a muddled dream”",
+     "“Ask Yusuf”",
+     "“It means good news”"
+    ],
+    "a": 0,
+    "w": "They would not admit they did not know."
+   },
+   {
+    "q": "What did Yusuf do when the man who forgot him came?",
+    "o": [
+     "Told him off",
+     "Helped him straight away",
+     "Ignored him"
+    ],
+    "a": 1,
+    "w": "He held no grudge."
+   },
+   {
+    "q": "What did the seven thin cows mean?",
+    "o": [
+     "Seven hard years",
      "Seven kings",
      "Seven rivers"
     ],
     "a": 0,
-    "w": "Seven years of plenty."
+    "w": "Years of drought."
    },
    {
-    "q": "What did the King’s chiefs say?",
+    "q": "Why keep the grain in its ears?",
     "o": [
-     "These are mixed-up dreams",
-     "It means good news",
-     "Ask the children"
+     "So it lasts longer",
+     "So it tastes sweet",
+     "So birds can eat it"
     ],
     "a": 0,
-    "w": "They said it was a jumble and they did not know its meaning."
+    "w": "Part of Yusuf’s plan."
    },
    {
-    "q": "What did Yusuf tell them to do with the grain?",
+    "q": "Who did Yusuf’s plan help?",
     "o": [
-     "Leave it in its ears and store it",
-     "Sell it all",
-     "Throw it in the river"
+     "Only his friends",
+     "Everyone in Egypt, even those unfair to him",
+     "Only the King"
     ],
-    "a": 0,
-    "w": "Store it in its ears and eat only a little."
-   },
-   {
-    "q": "Who remembered Yusuf?",
-    "o": [
-     "The wine-maker",
-     "The King’s wife",
-     "A guard"
-    ],
-    "a": 0,
-    "w": "The freed wine-maker remembered him after a long time."
-   },
-   {
-    "q": "What did the wine-maker call Yusuf?",
-    "o": [
-     "O man of truth",
-     "O prisoner",
-     "O stranger"
-    ],
-    "a": 0,
-    "w": "He called him siddiq, a man of truth."
+    "a": 1,
+    "w": "Mercy brings Allah’s mercy."
    }
   ]
  },
@@ -920,53 +942,71 @@ const LESSONS = [
   ],
   "title": "From Prisoner to Minister",
   "short": "The truth comes out, and Yusuf is honoured",
-  "big": "Yusuf would not leave prison until his name was cleared. The lady admitted it was her fault. The King honoured Yusuf, and Yusuf asked to be put in charge of Egypt’s food stores. Allah raised him from prison to the palace.",
+  "big": "The King wanted to meet Yusuf, but Yusuf would not leave prison until his name was cleared. The women said Yusuf had done nothing wrong, and the lady admitted it was her fault. The King made Yusuf a trusted minister, and Yusuf took charge of Egypt’s food stores. Allah raised him from prison to the palace.",
   "remember": [
-   "Yusuf told the messenger: go back and ask the King about the women who cut their hands.",
-   "The King said: today you are honoured and trusted with us.",
-   "He cared about his good name more than leaving prison.",
-   "Yusuf said: put me in charge of the storehouses, for I am a knowing guardian.",
-   "The women said: Allah forbid! We know nothing bad about him.",
-   "Two qualities: knowing what to do, and keeping things safe."
+   "Yusuf would not leave prison until everyone knew he was innocent.",
+   "The women said: “We know nothing bad about him.”",
+   "The lady said: “Now the truth has come out. It was my fault.”",
+   "The King said Yusuf was honoured and trusted.",
+   "Yusuf said: “Put me in charge of the stores. I am a trustworthy guardian and I know the work.”",
+   "Allah never wastes the reward of people who do good."
   ],
   "more": [
    {
-    "t": "Your good name matters",
-    "p": "Yusuf could have walked out of prison at once. But he wanted everyone to know he was innocent. A good name and honesty are precious."
+    "t": "A good name matters",
+    "p": "After years in prison, most people would run out as fast as they could. But Yusuf wanted everyone to know he had done nothing wrong first. He did not even name the lady. He just said: ask about the women who cut their hands. That made the King find the truth himself."
    },
    {
-    "t": "Asking for a job to help people",
-    "p": "Yusuf asked for the job because he knew he could do it well and help everyone get through the hard years. Using our skills to help others is a good thing."
+    "t": "The truth comes out",
+    "p": "The King asked the women, and they all said Yusuf was good. Then the lady said: “Now the truth is clear. It was I who did wrong, and he is telling the truth.” The truth always comes out in the end."
    },
    {
-    "t": "Polite even now",
-    "p": "Yusuf did not say “ask about that lady who lied”. He asked about “the women who cut their hands”. He was careful not to name or shame her."
+    "t": "Born good",
+    "p": "The Prophet ﷺ said every child is born on the fitrah: a pure, good nature. Nobody is born bad. When we have iman, our heart leans to good. When we do wrong, a good heart feels sorry and turns back to Allah."
    },
    {
-    "t": "From the well to the palace",
-    "p": "Well, slavery, prison, and now the palace. Each test was bigger than the last, and each reward was sweeter. That is the story of Yusuf’s life."
+    "t": "Trustworthy and skilled",
+    "p": "Yusuf said he was hafiz, someone who looks after things safely, and ‘alim, someone who knows the work well. To do any job well, you need both: good character and good skills."
    },
    {
-    "t": "Three kinds of soul",
-    "l": [
-     "The soul that pushes us to do wrong.",
-     "The soul that blames itself after doing wrong, and wants to do better.",
-     "The soul at peace, close to Allah."
-    ]
+    "t": "The best reward",
+    "p": "Yusuf went from a well, to prison, to the palace. Allah never wastes the good that people do. But Allah says the reward of the Hereafter is even better for those who believe and are careful to obey Him."
    }
   ],
-  "home": "If you ever do something wrong, be brave like the lady was at the end: tell the truth and say sorry.",
+  "home": "Choose one job at home, like tidying your room or helping with dinner. Do it honestly (hafiz) and do it well (‘alim), just like Yusuf.",
   "game": {
-   "type": "order",
-   "title": "Clearing Yusuf’s name",
-   "help": "Tap the events in the order they happened.",
+   "type": "sort",
+   "title": "Good character or good skills?",
+   "help": "Is each one about good character, or about good skills?",
+   "buckets": [
+    "Good character (hafiz)",
+    "Good skills (‘alim)"
+   ],
    "items": [
-    "The King says: bring him to me",
-    "Yusuf says: first ask about the women",
-    "The King asks the women",
-    "The women say: we know nothing bad about him",
-    "The lady admits it was her fault",
-    "Yusuf is shown to be innocent"
+    [
+     "Being honest",
+     0
+    ],
+    [
+     "Keeping things safe",
+     0
+    ],
+    [
+     "Being fair to everyone",
+     0
+    ],
+    [
+     "Planning ahead",
+     1
+    ],
+    [
+     "Being good at your job",
+     1
+    ],
+    [
+     "Learning and studying hard",
+     1
+    ]
    ]
   },
   "quiz": [
@@ -974,61 +1014,61 @@ const LESSONS = [
     "q": "Why didn’t Yusuf leave prison straight away?",
     "o": [
      "He wanted his name cleared first",
-     "He liked prison",
-     "He was asleep"
+     "He was asleep",
+     "The door was locked"
     ],
     "a": 0,
-    "w": "He wanted everyone to know he was innocent."
-   },
-   {
-    "q": "What job did Yusuf ask for?",
-    "o": [
-     "In charge of the storehouses",
-     "Captain of the army",
-     "Chief gardener"
-    ],
-    "a": 0,
-    "w": "He asked to look after Egypt’s food stores."
+    "w": "A good name mattered to him."
    },
    {
     "q": "What did the women say about Yusuf?",
     "o": [
-     "We know nothing bad about him",
-     "He is a liar",
-     "We never met him"
+     "“He is a thief”",
+     "“We know nothing bad about him”",
+     "“We never met him”"
     ],
-    "a": 0,
-    "w": "They said: Allah forbid, we know nothing bad about him."
+    "a": 1,
+    "w": "They said he was innocent."
    },
    {
-    "q": "How did Yusuf describe himself?",
+    "q": "What did the lady finally admit?",
     "o": [
-     "A knowing guardian",
-     "The strongest man",
-     "The King’s son"
+     "That it was her fault",
+     "That she was the King",
+     "Nothing"
     ],
     "a": 0,
-    "w": "He said: I am a knowing guardian."
+    "w": "“Now the truth has come out.”"
    },
    {
-    "q": "What did the wife of al-‘Aziz admit?",
+    "q": "What is the fitrah?",
     "o": [
-     "It was her fault, and Yusuf is truthful",
-     "Yusuf was to blame",
-     "She had forgotten"
+     "A kind of food",
+     "The pure, good nature every child is born with",
+     "A city in Egypt"
     ],
-    "a": 0,
-    "w": "She said: it was I who tried, and he is truthful."
+    "a": 1,
+    "w": "Nobody is born bad."
    },
    {
-    "q": "What did the King say to Yusuf?",
+    "q": "What job did Yusuf ask for?",
     "o": [
-     "Today you are honoured and trusted",
-     "Go back to prison",
-     "Leave Egypt"
+     "Head of the army",
+     "Looking after Egypt’s food stores",
+     "The King’s cook"
     ],
-    "a": 0,
-    "w": "Today you are highly esteemed and trusted by us."
+    "a": 1,
+    "w": "He knew the hard years were coming."
+   },
+   {
+    "q": "What is even better than a reward in this world?",
+    "o": [
+     "A bigger palace",
+     "The reward of the Hereafter",
+     "More gold"
+    ],
+    "a": 1,
+    "w": "For those who believe and obey Allah."
    }
   ]
  },
